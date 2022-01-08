@@ -5,6 +5,10 @@ declare module '*.md' {
     children?: JSX.Element;
   }
 
+  export interface LiteralProps {
+    children: string;
+  }
+
   export interface AssociationProps {
     identifier: string;
     label?: string;
@@ -23,17 +27,13 @@ declare module '*.md' {
     referenceType: 'shortcut' | 'collapsed' | 'full';
   }
 
-  export interface CodeProps {
+  export interface CodeProps extends LiteralProps {
     lang?: string;
     meta?: string;
   }
 
   export interface HeadingProps extends ParentProps {
     depth: 1 | 2 | 3 | 4 | 5 | 6;
-  }
-
-  export interface LiteralProps {
-    value: string;
   }
 
   export interface ListProps extends ParentProps {
@@ -62,6 +62,7 @@ declare module '*.md' {
     FootnoteDefinition: MDXComponent<ParentProps & AssociationProps>
     FootnoteReference: MDXComponent<AssociationProps>
     Heading: MDXComponent<HeadingProps>
+    Html: MDXComponent<LiteralProps>;
     Image: MDXComponent<ResourceProps & AlternativeProps>
     ImageReference: MDXComponent<ReferenceProps & AlternativeProps>
     InlineCode: MDXComponent<LiteralProps>

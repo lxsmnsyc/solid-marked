@@ -30,6 +30,10 @@ Here’s an expression:
 
 Which you can also put inline: {1+1}.
 
+\`\`\`js
+console.log(\`\${test}\`)
+\`\`\`
+
 <>
   <Box>
     <SmallerBox>

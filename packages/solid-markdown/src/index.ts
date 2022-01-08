@@ -80,7 +80,9 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
       if (node.meta) {
         addStringAttribute(result, 'meta', node.meta);
       }
-      result.add(' />');
+      result.add('>');
+      result.add(`{\`${node.value}\`}`);
+      result.add('</Dynamic>');
       return result;
     }
     case 'definition': {
@@ -139,10 +141,9 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'html': {
       const result = createSourceNode(source, node);
-      result.add(node.value);
-      // result.add('<Dynamic component={props.builtins.Html}');
-      // result.add(` value="${escape(node.value)}"`);
-      // result.add(' />');
+      result.add('<Dynamic component={props.builtins.Html}>');
+      result.add(`{\`${node.value}\`}`);
+      result.add('</Dynamic>');
       return result;
     }
     case 'image': {
@@ -163,9 +164,9 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'inlineCode': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.InlineCode}');
-      addStringAttribute(result, 'value', node.value);
-      result.add(' />');
+      result.add('<Dynamic component={props.builtins.InlineCode}>');
+      result.add(`{\`${node.value}\`}`);
+      result.add('</Dynamic>');
       return result;
     }
     case 'link': {
