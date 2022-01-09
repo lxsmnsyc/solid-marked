@@ -21,8 +21,13 @@ function createSourceNode(source: string, base: Node): SourceNode {
   );
 }
 
+function escapeString(value: string) {
+  return value.replace('`', '\\`')
+    .replace('$', '\\$');
+}
+
 function addStringAttribute(result: SourceNode, name: string, value: string) {
-  result.add(` ${name}=${JSON.stringify(value)}`);
+  result.add(` ${name}={\`${escapeString(value)}\`}`);
 }
 function addJSAttribute(result: SourceNode, name: string, expression: string) {
   result.add(` ${name}={${expression}}`);
@@ -81,7 +86,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
         addStringAttribute(result, 'meta', node.meta);
       }
       result.add('>');
-      result.add(`{\`${node.value}\`}`);
+      result.add(`{\`${escapeString(node.value)}\`}`);
       result.add('</Dynamic>');
       return result;
     }
@@ -142,7 +147,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     case 'html': {
       const result = createSourceNode(source, node);
       result.add('<Dynamic component={props.builtins.Html}>');
-      result.add(`{\`${node.value}\`}`);
+      result.add(`{\`${escapeString(node.value)}\`}`);
       result.add('</Dynamic>');
       return result;
     }
@@ -165,7 +170,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     case 'inlineCode': {
       const result = createSourceNode(source, node);
       result.add('<Dynamic component={props.builtins.InlineCode}>');
-      result.add(`{\`${node.value}\`}`);
+      result.add(`{\`${escapeString(node.value)}\`}`);
       result.add('</Dynamic>');
       return result;
     }
@@ -239,7 +244,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
             attributeNode.add(` ${attribute.name}`);
             if (attribute.value) {
               if (typeof attribute.value === 'string') {
-                attributeNode.add(`=${JSON.stringify(attribute.value)}`);
+                attributeNode.add(`={\`${escapeString(attribute.value)}\`}`);
               } else {
                 const attributeValueNode = new SourceNode(
                   attribute.value.position?.start.line ?? null,
@@ -279,7 +284,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
             attributeNode.add(` ${attribute.name}`);
             if (attribute.value) {
               if (typeof attribute.value === 'string') {
-                attributeNode.add(`=${JSON.stringify(attribute.value)}`);
+                attributeNode.add(`={\`${escapeString(attribute.value)}\`}`);
               } else {
                 const attributeValueNode = new SourceNode(
                   attribute.value.position?.start.line ?? null,
