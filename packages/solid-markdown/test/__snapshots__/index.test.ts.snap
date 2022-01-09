@@ -1,0 +1,277 @@
+// Vitest Snapshot v1
+
+exports[`should support Blockquote 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Blockquote}><Dynamic component={props.builtins.Paragraph}>Lorem ipsum dolor.</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Break 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}>foo··
+bar</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Code 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Code} lang={\`js\`} meta={\`highlight-line=\\"2\\"\`}>{\`foo()
+bar()
+baz()\`}</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Definition 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Definition} url={\`https://example.com\`} identifier={\`alpha\`} label={\`Alpha\`} /></Dynamic> );
+}
+"
+`;
+
+exports[`should support Delete 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={props.builtins.Delete}>alpha</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Emphasis 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={props.builtins.Emphasis}>Lorem</Dynamic> <Dynamic component={props.builtins.Emphasis}>Ipsum</Dynamic> dolor.</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Footnote 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}>^[alpha bravo]</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support FootnoteDefinition 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.FootnoteDefinition} identifier={\`alpha\`} label={\`alpha\`}><Dynamic component={props.builtins.Paragraph}>bravo and charlie.</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support FootnoteReference 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}>[^alpha]</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Heading 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Heading} depth={1}>Lorem</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Heading 2`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Heading} depth={2}>Lorem</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Heading 3`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Heading} depth={3}>Lorem</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Heading 4`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Heading} depth={4}>Lorem</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Heading 5`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Heading} depth={5}>Lorem</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Heading 6`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Heading} depth={6}>Lorem</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Html 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={typeof div !== 'undefined' ? div : props.components.div}>Hello World</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Image 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={props.builtins.Image} url={\`https://example.com/favicon.ico\`} title={\`bravo\`} alt={\`alpha\`} /></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support ImageReference 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}>![alpha][bravo]</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support InlineCode 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={props.builtins.InlineCode}>{\`foo()\`}</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Link 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={props.builtins.Link} url={\`https://example.com\`} title={\`bravo\`}>alpha</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support LinkReference 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}>[alpha][Bravo]</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support List 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.List} ordered={true} spread={false} start={1}><Dynamic component={props.builtins.ListItem} spread={false}><Dynamic component={props.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support List 2`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.List} ordered={false} spread={false}><Dynamic component={props.builtins.ListItem} spread={false}><Dynamic component={props.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support List 3`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.List} ordered={false} spread={false}><Dynamic component={props.builtins.ListItem} spread={false} checked={true}><Dynamic component={props.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support List 4`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.List} ordered={false} spread={false}><Dynamic component={props.builtins.ListItem} spread={false} checked={false}><Dynamic component={props.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support ListItem 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.List} ordered={false} spread={false}><Dynamic component={props.builtins.ListItem} spread={false}><Dynamic component={props.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support MDX ESM 1`] = `
+"import Box from 'box';
+export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}></Dynamic> );
+}
+"
+`;
+
+exports[`should support MDX JS 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}>{1 + 1}</Dynamic> );
+}
+"
+`;
+
+exports[`should support MDX JSX 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={typeof Box !== 'undefined' ? Box : props.components.Box}>Hello World</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Paragraph 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}>Lorem ipsum dolor.</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Strong 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={props.builtins.Strong}>Lorem</Dynamic> <Dynamic component={props.builtins.Strong}>Ipsum</Dynamic> dolor.</Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Table 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={props.builtins.TableRow}><Dynamic component={props.builtins.TableCell}>foo</Dynamic><Dynamic component={props.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={props.builtins.TableRow}><Dynamic component={props.builtins.TableCell}>baz</Dynamic><Dynamic component={props.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support Table, TableRow and TableCell 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={props.builtins.TableRow}><Dynamic component={props.builtins.TableCell}>foo</Dynamic><Dynamic component={props.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={props.builtins.TableRow}><Dynamic component={props.builtins.TableCell}>baz</Dynamic><Dynamic component={props.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support ThematicBreak 1`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.ThematicBreak} /></Dynamic> );
+}
+"
+`;

@@ -14,16 +14,17 @@ import {
 } from 'source-map';
 
 function createSourceNode(source: string, base: Node): SourceNode {
+  const col = base.position?.start.column;
   return new SourceNode(
     base.position?.start.line ?? null,
-    base.position?.start.column ?? null,
+    col != null ? col - 1 : null,
     source,
   );
 }
 
 function escapeString(value: string) {
-  return value.replace('`', '\\`')
-    .replace('$', '\\$');
+  return value.replace(/`/g, '\\`')
+    .replace(/\$/g, '\\$');
 }
 
 function addStringAttribute(result: SourceNode, name: string, value: string) {
@@ -420,6 +421,8 @@ export async function compile(fileName: string, markdownCode: string): Promise<R
   compiled.add(render);
   compiled.add(' );\n');
   compiled.add('}\n');
+
+  compiled.setSourceContent(fileName, markdownCode);
 
   const compiledResult = compiled.toStringWithSourceMap();
 
