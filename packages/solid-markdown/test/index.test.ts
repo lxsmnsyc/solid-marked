@@ -105,6 +105,8 @@ test('should support MDX ESM', async () => {
 });
 test('should support MDX JSX', async () => {
   expect(await testCompile('<Box>Hello World</Box>')).toMatchSnapshot();
+  expect(await testCompile('<some-box>Hello World</some-box>')).toMatchSnapshot();
+  expect(await testCompile('<some:box>Hello World</some:box>')).toMatchSnapshot();
 });
 test('should support MDX JS', async () => {
   expect(await testCompile('{1 + 1}')).toMatchSnapshot();

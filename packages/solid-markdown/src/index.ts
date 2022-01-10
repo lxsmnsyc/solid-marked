@@ -232,7 +232,15 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     case 'mdxJsxFlowElement': {
       const result = createSourceNode(source, node);
       if (node.name) {
-        const name = `typeof ${node.name} !== 'undefined' ? ${node.name} : props.components.${node.name}`;
+        let name: string;
+        // Test for dashed elements
+        if (/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+$/.test(node.name)) {
+          name = `props.components['${node.name}']`;
+        } else if (/^[a-zA-Z0-9]:(-[a-zA-Z0-9]+)+$/.test(node.name)) {
+          name = `props.components['${node.name}']`;
+        } else {
+          name = `typeof ${node.name} === 'undefined' ? props.components.${node.name} : ${node.name}`;
+        }
         result.add(`<Dynamic component={${name}}`);
         for (let i = 0, len = node.attributes.length; i < len; i += 1) {
           const attribute = node.attributes[i];
@@ -272,7 +280,15 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     case 'mdxJsxTextElement': {
       const result = createSourceNode(source, node);
       if (node.name) {
-        const name = `typeof ${node.name} !== 'undefined' ? ${node.name} : props.components.${node.name}`;
+        let name: string;
+        // Test for dashed elements
+        if (/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+$/.test(node.name)) {
+          name = `props.components['${node.name}']`;
+        } else if (/^[a-zA-Z0-9]:(-[a-zA-Z0-9]+)+$/.test(node.name)) {
+          name = `props.components['${node.name}']`;
+        } else {
+          name = `typeof ${node.name} === 'undefined' ? props.components.${node.name} : ${node.name}`;
+        }
         result.add(`<Dynamic component={${name}}`);
         for (let i = 0, len = node.attributes.length; i < len; i += 1) {
           const attribute = node.attributes[i];
