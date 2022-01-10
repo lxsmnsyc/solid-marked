@@ -126,7 +126,7 @@ exports[`should support Heading 6`] = `
 exports[`should support Html 1`] = `
 "export default function Component(props) {
  return (
-<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={typeof div !== 'undefined' ? div : props.components.div}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={typeof div === 'undefined' ? props.components.div : div}>Hello World</Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
@@ -231,7 +231,47 @@ exports[`should support MDX JS 1`] = `
 exports[`should support MDX JSX 1`] = `
 "export default function Component(props) {
  return (
-<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={typeof Box !== 'undefined' ? Box : props.components.Box}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={typeof Box === 'undefined' ? props.components.Box : Box}>Hello World</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support MDX JSX 2`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={props.components['some-box']}>Hello World</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support MDX JSX 3`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.builtins.Paragraph}><Dynamic component={props.components['some:box']}>Hello World</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support MDX JSX 4`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={typeof Box === 'undefined' ? props.components.Box : Box}><Dynamic component={props.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support MDX JSX 5`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.components['some-box']}><Dynamic component={props.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic> );
+}
+"
+`;
+
+exports[`should support MDX JSX 6`] = `
+"export default function Component(props) {
+ return (
+<Dynamic component={props.builtins.Root}><Dynamic component={props.components['some:box']}><Dynamic component={props.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic> );
 }
 "
 `;

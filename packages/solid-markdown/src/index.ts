@@ -236,7 +236,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
         // Test for dashed elements
         if (/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+$/.test(node.name)) {
           name = `props.components['${node.name}']`;
-        } else if (/^[a-zA-Z0-9]:(-[a-zA-Z0-9]+)+$/.test(node.name)) {
+        } else if (/^[a-zA-Z0-9]+:[a-zA-Z0-9]+$/.test(node.name)) {
           name = `props.components['${node.name}']`;
         } else {
           name = `typeof ${node.name} === 'undefined' ? props.components.${node.name} : ${node.name}`;
@@ -284,7 +284,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
         // Test for dashed elements
         if (/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+$/.test(node.name)) {
           name = `props.components['${node.name}']`;
-        } else if (/^[a-zA-Z0-9]:(-[a-zA-Z0-9]+)+$/.test(node.name)) {
+        } else if (/^[a-zA-Z0-9]+:[a-zA-Z0-9]+$/.test(node.name)) {
           name = `props.components['${node.name}']`;
         } else {
           name = `typeof ${node.name} === 'undefined' ? props.components.${node.name} : ${node.name}`;
