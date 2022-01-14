@@ -54,7 +54,7 @@ export interface TableProps extends ParentProps {
 export type MDXComponent<P> = (props: P) => JSX.Element;
 
 export interface MDXBuiltinComponents {
-  BlockQuote: MDXComponent<ParentProps>;
+  Blockquote: MDXComponent<ParentProps>;
   Break: () => JSX.Element;
   Code: MDXComponent<CodeProps>;
   Definition: MDXComponent<ResourceProps & AssociationProps>
