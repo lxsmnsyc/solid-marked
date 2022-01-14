@@ -67,19 +67,19 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
   switch (node.type) {
     case 'blockquote': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Blockquote}>');
+      result.add('<Dynamic component={__ctx.builtins.Blockquote}>');
       applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'break': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Break} />');
+      result.add('<Dynamic component={__ctx.builtins.Break} />');
       return result;
     }
     case 'code': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Code}');
+      result.add('<Dynamic component={__ctx.builtins.Code}');
       if (node.lang) {
         addStringAttribute(result, 'lang', node.lang);
       }
@@ -93,7 +93,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'definition': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Definition}');
+      result.add('<Dynamic component={__ctx.builtins.Definition}');
       applyResource(result, node);
       applyAssociation(result, node);
       result.add(' />');
@@ -101,28 +101,28 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'delete': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Delete}>');
+      result.add('<Dynamic component={__ctx.builtins.Delete}>');
       applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'emphasis': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Emphasis}>');
+      result.add('<Dynamic component={__ctx.builtins.Emphasis}>');
       applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'footnote': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Footnote}>');
+      result.add('<Dynamic component={__ctx.builtins.Footnote}>');
       applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'footnoteDefinition': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.FootnoteDefinition}');
+      result.add('<Dynamic component={__ctx.builtins.FootnoteDefinition}');
       applyAssociation(result, node);
       result.add('>');
       applyContent(result, node);
@@ -131,14 +131,14 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'footnoteReference': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.FootnoteReference}');
+      result.add('<Dynamic component={__ctx.builtins.FootnoteReference}');
       applyAssociation(result, node);
       result.add(' />');
       return result;
     }
     case 'heading': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Heading}');
+      result.add('<Dynamic component={__ctx.builtins.Heading}');
       addJSAttribute(result, 'depth', node.depth.toString());
       result.add('>');
       applyContent(result, node);
@@ -147,14 +147,14 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'html': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Html}>');
+      result.add('<Dynamic component={__ctx.builtins.Html}>');
       result.add(`{\`${escapeString(node.value)}\`}`);
       result.add('</Dynamic>');
       return result;
     }
     case 'image': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Image}');
+      result.add('<Dynamic component={__ctx.builtins.Image}');
       applyResource(result, node);
       applyAlternative(result, node);
       result.add(' />');
@@ -162,7 +162,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'imageReference': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.ImageReference}');
+      result.add('<Dynamic component={__ctx.builtins.ImageReference}');
       applyReference(result, node);
       applyAlternative(result, node);
       result.add(' />');
@@ -170,14 +170,14 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'inlineCode': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.InlineCode}>');
+      result.add('<Dynamic component={__ctx.builtins.InlineCode}>');
       result.add(`{\`${escapeString(node.value)}\`}`);
       result.add('</Dynamic>');
       return result;
     }
     case 'link': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Link}');
+      result.add('<Dynamic component={__ctx.builtins.Link}');
       applyResource(result, node);
       result.add('>');
       applyContent(result, node);
@@ -186,7 +186,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'linkReference': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.LinkReference}');
+      result.add('<Dynamic component={__ctx.builtins.LinkReference}');
       applyReference(result, node);
       result.add('>');
       applyContent(result, node);
@@ -195,7 +195,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'list': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.List}');
+      result.add('<Dynamic component={__ctx.builtins.List}');
       if (node.ordered != null) {
         addJSAttribute(result, 'ordered', node.ordered.toString());
       }
@@ -212,7 +212,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'listItem': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.ListItem}');
+      result.add('<Dynamic component={__ctx.builtins.ListItem}');
       if (node.spread != null) {
         addJSAttribute(result, 'spread', node.spread.toString());
       }
@@ -235,11 +235,11 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
         let name: string;
         // Test for dashed elements
         if (/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+$/.test(node.name)) {
-          name = `props.components['${node.name}']`;
+          name = `__ctx.components['${node.name}']`;
         } else if (/^[a-zA-Z0-9]+:[a-zA-Z0-9]+$/.test(node.name)) {
-          name = `props.components['${node.name}']`;
+          name = `__ctx.components['${node.name}']`;
         } else {
-          name = `typeof ${node.name} === 'undefined' ? props.components.${node.name} : ${node.name}`;
+          name = `typeof ${node.name} === 'undefined' ? __ctx.components.${node.name} : ${node.name}`;
         }
         result.add(`<Dynamic component={${name}}`);
         for (let i = 0, len = node.attributes.length; i < len; i += 1) {
@@ -283,11 +283,11 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
         let name: string;
         // Test for dashed elements
         if (/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+$/.test(node.name)) {
-          name = `props.components['${node.name}']`;
+          name = `__ctx.components['${node.name}']`;
         } else if (/^[a-zA-Z0-9]+:[a-zA-Z0-9]+$/.test(node.name)) {
-          name = `props.components['${node.name}']`;
+          name = `__ctx.components['${node.name}']`;
         } else {
-          name = `typeof ${node.name} === 'undefined' ? props.components.${node.name} : ${node.name}`;
+          name = `typeof ${node.name} === 'undefined' ? __ctx.components.${node.name} : ${node.name}`;
         }
         result.add(`<Dynamic component={${name}}`);
         for (let i = 0, len = node.attributes.length; i < len; i += 1) {
@@ -338,28 +338,28 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'paragraph': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Paragraph}>');
+      result.add('<Dynamic component={__ctx.builtins.Paragraph}>');
       applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'root': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Root}>');
+      result.add('<Dynamic component={__ctx.builtins.Root}>');
       applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'strong': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Strong}>');
+      result.add('<Dynamic component={__ctx.builtins.Strong}>');
       applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'table': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.Table}');
+      result.add('<Dynamic component={__ctx.builtins.Table}');
       if (node.align != null) {
         addJSAttribute(result, 'align', JSON.stringify(node.align));
       }
@@ -370,14 +370,14 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'tableCell': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.TableCell}>');
+      result.add('<Dynamic component={__ctx.builtins.TableCell}>');
       applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'tableRow': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.TableRow}>');
+      result.add('<Dynamic component={__ctx.builtins.TableRow}>');
       applyContent(result, node);
       result.add('</Dynamic>');
       return result;
@@ -389,7 +389,7 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'thematicBreak': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={props.builtins.ThematicBreak} />');
+      result.add('<Dynamic component={__ctx.builtins.ThematicBreak} />');
       return result;
     }
     default: {
@@ -432,7 +432,9 @@ export async function compile(fileName: string, markdownCode: string): Promise<R
   const compiled = new SourceNode(null, null, fileName);
 
   compiled.add(imports);
+  compiled.add("import { useMDXContext } from 'solid-markdown';\n\n");
   compiled.add('export default function Component(props) {\n');
+  compiled.add(' const __ctx = useMDXContext();\n');
   compiled.add(' return (\n');
   compiled.add(render);
   compiled.add(' );\n');
@@ -447,3 +449,5 @@ export async function compile(fileName: string, markdownCode: string): Promise<R
     map: compiledResult.map.toJSON(),
   };
 }
+
+export * from './components';
