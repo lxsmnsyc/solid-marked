@@ -50,11 +50,11 @@
   "devDependencies": {
     "@types/node": "^17.0.0",
     "@types/mdast": "^3.0.10",
-    "eslint": "^7.32.0",
-    "eslint-config-lxsmnsyc": "^0.3.0",
+    "eslint": "^8.6.0",
+    "eslint-config-lxsmnsyc": "^0.4.0",
     "pridepack": "1.0.4",
-    "solid-js": "^1.3.1",
-    "vitest": "^0.0.139",
+    "solid-js": "^1.3.3",
+    "vitest": "^0.1.12",
     "tslib": "^2.3.1",
     "typescript": "^4.5.4"
   },
@@ -69,20 +69,20 @@
     "micromark-extension-gfm": "^2.0.1",
     "source-map": "^0.7.3"
   },
-  "private": false,
-  "description": "Compile Markdown/MDX to SolidJS",
+  "description": "Markdown Compiler for SolidJS",
   "repository": {
-    "url": "",
+    "url": "https://github.com/lxsmnsyc/solid-markdown.git",
     "type": "git"
   },
-  "homepage": "",
+  "homepage": "https://github.com/lxsmnsyc/solid-markdown/tree/main/packages/solid-markdown",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/lxsmnsyc/solid-markdown/issues"
   },
-  "author": "",
   "publishConfig": {
     "access": "public"
   },
+  "author": "Alexis Munsayac",
+  "private": false,
   "scripts": {
     "prepublishOnly": "pridepack clean && pridepack build",
     "build": "pridepack build",
