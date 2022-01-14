@@ -1,6 +1,3 @@
 {
-  "target": "es2017",
-  "jest": {
-    "preset": "ts-jest"
-  }
+  "target": "es2017"
 }
