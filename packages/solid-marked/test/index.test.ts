@@ -3,7 +3,7 @@ import { expect, test } from 'vitest';
 import { compile } from '..';
 
 async function testCompile(code: string): Promise<string> {
-  return (await compile('test.md', code)).code;
+  return (await compile('mdx-source', 'test.md', code)).code;
 }
 
 test('should support Paragraph', async () => {

@@ -6,29 +6,20 @@ import {
   Resource,
   Alternative,
   Reference,
-  Literal,
 } from 'mdast';
 import {
   Node,
   Parent,
 } from 'mdast-util-from-markdown/lib';
-import type {
+import {
   RawSourceMap,
   SourceNode,
 } from 'source-map';
 
-async function createEmptySourceNode(): Promise<SourceNode> {
-  const { SourceNode } = await import('source-map');
-  return new SourceNode();
-}
-
-type Position = Literal['position'];
-
-async function createSourceNode(source: string, position: Position): Promise<SourceNode> {
-  const { SourceNode } = await import('source-map');
-  const col = position?.start.column;
+function createSourceNode(source: string, base: Node): SourceNode {
+  const col = base.position?.start.column;
   return new SourceNode(
-    position?.start.line ?? null,
+    base.position?.start.line ?? null,
     col != null ? col - 1 : null,
     source,
   );
@@ -70,36 +61,27 @@ function applyReference(result: SourceNode, node: Reference) {
   addStringAttribute(result, 'referenceType', node.referenceType);
 }
 
-function map<T, R>(arr: T[], cb: (item: T) => R): R[] {
-  const result: R[] = [];
-  for (let i = 0, len = arr.length; i < len; i += 1) {
-    result[i] = cb(arr[i]);
-  }
-  return result;
-}
-
-async function traverse(source: string, node: Node, imports: SourceNode[]): Promise<SourceNode> {
-  async function applyContent(result: SourceNode, content: Parent) {
-    const results = map(content.children, (item) => (
-      traverse(source, item, imports)
-    ));
-    result.add(await Promise.all(results));
+function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode {
+  function applyContent(result: SourceNode, content: Parent) {
+    for (let i = 0, len = content.children.length; i < len; i += 1) {
+      result.add(traverse(source, content.children[i], imports));
+    }
   }
   switch (node.type) {
     case 'blockquote': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Blockquote}>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'break': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Break} />');
       return result;
     }
     case 'code': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Code}');
       if (node.lang) {
         addStringAttribute(result, 'lang', node.lang);
@@ -113,7 +95,7 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
       return result;
     }
     case 'definition': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Definition}');
       applyResource(result, node);
       applyAssociation(result, node);
@@ -121,60 +103,60 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
       return result;
     }
     case 'delete': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Delete}>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'emphasis': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Emphasis}>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'footnote': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Footnote}>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'footnoteDefinition': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.FootnoteDefinition}');
       applyAssociation(result, node);
       result.add('>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'footnoteReference': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.FootnoteReference}');
       applyAssociation(result, node);
       result.add(' />');
       return result;
     }
     case 'heading': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Heading}');
       addJSAttribute(result, 'depth', node.depth.toString());
       result.add('>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'html': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Html}>');
       result.add(`{\`${escapeString(node.value)}\`}`);
       result.add('</Dynamic>');
       return result;
     }
     case 'image': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Image}');
       applyResource(result, node);
       applyAlternative(result, node);
@@ -182,7 +164,7 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
       return result;
     }
     case 'imageReference': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.ImageReference}');
       applyReference(result, node);
       applyAlternative(result, node);
@@ -190,32 +172,32 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
       return result;
     }
     case 'inlineCode': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.InlineCode}>');
       result.add(`{\`${escapeString(node.value)}\`}`);
       result.add('</Dynamic>');
       return result;
     }
     case 'link': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Link}');
       applyResource(result, node);
       result.add('>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'linkReference': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.LinkReference}');
       applyReference(result, node);
       result.add('>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'list': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.List}');
       if (node.ordered != null) {
         addJSAttribute(result, 'ordered', node.ordered.toString());
@@ -227,12 +209,12 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
         addJSAttribute(result, 'start', node.start.toString());
       }
       result.add('>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'listItem': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.ListItem}');
       if (node.spread != null) {
         addJSAttribute(result, 'spread', node.spread.toString());
@@ -241,17 +223,17 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
         addJSAttribute(result, 'checked', node.checked.toString());
       }
       result.add('>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'mdxFlowExpression': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add(`{${node.value}}`);
       return result;
     }
     case 'mdxJsxFlowElement': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       if (node.name) {
         let name: string;
         // Test for dashed elements
@@ -263,10 +245,12 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
           name = `typeof ${node.name} === 'undefined' ? __ctx.components.${node.name} : ${node.name}`;
         }
         result.add(`<Dynamic component={${name}}`);
-        await Promise.all(map(node.attributes, async (attribute) => {
-          const attributeNode = await createSourceNode(
+        for (let i = 0, len = node.attributes.length; i < len; i += 1) {
+          const attribute = node.attributes[i];
+          const attributeNode = new SourceNode(
+            attribute.position?.start.line ?? null,
+            attribute.position?.start.column ?? null,
             source,
-            attribute.position,
           );
           if (attribute.type === 'mdxJsxAttribute') {
             attributeNode.add(` ${attribute.name}`);
@@ -274,9 +258,10 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
               if (typeof attribute.value === 'string') {
                 attributeNode.add(`={\`${escapeString(attribute.value)}\`}`);
               } else {
-                const attributeValueNode = await createSourceNode(
+                const attributeValueNode = new SourceNode(
+                  attribute.value.position?.start.line ?? null,
+                  attribute.value.position?.start.column ?? null,
                   source,
-                  attribute.value.position,
                 );
                 attributeValueNode.add(attribute.value.value);
                 attributeNode.add(['={', attributeValueNode, '}']);
@@ -286,17 +271,17 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
             attributeNode.add(` {...${attribute.value}}`);
           }
           result.add(attributeNode);
-        }));
+        }
         result.add('>');
       } else {
         result.add('<>');
       }
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add(node.name ? '</Dynamic>' : '</>');
       return result;
     }
     case 'mdxJsxTextElement': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       if (node.name) {
         let name: string;
         // Test for dashed elements
@@ -308,10 +293,12 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
           name = `typeof ${node.name} === 'undefined' ? __ctx.components.${node.name} : ${node.name}`;
         }
         result.add(`<Dynamic component={${name}}`);
-        await Promise.all(map(node.attributes, async (attribute) => {
-          const attributeNode = await createSourceNode(
+        for (let i = 0, len = node.attributes.length; i < len; i += 1) {
+          const attribute = node.attributes[i];
+          const attributeNode = new SourceNode(
+            attribute.position?.start.line ?? null,
+            attribute.position?.start.column ?? null,
             source,
-            attribute.position,
           );
           if (attribute.type === 'mdxJsxAttribute') {
             attributeNode.add(` ${attribute.name}`);
@@ -319,9 +306,10 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
               if (typeof attribute.value === 'string') {
                 attributeNode.add(`={\`${escapeString(attribute.value)}\`}`);
               } else {
-                const attributeValueNode = await createSourceNode(
+                const attributeValueNode = new SourceNode(
+                  attribute.value.position?.start.line ?? null,
+                  attribute.value.position?.start.column ?? null,
                   source,
-                  attribute.value.position,
                 );
                 attributeValueNode.add(attribute.value.value);
                 attributeNode.add(['={', attributeValueNode, '}']);
@@ -331,79 +319,79 @@ async function traverse(source: string, node: Node, imports: SourceNode[]): Prom
             attributeNode.add(` {...${attribute.value}}`);
           }
           result.add(attributeNode);
-        }));
+        }
         result.add('>');
       } else {
         result.add('<>');
       }
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add(node.name ? '</Dynamic>' : '</>');
       return result;
     }
     case 'mdxTextExpression': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add(`{${node.value}}`);
       return result;
     }
     case 'mdxjsEsm': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add(`${node.value}\n`);
       imports.push(result);
-      return createEmptySourceNode();
+      return new SourceNode();
     }
     case 'paragraph': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Paragraph}>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'root': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Root}>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'strong': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Strong}>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'table': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.Table}');
       if (node.align != null) {
         addJSAttribute(result, 'align', JSON.stringify(node.align));
       }
       result.add('>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'tableCell': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.TableCell}>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'tableRow': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.TableRow}>');
-      await applyContent(result, node);
+      applyContent(result, node);
       result.add('</Dynamic>');
       return result;
     }
     case 'text': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add(node.value);
       return result;
     }
     case 'thematicBreak': {
-      const result = await createSourceNode(source, node.position);
+      const result = createSourceNode(source, node);
       result.add('<Dynamic component={__ctx.builtins.ThematicBreak} />');
       return result;
     }
@@ -418,7 +406,11 @@ export interface Result {
   map: RawSourceMap;
 }
 
-export async function compile(fileName: string, markdownCode: string): Promise<Result> {
+export async function compile(
+  mdxImportSource: string,
+  fileName: string,
+  markdownCode: string,
+): Promise<Result> {
   // Main transformer
   const { fromMarkdown } = await import('mdast-util-from-markdown');
 
@@ -442,15 +434,14 @@ export async function compile(fileName: string, markdownCode: string): Promise<R
   });
 
   const imports: SourceNode[] = [];
-  const render = await traverse(fileName, ast, imports);
+  const render = traverse(fileName, ast, imports);
 
-  const { SourceNode } = await import('source-map');
   const compiled = new SourceNode(null, null, fileName);
 
   compiled.add(imports);
-  compiled.add("import { useMDXContext } from 'solid-marked';\n\n");
+  compiled.add(`import { useMDX } from '${mdxImportSource}';\n\n`);
   compiled.add('export default function Component(props) {\n');
-  compiled.add(' const __ctx = useMDXContext();\n');
+  compiled.add(' const __ctx = useMDX();\n');
   compiled.add(' return (\n');
   compiled.add(render);
   compiled.add(' );\n');
@@ -466,4 +457,4 @@ export async function compile(fileName: string, markdownCode: string): Promise<R
   };
 }
 
-export * from './components';
+export * from './interfaces';

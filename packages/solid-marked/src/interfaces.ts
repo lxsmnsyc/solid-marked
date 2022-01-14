@@ -1,10 +1,6 @@
 import {
   Component,
-  createComponent,
-  createContext,
   JSX,
-  splitProps,
-  useContext,
 } from 'solid-js';
 
 export interface ParentProps {
@@ -88,26 +84,4 @@ export interface MDXBuiltinComponents {
 export interface MDXProps {
   builtins: MDXBuiltinComponents;
   components?: Record<string, Component<unknown>>;
-}
-
-const MDXContext = createContext<MDXProps>();
-
-export function MDXProvider(props: MDXProps & { children: JSX.Element }): JSX.Element {
-  const [local, other] = splitProps(props, ['children']);
-  return (
-    createComponent(MDXContext.Provider, {
-      value: other,
-      get children() {
-        return local.children;
-      },
-    })
-  );
-}
-
-export function useMDXContext(): MDXProps {
-  const ctx = useContext(MDXContext);
-  if (ctx) {
-    return ctx;
-  }
-  throw new Error('Missing MDXProvider');
 }
