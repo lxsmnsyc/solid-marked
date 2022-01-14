@@ -37,13 +37,30 @@ const { map, code } = await compile('my-file.md', '# Hello World');
 console.log(code);
 
 // Output:
+// import { useMDXContext } from 'solid-markdown';
+
 // export default function Component(props) {
+//   const __ctx = useMDXContext();
 //   return (
-//     <Dynamic component={props.builtins.Root}>
-//       <Dynamic component={props.builtins.Heading} depth={1}>Hello World</Dynamic>
+//     <Dynamic component={__ctx.builtins.Root}>
+//       <Dynamic component={__ctx.builtins.Heading} depth={1}>Hello World</Dynamic>
 //     </Dynamic>
 //   );
 // }
+```
+
+### `MDXProvider`
+
+use `MDXProvider` for compiled Markdown components to receive the built-in components (e.g. Paragraph, Heading, etc.) and custom components.
+
+```js
+<MDXProvider
+  builtins={{
+    Paragraph: 'p'
+  }}
+>
+  <CompiledMarkdownComponent />
+</MDXProvider>
 ```
 
 ## License
