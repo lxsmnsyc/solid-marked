@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`should support Blockquote 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -12,7 +12,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Break 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -24,7 +24,7 @@ bar</Dynamic></Dynamic> );
 `;
 
 exports[`should support Code 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -37,7 +37,7 @@ baz()\`}</Dynamic></Dynamic> );
 `;
 
 exports[`should support Definition 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -48,7 +48,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Delete 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -59,7 +59,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Emphasis 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -70,7 +70,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Footnote 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -81,7 +81,7 @@ export default function Component(props) {
 `;
 
 exports[`should support FootnoteDefinition 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -92,7 +92,7 @@ export default function Component(props) {
 `;
 
 exports[`should support FootnoteReference 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -103,7 +103,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Heading 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -114,7 +114,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Heading 2`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -125,7 +125,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Heading 3`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -136,7 +136,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Heading 4`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -147,7 +147,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Heading 5`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -158,7 +158,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Heading 6`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -169,7 +169,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Html 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -180,7 +180,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Image 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -191,7 +191,7 @@ export default function Component(props) {
 `;
 
 exports[`should support ImageReference 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -202,7 +202,7 @@ export default function Component(props) {
 `;
 
 exports[`should support InlineCode 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -213,7 +213,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Link 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -224,7 +224,7 @@ export default function Component(props) {
 `;
 
 exports[`should support LinkReference 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -235,7 +235,7 @@ export default function Component(props) {
 `;
 
 exports[`should support List 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -246,7 +246,7 @@ export default function Component(props) {
 `;
 
 exports[`should support List 2`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -257,7 +257,7 @@ export default function Component(props) {
 `;
 
 exports[`should support List 3`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -268,7 +268,7 @@ export default function Component(props) {
 `;
 
 exports[`should support List 4`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -279,7 +279,7 @@ export default function Component(props) {
 `;
 
 exports[`should support ListItem 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -291,7 +291,7 @@ export default function Component(props) {
 
 exports[`should support MDX ESM 1`] = `
 "import Box from 'box';
-import { useMDXContext } from 'solid-markdown';
+import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -302,7 +302,7 @@ export default function Component(props) {
 `;
 
 exports[`should support MDX JS 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -313,7 +313,7 @@ export default function Component(props) {
 `;
 
 exports[`should support MDX JSX 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -324,7 +324,7 @@ export default function Component(props) {
 `;
 
 exports[`should support MDX JSX 2`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -335,7 +335,7 @@ export default function Component(props) {
 `;
 
 exports[`should support MDX JSX 3`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -346,7 +346,7 @@ export default function Component(props) {
 `;
 
 exports[`should support MDX JSX 4`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -357,7 +357,7 @@ export default function Component(props) {
 `;
 
 exports[`should support MDX JSX 5`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -368,7 +368,7 @@ export default function Component(props) {
 `;
 
 exports[`should support MDX JSX 6`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -379,7 +379,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Paragraph 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -390,7 +390,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Strong 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -401,7 +401,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Table 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -412,7 +412,7 @@ export default function Component(props) {
 `;
 
 exports[`should support Table, TableRow and TableCell 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();
@@ -423,7 +423,7 @@ export default function Component(props) {
 `;
 
 exports[`should support ThematicBreak 1`] = `
-"import { useMDXContext } from 'solid-markdown';
+"import { useMDXContext } from 'solid-marked';
 
 export default function Component(props) {
  const __ctx = useMDXContext();

@@ -1,5 +1,5 @@
 {
-  "name": "solid-markdown",
+  "name": "solid-marked",
   "version": "0.1.0",
   "types": "dist/types/index.d.ts",
   "main": "dist/cjs/production/index.js",
@@ -71,12 +71,12 @@
   },
   "description": "Markdown Compiler for SolidJS",
   "repository": {
-    "url": "https://github.com/lxsmnsyc/solid-markdown.git",
+    "url": "https://github.com/lxsmnsyc/solid-marked.git",
     "type": "git"
   },
-  "homepage": "https://github.com/lxsmnsyc/solid-markdown/tree/main/packages/solid-markdown",
+  "homepage": "https://github.com/lxsmnsyc/solid-marked/tree/main/packages/solid-marked",
   "bugs": {
-    "url": "https://github.com/lxsmnsyc/solid-markdown/issues"
+    "url": "https://github.com/lxsmnsyc/solid-marked/issues"
   },
   "publishConfig": {
     "access": "public"

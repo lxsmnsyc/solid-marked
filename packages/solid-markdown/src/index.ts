@@ -432,7 +432,7 @@ export async function compile(fileName: string, markdownCode: string): Promise<R
   const compiled = new SourceNode(null, null, fileName);
 
   compiled.add(imports);
-  compiled.add("import { useMDXContext } from 'solid-markdown';\n\n");
+  compiled.add("import { useMDXContext } from 'solid-marked';\n\n");
   compiled.add('export default function Component(props) {\n');
   compiled.add(' const __ctx = useMDXContext();\n');
   compiled.add(' return (\n');

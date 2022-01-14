@@ -1,13 +1,13 @@
-# solid-markdown
+# solid-marked
 
 > MDX/Markdown compiler for SolidJS
 
-[![NPM](https://img.shields.io/npm/v/solid-markdown.svg)](https://www.npmjs.com/package/solid-markdown) [![JavaScript Style Guide](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/s/github/LXSMNSYC/solid-markdown/tree/main/examples/solid-markdown-demo)
+[![NPM](https://img.shields.io/npm/v/solid-marked.svg)](https://www.npmjs.com/package/solid-marked) [![JavaScript Style Guide](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/s/github/LXSMNSYC/solid-marked/tree/main/examples/solid-marked-demo)
 
 ## Install
 
 ```bash
-yarn add solid-js solid-markdown
+yarn add solid-js solid-marked
 ```
 
 ## Features
@@ -30,14 +30,14 @@ yarn add solid-js solid-markdown
 ### Using the compiler
 
 ```js
-import { compile } from 'solid-markdown';
+import { compile } from 'solid-marked';
 
 const { map, code } = await compile('my-file.md', '# Hello World');
 
 console.log(code);
 
 // Output:
-// import { useMDXContext } from 'solid-markdown';
+// import { useMDXContext } from 'solid-marked';
 
 // export default function Component(props) {
 //   const __ctx = useMDXContext();
