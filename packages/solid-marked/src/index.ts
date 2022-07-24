@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="env.d.ts" />
 
-import {
+import type {
   Association,
   Resource,
   Alternative,
@@ -422,13 +422,13 @@ export async function compile(
   const { mdxjs } = await import('micromark-extension-mdxjs');
   const { gfm } = await import('micromark-extension-gfm');
 
-  const ast = fromMarkdown(markdownCode, {
+  const ast = fromMarkdown(markdownCode, 'utf-8', {
     extensions: [
       mdxjs(),
       gfm(),
     ],
     mdastExtensions: [
-      mdxFromMarkdown,
+      mdxFromMarkdown(),
       gfmFromMarkdown(),
     ],
   });

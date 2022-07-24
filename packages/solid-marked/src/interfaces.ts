@@ -54,31 +54,31 @@ export interface TableProps extends ParentProps {
 export type MDXComponent<P> = (props: P) => JSX.Element;
 
 export interface MDXBuiltinComponents {
-  Blockquote: MDXComponent<ParentProps>;
-  Break: () => JSX.Element;
-  Code: MDXComponent<CodeProps>;
-  Definition: MDXComponent<ResourceProps & AssociationProps>
-  Delete: MDXComponent<ParentProps>
-  Emphasis: MDXComponent<ParentProps>
-  Footnote: MDXComponent<ParentProps>
-  FootnoteDefinition: MDXComponent<ParentProps & AssociationProps>
-  FootnoteReference: MDXComponent<AssociationProps>
-  Heading: MDXComponent<HeadingProps>
-  Html: MDXComponent<LiteralProps>;
-  Image: MDXComponent<ResourceProps & AlternativeProps>
-  ImageReference: MDXComponent<ReferenceProps & AlternativeProps>
-  InlineCode: MDXComponent<LiteralProps>
-  Link: MDXComponent<ResourceProps & ParentProps>
-  LinkReference: MDXComponent<ReferenceProps & ParentProps>
-  List: MDXComponent<ListProps>
-  ListItem: MDXComponent<ListItemProps>
-  Paragraph: MDXComponent<ParentProps>
-  Root: MDXComponent<ParentProps>
-  Strong: MDXComponent<ParentProps>
-  Table: MDXComponent<TableProps>;
-  TableCell: MDXComponent<ParentProps>;
-  TableRow: MDXComponent<ParentProps>;
-  ThematicBreak: () => JSX.Element;
+  Blockquote?: MDXComponent<ParentProps>;
+  Break?: () => JSX.Element;
+  Code?: MDXComponent<CodeProps>;
+  Definition?: MDXComponent<ResourceProps & AssociationProps>
+  Delete?: MDXComponent<ParentProps>
+  Emphasis?: MDXComponent<ParentProps>
+  Footnote?: MDXComponent<ParentProps>
+  FootnoteDefinition?: MDXComponent<ParentProps & AssociationProps>
+  FootnoteReference?: MDXComponent<AssociationProps>
+  Heading?: MDXComponent<HeadingProps>
+  Html?: MDXComponent<LiteralProps>;
+  Image?: MDXComponent<ResourceProps & AlternativeProps>
+  ImageReference?: MDXComponent<ReferenceProps & AlternativeProps>
+  InlineCode?: MDXComponent<LiteralProps>
+  Link?: MDXComponent<ResourceProps & ParentProps>
+  LinkReference?: MDXComponent<ReferenceProps & ParentProps>
+  List?: MDXComponent<ListProps>
+  ListItem?: MDXComponent<ListItemProps>
+  Paragraph?: MDXComponent<ParentProps>
+  Root?: MDXComponent<ParentProps>
+  Strong?: MDXComponent<ParentProps>
+  Table?: MDXComponent<TableProps>;
+  TableCell?: MDXComponent<ParentProps>;
+  TableRow?: MDXComponent<ParentProps>;
+  ThematicBreak?: () => JSX.Element;
 }
 
 export interface MDXProps {
