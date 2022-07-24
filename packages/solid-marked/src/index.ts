@@ -422,7 +422,7 @@ export async function compile(
   const { mdxjs } = await import('micromark-extension-mdxjs');
   const { gfm } = await import('micromark-extension-gfm');
 
-  const ast = fromMarkdown(markdownCode, 'utf-8', {
+  const ast = fromMarkdown(markdownCode, {
     extensions: [
       mdxjs(),
       gfm(),
