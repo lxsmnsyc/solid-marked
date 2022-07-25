@@ -1,2 +1,2 @@
 /// <reference types="vite/client" />
-/// <reference types="solid-marked/env" />
+/// <reference types="solid-marked" />
