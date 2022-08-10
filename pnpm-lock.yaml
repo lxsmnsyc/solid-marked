@@ -22,12 +22,12 @@ importers:
       eslint-config-lxsmnsyc: ^0.4.7
       postcss: ^8.4.14
       solid-js: ^1.4.7
-      solid-marked: 0.2.2
+      solid-marked: 0.3.0
       tailwindcss: ^3.1.6
       typescript: ^4.7.4
       vite: ^2.9.12
       vite-plugin-solid: 2.2.6
-      vite-plugin-solid-marked: 0.2.2
+      vite-plugin-solid-marked: 0.3.0
     dependencies:
       solid-js: 1.4.8
       tailwindcss: 3.1.6
@@ -54,7 +54,7 @@ importers:
       mdast-util-mdx: ^2.0.0
       micromark-extension-gfm: ^2.0.1
       micromark-extension-mdxjs: ^1.0.0
-      pridepack: 2.0.1
+      pridepack: 2.2.1
       solid-js: ^1.4.7
       source-map: ^0.7.4
       tslib: ^2.4.0
@@ -72,7 +72,7 @@ importers:
       '@types/node': 17.0.35
       eslint: 8.20.0
       eslint-config-lxsmnsyc: 0.4.7_he2ccbldppg44uulnyq4rwocfa
-      pridepack: 2.0.1_twwhathbhz5n5ottqxikv5qsre
+      pridepack: 2.2.1_twwhathbhz5n5ottqxikv5qsre
       solid-js: 1.4.8
       tslib: 2.4.0
       typescript: 4.7.4
@@ -85,7 +85,7 @@ importers:
       eslint-config-lxsmnsyc: ^0.4.1
       pridepack: 2.0.1
       solid-js: ^1.4.7
-      solid-marked: 0.2.2
+      solid-marked: 0.3.0
       tslib: ^2.4.0
       typescript: ^4.7.4
       vite: ^3.0.3
@@ -6532,6 +6532,31 @@ packages:
   /pridepack/2.0.1_twwhathbhz5n5ottqxikv5qsre:
     resolution: {integrity: sha512-lcdVoANJFJcD609zDpldM8t7qYsQX1b9WHnKpyvlLnT7cS7UDI5h562Qd3qns3lM6zoc7LPeNaMUVVd6TH2LIQ==}
     engines: {node: '>=10'}
+    hasBin: true
+    peerDependencies:
+      eslint: ^8.0
+      tslib: ^2.0
+      typescript: ^4.0
+    dependencies:
+      '@ovyerus/licenses': 6.4.4
+      degit: 2.8.4
+      dotenv: 16.0.1
+      esbuild: 0.14.49
+      eslint: 8.20.0
+      execa: 5.1.1
+      license: 1.0.3
+      ora: 6.1.2
+      package-json-type: 1.0.3
+      prompts: 2.4.2
+      resolve.exports: 1.1.0
+      tslib: 2.4.0
+      typescript: 4.7.4
+      yargs: 17.5.1
+    dev: true
+
+  /pridepack/2.2.1_twwhathbhz5n5ottqxikv5qsre:
+    resolution: {integrity: sha512-KKCAc7rOfHrEC1Xf+CUu+TS3HiSxVXkq8JyRDEYK6dDjdSknXzo0Nks5tBJjwQcM714Hs8ljLufSPez5I7GH+A==}
+    engines: {node: '>=12.12.0'}
     hasBin: true
     peerDependencies:
       eslint: ^8.0

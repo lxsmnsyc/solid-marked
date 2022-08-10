@@ -163,7 +163,7 @@ exports[`should support Html 1`] = `
 export default function Component(props) {
  const __ctx = useMDX();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Dynamic component={typeof div === 'undefined' ? __ctx.components.div : div}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><div>Hello World</div></Dynamic></Dynamic> );
 }
 "
 `;
@@ -307,7 +307,7 @@ exports[`should support MDX JSX 1`] = `
 export default function Component(props) {
  const __ctx = useMDX();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Dynamic component={typeof Box === 'undefined' ? __ctx.components.Box : Box}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Box>Hello World</Box></Dynamic></Dynamic> );
 }
 "
 `;
@@ -318,7 +318,7 @@ exports[`should support MDX JSX 2`] = `
 export default function Component(props) {
  const __ctx = useMDX();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Dynamic component={__ctx.components['some-box']}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><some-box>Hello World</some-box></Dynamic></Dynamic> );
 }
 "
 `;
@@ -329,7 +329,7 @@ exports[`should support MDX JSX 3`] = `
 export default function Component(props) {
  const __ctx = useMDX();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Dynamic component={__ctx.components['some:box']}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><some:box>Hello World</some:box></Dynamic></Dynamic> );
 }
 "
 `;
@@ -340,7 +340,7 @@ exports[`should support MDX JSX 4`] = `
 export default function Component(props) {
  const __ctx = useMDX();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={typeof Box === 'undefined' ? __ctx.components.Box : Box}><Dynamic component={__ctx.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={__ctx.builtins.Root}><Box><Dynamic component={__ctx.builtins.Paragraph}>Hello World</Dynamic></Box></Dynamic> );
 }
 "
 `;
@@ -351,7 +351,7 @@ exports[`should support MDX JSX 5`] = `
 export default function Component(props) {
  const __ctx = useMDX();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.components['some-box']}><Dynamic component={__ctx.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={__ctx.builtins.Root}><some-box><Dynamic component={__ctx.builtins.Paragraph}>Hello World</Dynamic></some-box></Dynamic> );
 }
 "
 `;
@@ -362,7 +362,7 @@ exports[`should support MDX JSX 6`] = `
 export default function Component(props) {
  const __ctx = useMDX();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.components['some:box']}><Dynamic component={__ctx.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={__ctx.builtins.Root}><some:box><Dynamic component={__ctx.builtins.Paragraph}>Hello World</Dynamic></some:box></Dynamic> );
 }
 "
 `;

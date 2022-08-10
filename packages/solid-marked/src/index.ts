@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="./env.d.ts" />
+/// <reference path="../env.d.ts" />
 
 import type {
   Association,
@@ -15,6 +15,10 @@ import {
   RawSourceMap,
   SourceNode,
 } from 'source-map';
+
+export interface Options {
+  noDynamicComponents?: boolean | 'only-mdx';
+}
 
 function createSourceNode(source: string, base: Node): SourceNode {
   const col = base.position?.start.column;
@@ -61,28 +65,118 @@ function applyReference(result: SourceNode, node: Reference) {
   addStringAttribute(result, 'referenceType', node.referenceType);
 }
 
-function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode {
+interface TagOptions {
+  isClosing?: boolean;
+  isMDX?: boolean;
+}
+
+function createTag(target: string, options: Options, tagOpts: TagOptions = {}) {
+  if (options.noDynamicComponents === 'only-mdx' && tagOpts.isMDX) {
+    return target;
+  }
+  if (options.noDynamicComponents === true) {
+    return target;
+  }
+  if (tagOpts.isClosing) {
+    return 'Dynamic';
+  }
+
+  return `Dynamic component={${target}}`;
+}
+
+function createJSXTag(
+  nodeName: string,
+  options: Options,
+) {
+  if (options.noDynamicComponents) {
+    return nodeName;
+  }
+  // Test for dashed elements
+  if (/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+$/.test(nodeName)) {
+    return `__ctx.components['${nodeName}']`;
+  }
+  if (/^[a-zA-Z0-9]+:[a-zA-Z0-9]+$/.test(nodeName)) {
+    return `__ctx.components['${nodeName}']`;
+  }
+  return `typeof ${nodeName} === 'undefined' ? __ctx.components.${nodeName} : ${nodeName}`;
+}
+
+type ExcludedTags =
+  | 'mdxFlowExpression'
+  | 'mdxjsEsm'
+  | 'mdxJsxFlowElement'
+  | 'mdxJsxTextElement'
+  | 'mdxTextExpression'
+  | 'text'
+  | 'yaml';
+type WithTags = Exclude<Node['type'], ExcludedTags>
+
+const MARKUP: Record<WithTags, string> = {
+  blockquote: '__ctx.builtins.Blockquote',
+  break: '__ctx.builtins.Break',
+  code: '__ctx.builtins.Code',
+  definition: '__ctx.builtins.Definition',
+  delete: '__ctx.builtins.Delete',
+  emphasis: '__ctx.builtins.Emphasis',
+  footnote: '__ctx.builtins.Footnote',
+  footnoteDefinition: '__ctx.builtins.FootnoteDefinition',
+  footnoteReference: '__ctx.builtins.FootnoteReference',
+  heading: '__ctx.builtins.Heading',
+  html: '__ctx.builtins.Html',
+  image: '__ctx.builtins.Image',
+  imageReference: '__ctx.builtins.ImageReference',
+  inlineCode: '__ctx.builtins.InlineCode',
+  link: '__ctx.builtins.Link',
+  linkReference: '__ctx.builtins.LinkReference',
+  list: '__ctx.builtins.List',
+  listItem: '__ctx.builtins.ListItem',
+  paragraph: '__ctx.builtins.Paragraph',
+  root: '__ctx.builtins.Root',
+  strong: '__ctx.builtins.Strong',
+  table: '__ctx.builtins.Table',
+  tableCell: '__ctx.builtins.TableCell',
+  tableRow: '__ctx.builtins.TableRow',
+  thematicBreak: '__ctx.builtins.ThematicBreak',
+};
+
+function traverse(
+  source: string,
+  node: Node,
+  imports: SourceNode[],
+  options: Options,
+): SourceNode {
   function applyContent(result: SourceNode, content: Parent) {
     for (let i = 0, len = content.children.length; i < len; i += 1) {
-      result.add(traverse(source, content.children[i], imports));
+      result.add(traverse(source, content.children[i], imports, options));
     }
   }
   switch (node.type) {
-    case 'blockquote': {
+    case 'blockquote':
+    case 'delete':
+    case 'emphasis':
+    case 'footnote':
+    case 'paragraph':
+    case 'root':
+    case 'strong':
+    case 'tableCell':
+    case 'tableRow': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Blockquote}>');
+      const tag = MARKUP[node.type];
+      result.add(`<${createTag(tag, options)}>`);
       applyContent(result, node);
-      result.add('</Dynamic>');
+      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
       return result;
     }
-    case 'break': {
+    case 'break':
+    case 'thematicBreak': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Break} />');
+      result.add(`<${createTag(MARKUP[node.type], options)} />`);
       return result;
     }
     case 'code': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Code}');
+      const tag = MARKUP.code;
+      result.add(`<${createTag(tag, options)}`);
       if (node.lang) {
         addStringAttribute(result, 'lang', node.lang);
       }
@@ -91,73 +185,56 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
       }
       result.add('>');
       result.add(`{\`${escapeString(node.value)}\`}`);
-      result.add('</Dynamic>');
+      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
       return result;
     }
     case 'definition': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Definition}');
+      result.add(`<${createTag(MARKUP.definition, options)}`);
       applyResource(result, node);
       applyAssociation(result, node);
       result.add(' />');
       return result;
     }
-    case 'delete': {
-      const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Delete}>');
-      applyContent(result, node);
-      result.add('</Dynamic>');
-      return result;
-    }
-    case 'emphasis': {
-      const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Emphasis}>');
-      applyContent(result, node);
-      result.add('</Dynamic>');
-      return result;
-    }
-    case 'footnote': {
-      const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Footnote}>');
-      applyContent(result, node);
-      result.add('</Dynamic>');
-      return result;
-    }
     case 'footnoteDefinition': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.FootnoteDefinition}');
+      const tag = MARKUP.footnoteDefinition;
+      result.add(`<${createTag(tag, options)}`);
       applyAssociation(result, node);
       result.add('>');
       applyContent(result, node);
-      result.add('</Dynamic>');
+      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
       return result;
     }
     case 'footnoteReference': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.FootnoteReference}');
+      result.add(`<${createTag(MARKUP.footnoteReference, options)}`);
       applyAssociation(result, node);
       result.add(' />');
       return result;
     }
     case 'heading': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Heading}');
+      const tag = MARKUP.heading;
+      result.add(`<${createTag(tag, options)}`);
       addJSAttribute(result, 'depth', node.depth.toString());
       result.add('>');
       applyContent(result, node);
-      result.add('</Dynamic>');
+      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
       return result;
     }
-    case 'html': {
+    case 'html':
+    case 'inlineCode': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Html}>');
+      const tag = MARKUP[node.type];
+      result.add(`<${createTag(tag, options)}>`);
       result.add(`{\`${escapeString(node.value)}\`}`);
-      result.add('</Dynamic>');
+      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
       return result;
     }
     case 'image': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Image}');
+      result.add(`<${createTag(MARKUP.image, options)}`);
       applyResource(result, node);
       applyAlternative(result, node);
       result.add(' />');
@@ -165,40 +242,36 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
     }
     case 'imageReference': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.ImageReference}');
+      result.add(`<${createTag(MARKUP.imageReference, options)}>`);
       applyReference(result, node);
       applyAlternative(result, node);
       result.add(' />');
       return result;
     }
-    case 'inlineCode': {
-      const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.InlineCode}>');
-      result.add(`{\`${escapeString(node.value)}\`}`);
-      result.add('</Dynamic>');
-      return result;
-    }
     case 'link': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Link}');
+      const tag = MARKUP.link;
+      result.add(`<${createTag(tag, options)}`);
       applyResource(result, node);
       result.add('>');
       applyContent(result, node);
-      result.add('</Dynamic>');
+      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
       return result;
     }
     case 'linkReference': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.LinkReference}');
+      const tag = MARKUP.linkReference;
+      result.add(`<${createTag(tag, options)}`);
       applyReference(result, node);
       result.add('>');
       applyContent(result, node);
-      result.add('</Dynamic>');
+      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
       return result;
     }
     case 'list': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.List}');
+      const tag = MARKUP.list;
+      result.add(`<${createTag(tag, options)}`);
       if (node.ordered != null) {
         addJSAttribute(result, 'ordered', node.ordered.toString());
       }
@@ -210,12 +283,13 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
       }
       result.add('>');
       applyContent(result, node);
-      result.add('</Dynamic>');
+      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
       return result;
     }
     case 'listItem': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.ListItem}');
+      const tag = MARKUP.listItem;
+      result.add(`<${createTag(tag, options)}`);
       if (node.spread != null) {
         addJSAttribute(result, 'spread', node.spread.toString());
       }
@@ -224,27 +298,21 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
       }
       result.add('>');
       applyContent(result, node);
-      result.add('</Dynamic>');
+      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
       return result;
     }
+    case 'mdxTextExpression':
     case 'mdxFlowExpression': {
       const result = createSourceNode(source, node);
       result.add(`{${node.value}}`);
       return result;
     }
+    case 'mdxJsxTextElement':
     case 'mdxJsxFlowElement': {
       const result = createSourceNode(source, node);
       if (node.name) {
-        let name: string;
-        // Test for dashed elements
-        if (/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+$/.test(node.name)) {
-          name = `__ctx.components['${node.name}']`;
-        } else if (/^[a-zA-Z0-9]+:[a-zA-Z0-9]+$/.test(node.name)) {
-          name = `__ctx.components['${node.name}']`;
-        } else {
-          name = `typeof ${node.name} === 'undefined' ? __ctx.components.${node.name} : ${node.name}`;
-        }
-        result.add(`<Dynamic component={${name}}`);
+        const name = createJSXTag(node.name, options);
+        result.add(`<${createTag(name, options, { isMDX: true })}`);
         for (let i = 0, len = node.attributes.length; i < len; i += 1) {
           const attribute = node.attributes[i];
           const attributeNode = new SourceNode(
@@ -273,64 +341,13 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
           result.add(attributeNode);
         }
         result.add('>');
+        applyContent(result, node);
+        result.add(`</${createTag(name, options, { isClosing: true, isMDX: true })}>`);
       } else {
         result.add('<>');
+        applyContent(result, node);
+        result.add('</>');
       }
-      applyContent(result, node);
-      result.add(node.name ? '</Dynamic>' : '</>');
-      return result;
-    }
-    case 'mdxJsxTextElement': {
-      const result = createSourceNode(source, node);
-      if (node.name) {
-        let name: string;
-        // Test for dashed elements
-        if (/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+$/.test(node.name)) {
-          name = `__ctx.components['${node.name}']`;
-        } else if (/^[a-zA-Z0-9]+:[a-zA-Z0-9]+$/.test(node.name)) {
-          name = `__ctx.components['${node.name}']`;
-        } else {
-          name = `typeof ${node.name} === 'undefined' ? __ctx.components.${node.name} : ${node.name}`;
-        }
-        result.add(`<Dynamic component={${name}}`);
-        for (let i = 0, len = node.attributes.length; i < len; i += 1) {
-          const attribute = node.attributes[i];
-          const attributeNode = new SourceNode(
-            attribute.position?.start.line ?? null,
-            attribute.position?.start.column ?? null,
-            source,
-          );
-          if (attribute.type === 'mdxJsxAttribute') {
-            attributeNode.add(` ${attribute.name}`);
-            if (attribute.value) {
-              if (typeof attribute.value === 'string') {
-                attributeNode.add(`={\`${escapeString(attribute.value)}\`}`);
-              } else {
-                const attributeValueNode = new SourceNode(
-                  attribute.value.position?.start.line ?? null,
-                  attribute.value.position?.start.column ?? null,
-                  source,
-                );
-                attributeValueNode.add(attribute.value.value);
-                attributeNode.add(['={', attributeValueNode, '}']);
-              }
-            }
-          } else {
-            attributeNode.add(` {...${attribute.value}}`);
-          }
-          result.add(attributeNode);
-        }
-        result.add('>');
-      } else {
-        result.add('<>');
-      }
-      applyContent(result, node);
-      result.add(node.name ? '</Dynamic>' : '</>');
-      return result;
-    }
-    case 'mdxTextExpression': {
-      const result = createSourceNode(source, node);
-      result.add(`{${node.value}}`);
       return result;
     }
     case 'mdxjsEsm': {
@@ -339,60 +356,21 @@ function traverse(source: string, node: Node, imports: SourceNode[]): SourceNode
       imports.push(result);
       return new SourceNode();
     }
-    case 'paragraph': {
-      const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Paragraph}>');
-      applyContent(result, node);
-      result.add('</Dynamic>');
-      return result;
-    }
-    case 'root': {
-      const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Root}>');
-      applyContent(result, node);
-      result.add('</Dynamic>');
-      return result;
-    }
-    case 'strong': {
-      const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Strong}>');
-      applyContent(result, node);
-      result.add('</Dynamic>');
-      return result;
-    }
     case 'table': {
       const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.Table}');
+      const tag = MARKUP.table;
+      result.add(`<${createTag(tag, options)}`);
       if (node.align != null) {
         addJSAttribute(result, 'align', JSON.stringify(node.align));
       }
       result.add('>');
       applyContent(result, node);
-      result.add('</Dynamic>');
-      return result;
-    }
-    case 'tableCell': {
-      const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.TableCell}>');
-      applyContent(result, node);
-      result.add('</Dynamic>');
-      return result;
-    }
-    case 'tableRow': {
-      const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.TableRow}>');
-      applyContent(result, node);
-      result.add('</Dynamic>');
+      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
       return result;
     }
     case 'text': {
       const result = createSourceNode(source, node);
       result.add(node.value);
-      return result;
-    }
-    case 'thematicBreak': {
-      const result = createSourceNode(source, node);
-      result.add('<Dynamic component={__ctx.builtins.ThematicBreak} />');
       return result;
     }
     default: {
@@ -410,6 +388,7 @@ export async function compile(
   mdxImportSource: string,
   fileName: string,
   markdownCode: string,
+  options: Options = {},
 ): Promise<Result> {
   // Main transformer
   const { fromMarkdown } = await import('mdast-util-from-markdown');
@@ -434,7 +413,7 @@ export async function compile(
   });
 
   const imports: SourceNode[] = [];
-  const render = traverse(fileName, ast, imports);
+  const render = traverse(fileName, ast, imports, options);
 
   const compiled = new SourceNode(null, null, fileName);
 

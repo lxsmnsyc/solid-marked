@@ -3,7 +3,9 @@ import { expect, test } from 'vitest';
 import { compile } from '../src';
 
 async function testCompile(code: string): Promise<string> {
-  return (await compile('mdx-source', 'test.md', code)).code;
+  return (await compile('mdx-source', 'test.md', code, {
+    noDynamicComponents: true,
+  })).code;
 }
 
 test('should support Paragraph', async () => {
