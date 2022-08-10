@@ -1,17 +1,17 @@
 {
   "name": "vite-demo",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.4",
     "autoprefixer": "^10.4.7",
     "eslint": "^8.20.0",
     "eslint-config-lxsmnsyc": "^0.4.7",
     "postcss": "^8.4.14",
-    "solid-marked": "0.3.0",
+    "solid-marked": "0.4.0",
     "typescript": "^4.7.4",
     "vite": "^2.9.12",
     "vite-plugin-solid": "2.2.6",
-    "vite-plugin-solid-marked": "0.3.0"
+    "vite-plugin-solid-marked": "0.4.0"
   },
   "private": true,
   "dependencies": {
