@@ -6,6 +6,7 @@ import * as vite from 'vite';
 
 export interface SolidMarkedPluginOptions {
   source: string;
+  noDynamicComponents?: boolean;
 }
 
 export default function solidMarkedPlugin(
@@ -35,7 +36,9 @@ export default function solidMarkedPlugin(
         const { dir, name } = path.parse(id);
         const target = path.join(dir, name);
         const content = await readFile(target, 'utf-8');
-        return solidMarked.compile(options.source, target, content);
+        return solidMarked.compile(options.source, target, content, {
+          noDynamicComponents: options.noDynamicComponents,
+        });
       }
       return null;
     },
