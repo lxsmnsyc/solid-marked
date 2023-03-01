@@ -80,6 +80,10 @@ export function useMDX() {
 /// <reference types="solid-marked/env">
 ```
 
+## Sponsors
+
+![Sponsors](https://github.com/lxsmnsyc/sponsors/blob/main/sponsors.svg?raw=true)
+
 ## License
 
 MIT © [lxsmnsyc](https://github.com/lxsmnsyc)
