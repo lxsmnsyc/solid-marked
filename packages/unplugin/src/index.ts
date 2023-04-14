@@ -34,7 +34,7 @@ const solidMarkedUnplugin = createUnplugin((options: SolidMarkedPluginOptions) =
     async load(id) {
       const { name, dir } = path.parse(id);
       return solidMarked.compile(
-        id,
+        path.join(dir, name),
         await readFile(path.join(dir, name), 'utf-8'),
         {
           mdxImportSource: options.source,
