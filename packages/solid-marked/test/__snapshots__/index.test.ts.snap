@@ -419,6 +419,23 @@ export default function Component(props) {
 "
 `;
 
+exports[`should support TOML 1`] = `
+"export const frontmatter = Object.assign(Object.create(null),{title:\\"Hi, World!\\"});
+import { useMDX as _useMDX$ } from 'solid-marked';
+
+export function TableOfContents(props) {
+ const _ctx$ = _useMDX$();
+ return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\`#frontmattertitle\`}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
+export default function Component(props) {
+ const _ctx$ = _useMDX$();
+ return (
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1}>{frontmatter.title}</Dynamic></Dynamic> );
+}
+"
+`;
+
 exports[`should support Table 1`] = `
 "import { useMDX as _useMDX$ } from 'solid-marked';
 

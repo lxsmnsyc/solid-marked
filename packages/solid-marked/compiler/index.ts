@@ -15,8 +15,19 @@ import {
   RawSourceMap,
   SourceNode,
 } from 'source-map';
+import {
+  fromMarkdown,
+} from 'mdast-util-from-markdown';
+import { mdxFromMarkdown } from 'mdast-util-mdx';
+import { gfmFromMarkdown } from 'mdast-util-gfm';
+import { frontmatterFromMarkdown } from 'mdast-util-frontmatter';
+import { toc } from 'mdast-util-toc';
+import { mdxjs } from 'micromark-extension-mdxjs';
+import { gfm } from 'micromark-extension-gfm';
+import { frontmatter } from 'micromark-extension-frontmatter';
 import * as seroval from 'seroval';
 import * as yaml from 'yaml';
+import * as toml from 'toml';
 
 interface Toml extends Literal {
   type: 'toml'
@@ -404,9 +415,16 @@ function traverse(
       ctx.frontmatter = result;
       return new SourceNode();
     }
-    case 'toml':
+    case 'toml': {
+      const result = createSourceNode(ctx, node);
+      result.add(seroval.serialize(
+        toml.parse(node.value),
+      ));
+      ctx.frontmatter = result;
+      return new SourceNode();
+    }
     default:
-      throw new Error(`Invalid node type '${node.type}'`);
+      throw new Error('Invalid node type');
   }
 }
 
@@ -415,25 +433,11 @@ export interface Result {
   map: RawSourceMap;
 }
 
-export async function compile(
+export function compile(
   fileName: string,
   markdownCode: string,
   options: Options = {},
-): Promise<Result> {
-  // Main transformer
-  const { fromMarkdown } = await import('mdast-util-from-markdown');
-
-  // AST Extensions
-  const { mdxFromMarkdown } = await import('mdast-util-mdx');
-  const { gfmFromMarkdown } = await import('mdast-util-gfm');
-  const { frontmatterFromMarkdown } = await import('mdast-util-frontmatter');
-  const { toc } = await import('mdast-util-toc');
-
-  // Extensions
-  const { mdxjs } = await import('micromark-extension-mdxjs');
-  const { gfm } = await import('micromark-extension-gfm');
-  const { frontmatter } = await import('micromark-extension-frontmatter');
-
+): Result {
   const ast = fromMarkdown(markdownCode, {
     extensions: [
       mdxjs(),
