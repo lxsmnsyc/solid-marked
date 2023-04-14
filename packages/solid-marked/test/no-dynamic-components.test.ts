@@ -125,3 +125,11 @@ Hello World
 test('should support MDX JS', async () => {
   expect(await testCompile('{1 + 1}')).toMatchSnapshot();
 });
+test('should support YAML', async () => {
+  expect(await testCompile(`---
+title: Hi, World!
+---
+
+# {frontmatter.title}
+`)).toMatchSnapshot();
+});

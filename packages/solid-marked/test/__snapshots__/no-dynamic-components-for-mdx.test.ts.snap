@@ -94,6 +94,11 @@ export default function Component(props) {
 exports[`should support Heading 1`] = `
 "import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+ const _ctx$ = _useMDX$();
+ return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\`#lorem\`}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
@@ -105,6 +110,11 @@ export default function Component(props) {
 exports[`should support Heading 2`] = `
 "import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+ const _ctx$ = _useMDX$();
+ return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\`#lorem\`}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
@@ -116,6 +126,11 @@ export default function Component(props) {
 exports[`should support Heading 3`] = `
 "import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+ const _ctx$ = _useMDX$();
+ return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\`#lorem\`}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
@@ -127,6 +142,11 @@ export default function Component(props) {
 exports[`should support Heading 4`] = `
 "import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+ const _ctx$ = _useMDX$();
+ return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\`#lorem\`}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
@@ -138,6 +158,11 @@ export default function Component(props) {
 exports[`should support Heading 5`] = `
 "import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+ const _ctx$ = _useMDX$();
+ return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\`#lorem\`}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
@@ -149,6 +174,11 @@ export default function Component(props) {
 exports[`should support Heading 6`] = `
 "import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+ const _ctx$ = _useMDX$();
+ return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\`#lorem\`}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
@@ -418,6 +448,23 @@ export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
 <Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.ThematicBreak} /></Dynamic> );
+}
+"
+`;
+
+exports[`should support YAML 1`] = `
+"export const frontmatter = ({title:\\"Hi, World!\\"});
+import { useMDX as _useMDX$ } from 'solid-marked';
+
+export function TableOfContents(props) {
+ const _ctx$ = _useMDX$();
+ return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\`#frontmattertitle\`}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic> );
+}
+export default function Component(props) {
+ const _ctx$ = _useMDX$();
+ return (
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1}>{frontmatter.title}</Dynamic></Dynamic> );
 }
 "
 `;

@@ -23,10 +23,11 @@ pnpm add -D solid-marked
 
 ## Features
 
-- Supports Markdown and MDX
-- [Github-flavored Markdown](https://github.github.com/gfm/) support
-- Fully customizable
-- [mdast](https://github.com/syntax-tree/mdast) compliant
+### MDX
+
+### Github-flavored Markdown
+
+### Frontmatter
 
 ### TBA
 
@@ -36,9 +37,7 @@ pnpm add -D solid-marked
 - Math
 - Support for plugins
 
-## Usage
-
-### Integrations
+## Integrations
 
 - [Unplugin](https://github.com/LXSMNSYC/solid-marked/tree/main/packages/unplugin)
 - [Vite](https://github.com/LXSMNSYC/solid-marked/tree/main/packages/vite)

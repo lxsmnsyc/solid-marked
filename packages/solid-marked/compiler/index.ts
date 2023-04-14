@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../env.d.ts" />
-
 import type {
   Association,
   Resource,
   Alternative,
   Reference,
+  Literal,
 } from 'mdast';
 import {
   Node,
@@ -15,18 +15,38 @@ import {
   RawSourceMap,
   SourceNode,
 } from 'source-map';
+import * as seroval from 'seroval';
+import * as yaml from 'yaml';
+
+interface Toml extends Literal {
+  type: 'toml'
+}
+
+declare module 'mdast' {
+  interface FrontmatterContentMap {
+    // Allow using TOML nodes defined by `mdast-util-frontmatter`.
+    toml: Toml
+  }
+}
 
 export interface Options {
   mdxImportSource?: string;
   noDynamicComponents?: boolean | 'only-mdx';
 }
 
-function createSourceNode(source: string, base: Node): SourceNode {
+interface StateContext {
+  source: string;
+  imports: SourceNode[];
+  options: Options;
+  frontmatter?: SourceNode;
+}
+
+function createSourceNode(ctx: StateContext, base: Node): SourceNode {
   const col = base.position?.start.column;
   return new SourceNode(
     base.position?.start.line ?? null,
     col != null ? col - 1 : null,
-    source,
+    ctx.source,
   );
 }
 
@@ -71,11 +91,11 @@ interface TagOptions {
   isMDX?: boolean;
 }
 
-function createTag(target: string, options: Options, tagOpts: TagOptions = {}) {
-  if (options.noDynamicComponents === 'only-mdx' && tagOpts.isMDX) {
+function createTag(ctx: StateContext, target: string, tagOpts: TagOptions = {}) {
+  if (ctx.options.noDynamicComponents === 'only-mdx' && tagOpts.isMDX) {
     return target;
   }
-  if (options.noDynamicComponents === true) {
+  if (ctx.options.noDynamicComponents === true) {
     return target;
   }
   if (tagOpts.isClosing) {
@@ -86,10 +106,10 @@ function createTag(target: string, options: Options, tagOpts: TagOptions = {}) {
 }
 
 function createJSXTag(
+  ctx: StateContext,
   nodeName: string,
-  options: Options,
 ) {
-  if (options.noDynamicComponents) {
+  if (ctx.options.noDynamicComponents) {
     return nodeName;
   }
   // Test for dashed elements
@@ -109,7 +129,8 @@ type ExcludedTags =
   | 'mdxJsxTextElement'
   | 'mdxTextExpression'
   | 'text'
-  | 'yaml';
+  | 'yaml'
+  | 'toml';
 type WithTags = Exclude<Node['type'], ExcludedTags>
 
 const CTX_VAR = '_ctx$';
@@ -144,14 +165,12 @@ const MARKUP: Record<WithTags, string> = {
 };
 
 function traverse(
-  source: string,
+  ctx: StateContext,
   node: Node,
-  imports: SourceNode[],
-  options: Options,
 ): SourceNode {
   function applyContent(result: SourceNode, content: Parent) {
     for (let i = 0, len = content.children.length; i < len; i += 1) {
-      result.add(traverse(source, content.children[i], imports, options));
+      result.add(traverse(ctx, content.children[i]));
     }
   }
   switch (node.type) {
@@ -164,23 +183,23 @@ function traverse(
     case 'strong':
     case 'tableCell':
     case 'tableRow': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       const tag = MARKUP[node.type];
-      result.add(`<${createTag(tag, options)}>`);
+      result.add(`<${createTag(ctx, tag)}>`);
       applyContent(result, node);
-      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
+      result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
     case 'break':
     case 'thematicBreak': {
-      const result = createSourceNode(source, node);
-      result.add(`<${createTag(MARKUP[node.type], options)} />`);
+      const result = createSourceNode(ctx, node);
+      result.add(`<${createTag(ctx, MARKUP[node.type])} />`);
       return result;
     }
     case 'code': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       const tag = MARKUP.code;
-      result.add(`<${createTag(tag, options)}`);
+      result.add(`<${createTag(ctx, tag)}`);
       if (node.lang) {
         addStringAttribute(result, 'lang', node.lang);
       }
@@ -189,93 +208,93 @@ function traverse(
       }
       result.add('>');
       result.add(`{\`${escapeString(node.value)}\`}`);
-      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
+      result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
     case 'definition': {
-      const result = createSourceNode(source, node);
-      result.add(`<${createTag(MARKUP.definition, options)}`);
+      const result = createSourceNode(ctx, node);
+      result.add(`<${createTag(ctx, MARKUP.definition)}`);
       applyResource(result, node);
       applyAssociation(result, node);
       result.add(' />');
       return result;
     }
     case 'footnoteDefinition': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       const tag = MARKUP.footnoteDefinition;
-      result.add(`<${createTag(tag, options)}`);
+      result.add(`<${createTag(ctx, tag)}`);
       applyAssociation(result, node);
       result.add('>');
       applyContent(result, node);
-      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
+      result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
     case 'footnoteReference': {
-      const result = createSourceNode(source, node);
-      result.add(`<${createTag(MARKUP.footnoteReference, options)}`);
+      const result = createSourceNode(ctx, node);
+      result.add(`<${createTag(ctx, MARKUP.footnoteReference)}`);
       applyAssociation(result, node);
       result.add(' />');
       return result;
     }
     case 'heading': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       const tag = MARKUP.heading;
-      result.add(`<${createTag(tag, options)}`);
+      result.add(`<${createTag(ctx, tag)}`);
       addJSAttribute(result, 'depth', node.depth.toString());
       result.add('>');
       applyContent(result, node);
-      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
+      result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
     case 'html':
     case 'inlineCode': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       const tag = MARKUP[node.type];
-      result.add(`<${createTag(tag, options)}>`);
+      result.add(`<${createTag(ctx, tag)}>`);
       result.add(`{\`${escapeString(node.value)}\`}`);
-      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
+      result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
     case 'image': {
-      const result = createSourceNode(source, node);
-      result.add(`<${createTag(MARKUP.image, options)}`);
+      const result = createSourceNode(ctx, node);
+      result.add(`<${createTag(ctx, MARKUP.image)}`);
       applyResource(result, node);
       applyAlternative(result, node);
       result.add(' />');
       return result;
     }
     case 'imageReference': {
-      const result = createSourceNode(source, node);
-      result.add(`<${createTag(MARKUP.imageReference, options)}>`);
+      const result = createSourceNode(ctx, node);
+      result.add(`<${createTag(ctx, MARKUP.imageReference)}>`);
       applyReference(result, node);
       applyAlternative(result, node);
       result.add(' />');
       return result;
     }
     case 'link': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       const tag = MARKUP.link;
-      result.add(`<${createTag(tag, options)}`);
+      result.add(`<${createTag(ctx, tag)}`);
       applyResource(result, node);
       result.add('>');
       applyContent(result, node);
-      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
+      result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
     case 'linkReference': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       const tag = MARKUP.linkReference;
-      result.add(`<${createTag(tag, options)}`);
+      result.add(`<${createTag(ctx, tag)}`);
       applyReference(result, node);
       result.add('>');
       applyContent(result, node);
-      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
+      result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
     case 'list': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       const tag = MARKUP.list;
-      result.add(`<${createTag(tag, options)}`);
+      result.add(`<${createTag(ctx, tag)}`);
       if (node.ordered != null) {
         addJSAttribute(result, 'ordered', node.ordered.toString());
       }
@@ -287,13 +306,13 @@ function traverse(
       }
       result.add('>');
       applyContent(result, node);
-      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
+      result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
     case 'listItem': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       const tag = MARKUP.listItem;
-      result.add(`<${createTag(tag, options)}`);
+      result.add(`<${createTag(ctx, tag)}`);
       if (node.spread != null) {
         addJSAttribute(result, 'spread', node.spread.toString());
       }
@@ -302,27 +321,27 @@ function traverse(
       }
       result.add('>');
       applyContent(result, node);
-      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
+      result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
     case 'mdxTextExpression':
     case 'mdxFlowExpression': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       result.add(`{${node.value}}`);
       return result;
     }
     case 'mdxJsxTextElement':
     case 'mdxJsxFlowElement': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       if (node.name) {
-        const name = createJSXTag(node.name, options);
-        result.add(`<${createTag(name, options, { isMDX: true })}`);
+        const name = createJSXTag(ctx, node.name);
+        result.add(`<${createTag(ctx, name, { isMDX: true })}`);
         for (let i = 0, len = node.attributes.length; i < len; i += 1) {
           const attribute = node.attributes[i];
           const attributeNode = new SourceNode(
             attribute.position?.start.line ?? null,
             attribute.position?.start.column ?? null,
-            source,
+            ctx.source,
           );
           if (attribute.type === 'mdxJsxAttribute') {
             attributeNode.add(` ${attribute.name}`);
@@ -333,7 +352,7 @@ function traverse(
                 const attributeValueNode = new SourceNode(
                   attribute.value.position?.start.line ?? null,
                   attribute.value.position?.start.column ?? null,
-                  source,
+                  ctx.source,
                 );
                 attributeValueNode.add(attribute.value.value);
                 attributeNode.add(['={', attributeValueNode, '}']);
@@ -346,7 +365,7 @@ function traverse(
         }
         result.add('>');
         applyContent(result, node);
-        result.add(`</${createTag(name, options, { isClosing: true, isMDX: true })}>`);
+        result.add(`</${createTag(ctx, name, { isClosing: true, isMDX: true })}>`);
       } else {
         result.add('<>');
         applyContent(result, node);
@@ -355,31 +374,39 @@ function traverse(
       return result;
     }
     case 'mdxjsEsm': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       result.add(`${node.value}\n`);
-      imports.push(result);
+      ctx.imports.push(result);
       return new SourceNode();
     }
     case 'table': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       const tag = MARKUP.table;
-      result.add(`<${createTag(tag, options)}`);
+      result.add(`<${createTag(ctx, tag)}`);
       if (node.align != null) {
         addJSAttribute(result, 'align', JSON.stringify(node.align));
       }
       result.add('>');
       applyContent(result, node);
-      result.add(`</${createTag(tag, options, { isClosing: true })}>`);
+      result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
     case 'text': {
-      const result = createSourceNode(source, node);
+      const result = createSourceNode(ctx, node);
       result.add(node.value);
       return result;
     }
-    default: {
-      throw new Error(`Invalid node type '${node.type}'`);
+    case 'yaml': {
+      const result = createSourceNode(ctx, node);
+      result.add(seroval.serialize(
+        yaml.parse(node.value),
+      ));
+      ctx.frontmatter = result;
+      return new SourceNode();
     }
+    case 'toml':
+    default:
+      throw new Error(`Invalid node type '${node.type}'`);
   }
 }
 
@@ -399,29 +426,55 @@ export async function compile(
   // AST Extensions
   const { mdxFromMarkdown } = await import('mdast-util-mdx');
   const { gfmFromMarkdown } = await import('mdast-util-gfm');
+  const { frontmatterFromMarkdown } = await import('mdast-util-frontmatter');
+  const { toc } = await import('mdast-util-toc');
 
   // Extensions
   const { mdxjs } = await import('micromark-extension-mdxjs');
   const { gfm } = await import('micromark-extension-gfm');
+  const { frontmatter } = await import('micromark-extension-frontmatter');
 
   const ast = fromMarkdown(markdownCode, {
     extensions: [
       mdxjs(),
       gfm(),
+      frontmatter(['yaml', 'toml']),
     ],
     mdastExtensions: [
       mdxFromMarkdown(),
       gfmFromMarkdown(),
+      frontmatterFromMarkdown(['yaml', 'toml']),
     ],
   });
 
-  const imports: SourceNode[] = [];
-  const render = traverse(fileName, ast, imports, options);
+  const tocAST = toc(ast);
+
+  const ctx: StateContext = {
+    source: fileName,
+    options,
+    imports: [],
+    frontmatter: undefined,
+  };
+  const render = traverse(ctx, ast);
 
   const compiled = new SourceNode(null, null, fileName);
 
-  compiled.add(imports);
+  compiled.add(ctx.imports);
+  if (ctx.frontmatter) {
+    compiled.add('export const frontmatter = ');
+    compiled.add(ctx.frontmatter);
+    compiled.add(';\n');
+  }
   compiled.add(`import { useMDX as ${USE_MDX_VAR} } from '${options.mdxImportSource || 'solid-marked'}';\n\n`);
+  if (tocAST.map) {
+    const renderedTOC = traverse(ctx, tocAST.map);
+    compiled.add('export function TableOfContents(props) {\n');
+    compiled.add(` const ${CTX_VAR} = ${USE_MDX_VAR}();\n`);
+    compiled.add(' return (\n');
+    compiled.add(renderedTOC);
+    compiled.add(' );\n');
+    compiled.add('}\n');
+  }
   compiled.add('export default function Component(props) {\n');
   compiled.add(` const ${CTX_VAR} = ${USE_MDX_VAR}();\n`);
   compiled.add(' return (\n');
