@@ -21,6 +21,7 @@ import {
 import { mdxFromMarkdown } from 'mdast-util-mdx';
 import { gfmFromMarkdown } from 'mdast-util-gfm';
 import { frontmatterFromMarkdown } from 'mdast-util-frontmatter';
+import { toString } from 'mdast-util-to-string';
 import { toc } from 'mdast-util-toc';
 import { mdxjs } from 'micromark-extension-mdxjs';
 import { gfm } from 'micromark-extension-gfm';
@@ -28,6 +29,7 @@ import { frontmatter } from 'micromark-extension-frontmatter';
 import * as seroval from 'seroval';
 import * as yaml from 'yaml';
 import * as toml from 'toml';
+import GithubSlugger from 'github-slugger';
 
 interface Toml extends Literal {
   type: 'toml'
@@ -50,6 +52,7 @@ interface StateContext {
   imports: SourceNode[];
   options: Options;
   frontmatter?: SourceNode;
+  slugger: GithubSlugger;
 }
 
 function createSourceNode(ctx: StateContext, base: Node): SourceNode {
@@ -250,8 +253,10 @@ function traverse(
     case 'heading': {
       const result = createSourceNode(ctx, node);
       const tag = MARKUP.heading;
+      const content = toString(node, { includeImageAlt: false });
       result.add(`<${createTag(ctx, tag)}`);
       addJSAttribute(result, 'depth', node.depth.toString());
+      addStringAttribute(result, 'id', ctx.slugger.slug(content));
       result.add('>');
       applyContent(result, node);
       result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
@@ -458,6 +463,7 @@ export function compile(
     options,
     imports: [],
     frontmatter: undefined,
+    slugger: new GithubSlugger(),
   };
   const render = traverse(ctx, ast);
 

@@ -102,7 +102,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\`lorem\`}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
@@ -118,7 +118,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={2}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={2} id={\`lorem\`}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
@@ -134,7 +134,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={3}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={3} id={\`lorem\`}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
@@ -150,7 +150,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={4}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={4} id={\`lorem\`}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
@@ -166,7 +166,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={5}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={5} id={\`lorem\`}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
@@ -182,7 +182,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={6}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={6} id={\`lorem\`}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
@@ -431,7 +431,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1}>{frontmatter.title}</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\`frontmattertitle\`}>{frontmatter.title}</Dynamic></Dynamic> );
 }
 "
 `;
@@ -481,7 +481,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1}>{frontmatter.title}</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\`frontmattertitle\`}>{frontmatter.title}</Dynamic></Dynamic> );
 }
 "
 `;

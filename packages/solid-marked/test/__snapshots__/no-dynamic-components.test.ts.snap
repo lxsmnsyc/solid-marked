@@ -102,7 +102,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={\`lorem\`}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
 }
 "
 `;
@@ -118,7 +118,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={2}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={2} id={\`lorem\`}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
 }
 "
 `;
@@ -134,7 +134,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={3}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={3} id={\`lorem\`}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
 }
 "
 `;
@@ -150,7 +150,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={4}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={4} id={\`lorem\`}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
 }
 "
 `;
@@ -166,7 +166,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={5}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={5} id={\`lorem\`}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
 }
 "
 `;
@@ -182,7 +182,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={6}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={6} id={\`lorem\`}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
 }
 "
 `;
@@ -431,7 +431,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1}>{frontmatter.title}</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={\`frontmattertitle\`}>{frontmatter.title}</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
 }
 "
 `;
@@ -481,7 +481,7 @@ export function TableOfContents(props) {
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1}>{frontmatter.title}</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={\`frontmattertitle\`}>{frontmatter.title}</_ctx$.builtins.Heading></_ctx$.builtins.Root> );
 }
 "
 `;

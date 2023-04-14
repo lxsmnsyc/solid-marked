@@ -36,6 +36,7 @@ export interface CodeProps extends LiteralProps {
 
 export interface HeadingProps extends ParentProps {
   depth: 1 | 2 | 3 | 4 | 5 | 6;
+  id: string;
 }
 
 export interface ListProps extends ParentProps {
