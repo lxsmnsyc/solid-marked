@@ -17,7 +17,7 @@ const solidMarkedUnplugin = createUnplugin((options: SolidMarkedPluginOptions) =
       return /\.(md|mdx|markdown|mdown|mkdn|mkd|mkdown|ron)$/.test(id);
     },
     load(id) {
-      return `export { default } from './${path.basename(id)}.jsx'`;
+      return `export { default } from './${path.basename(id)}.jsx';\nexport * from './${path.basename(id)}.jsx';`;
     },
   },
   {
