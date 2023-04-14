@@ -1,35 +1,35 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should support Blockquote 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Blockquote}><Dynamic component={__ctx.builtins.Paragraph}>Lorem ipsum dolor.</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Blockquote}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem ipsum dolor.</Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Break 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}>foo··
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>foo··
 bar</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Code 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Code} lang={\`js\`} meta={\`highlight-line=\\"2\\"\`}>{\`foo()
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Code} lang={\`js\`} meta={\`highlight-line=\\"2\\"\`}>{\`foo()
 bar()
 baz()\`}</Dynamic></Dynamic> );
 }
@@ -37,387 +37,387 @@ baz()\`}</Dynamic></Dynamic> );
 `;
 
 exports[`should support Definition 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Definition} url={\`https://example.com\`} identifier={\`alpha\`} label={\`Alpha\`} /></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Definition} url={\`https://example.com\`} identifier={\`alpha\`} label={\`Alpha\`} /></Dynamic> );
 }
 "
 `;
 
 exports[`should support Delete 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Dynamic component={__ctx.builtins.Delete}>alpha</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Delete}>alpha</Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Emphasis 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Dynamic component={__ctx.builtins.Emphasis}>Lorem</Dynamic> <Dynamic component={__ctx.builtins.Emphasis}>Ipsum</Dynamic> dolor.</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Emphasis}>Lorem</Dynamic> <Dynamic component={_ctx$.builtins.Emphasis}>Ipsum</Dynamic> dolor.</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support FootnoteDefinition 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.FootnoteDefinition} identifier={\`alpha\`} label={\`alpha\`}><Dynamic component={__ctx.builtins.Paragraph}>bravo and charlie.</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.FootnoteDefinition} identifier={\`alpha\`} label={\`alpha\`}><Dynamic component={_ctx$.builtins.Paragraph}>bravo and charlie.</Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support FootnoteReference 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}>[^alpha]</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>[^alpha]</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Heading 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Heading} depth={1}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Heading 2`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Heading} depth={2}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={2}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Heading 3`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Heading} depth={3}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={3}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Heading 4`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Heading} depth={4}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={4}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Heading 5`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Heading} depth={5}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={5}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Heading 6`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Heading} depth={6}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={6}>Lorem</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Html 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><div>Hello World</div></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><div>Hello World</div></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Image 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Dynamic component={__ctx.builtins.Image} url={\`https://example.com/favicon.ico\`} title={\`bravo\`} alt={\`alpha\`} /></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Image} url={\`https://example.com/favicon.ico\`} title={\`bravo\`} alt={\`alpha\`} /></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support ImageReference 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}>![alpha][bravo]</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>![alpha][bravo]</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support InlineCode 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Dynamic component={__ctx.builtins.InlineCode}>{\`foo()\`}</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.InlineCode}>{\`foo()\`}</Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Link 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Dynamic component={__ctx.builtins.Link} url={\`https://example.com\`} title={\`bravo\`}>alpha</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\`https://example.com\`} title={\`bravo\`}>alpha</Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support LinkReference 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}>[alpha][Bravo]</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>[alpha][Bravo]</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support List 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.List} ordered={true} spread={false} start={1}><Dynamic component={__ctx.builtins.ListItem} spread={false}><Dynamic component={__ctx.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={true} spread={false} start={1}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support List 2`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.List} ordered={false} spread={false}><Dynamic component={__ctx.builtins.ListItem} spread={false}><Dynamic component={__ctx.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support List 3`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.List} ordered={false} spread={false}><Dynamic component={__ctx.builtins.ListItem} spread={false} checked={true}><Dynamic component={__ctx.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false} checked={true}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support List 4`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.List} ordered={false} spread={false}><Dynamic component={__ctx.builtins.ListItem} spread={false} checked={false}><Dynamic component={__ctx.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false} checked={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support ListItem 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.List} ordered={false} spread={false}><Dynamic component={__ctx.builtins.ListItem} spread={false}><Dynamic component={__ctx.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support MDX ESM 1`] = `
 "import Box from 'box';
-import { useMDX } from 'mdx-source';
+import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}></Dynamic> );
 }
 "
 `;
 
 exports[`should support MDX JS 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}>{1 + 1}</Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}>{1 + 1}</Dynamic> );
 }
 "
 `;
 
 exports[`should support MDX JSX 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Box>Hello World</Box></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Box>Hello World</Box></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support MDX JSX 2`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><some-box>Hello World</some-box></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><some-box>Hello World</some-box></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support MDX JSX 3`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><some:box>Hello World</some:box></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><some:box>Hello World</some:box></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support MDX JSX 4`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Box><Dynamic component={__ctx.builtins.Paragraph}>Hello World</Dynamic></Box></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Box><Dynamic component={_ctx$.builtins.Paragraph}>Hello World</Dynamic></Box></Dynamic> );
 }
 "
 `;
 
 exports[`should support MDX JSX 5`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><some-box><Dynamic component={__ctx.builtins.Paragraph}>Hello World</Dynamic></some-box></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><some-box><Dynamic component={_ctx$.builtins.Paragraph}>Hello World</Dynamic></some-box></Dynamic> );
 }
 "
 `;
 
 exports[`should support MDX JSX 6`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><some:box><Dynamic component={__ctx.builtins.Paragraph}>Hello World</Dynamic></some:box></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><some:box><Dynamic component={_ctx$.builtins.Paragraph}>Hello World</Dynamic></some:box></Dynamic> );
 }
 "
 `;
 
 exports[`should support Paragraph 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}>Lorem ipsum dolor.</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem ipsum dolor.</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Strong 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Paragraph}><Dynamic component={__ctx.builtins.Strong}>Lorem</Dynamic> <Dynamic component={__ctx.builtins.Strong}>Ipsum</Dynamic> dolor.</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Strong}>Lorem</Dynamic> <Dynamic component={_ctx$.builtins.Strong}>Ipsum</Dynamic> dolor.</Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Table 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={__ctx.builtins.TableRow}><Dynamic component={__ctx.builtins.TableCell}>foo</Dynamic><Dynamic component={__ctx.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={__ctx.builtins.TableRow}><Dynamic component={__ctx.builtins.TableCell}>baz</Dynamic><Dynamic component={__ctx.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support Table, TableRow and TableCell 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={__ctx.builtins.TableRow}><Dynamic component={__ctx.builtins.TableCell}>foo</Dynamic><Dynamic component={__ctx.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={__ctx.builtins.TableRow}><Dynamic component={__ctx.builtins.TableCell}>baz</Dynamic><Dynamic component={__ctx.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic> );
 }
 "
 `;
 
 exports[`should support ThematicBreak 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
+ const _ctx$ = _useMDX$();
  return (
-<Dynamic component={__ctx.builtins.Root}><Dynamic component={__ctx.builtins.ThematicBreak} /></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.ThematicBreak} /></Dynamic> );
 }
 "
 `;

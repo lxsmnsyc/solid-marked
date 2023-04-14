@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { expect, test } from 'vitest';
-import { compile } from '../src';
+import { compile } from '../compiler';
 
 async function testCompile(code: string): Promise<string> {
-  return (await compile('mdx-source', 'test.md', code)).code;
+  return (await compile('test.md', code)).code;
 }
 
 test('should support Paragraph', async () => {

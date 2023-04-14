@@ -45,7 +45,7 @@ pnpm add -D solid-marked
 ### Using the compiler
 
 ```js
-import { compile } from 'solid-marked';
+import { compile } from 'solid-marked/compiler';
 
 const { map, code } = await compile(
   'mdx-provider',  // Where to import the builtin components
