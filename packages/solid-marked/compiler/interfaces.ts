@@ -65,7 +65,6 @@ export interface MDXBuiltinComponents {
   FootnoteDefinition?: MDXComponent<ParentProps & AssociationProps>
   FootnoteReference?: MDXComponent<AssociationProps>
   Heading?: MDXComponent<HeadingProps>
-  Html?: MDXComponent<LiteralProps>;
   Image?: MDXComponent<ResourceProps & AlternativeProps>
   ImageReference?: MDXComponent<ReferenceProps & AlternativeProps>
   InlineCode?: MDXComponent<LiteralProps>

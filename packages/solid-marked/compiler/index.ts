@@ -140,7 +140,8 @@ type ExcludedTags =
   | 'mdxTextExpression'
   | 'text'
   | 'yaml'
-  | 'toml';
+  | 'toml'
+  | 'html';
 type WithTags = Exclude<Node['type'], ExcludedTags>
 
 const CTX_VAR = '_ctx$';
@@ -157,7 +158,6 @@ const MARKUP: Record<WithTags, string> = {
   footnoteDefinition: `${CTX_VAR}.builtins.FootnoteDefinition`,
   footnoteReference: `${CTX_VAR}.builtins.FootnoteReference`,
   heading: `${CTX_VAR}.builtins.Heading`,
-  html: `${CTX_VAR}.builtins.Html`,
   image: `${CTX_VAR}.builtins.Image`,
   imageReference: `${CTX_VAR}.builtins.ImageReference`,
   inlineCode: `${CTX_VAR}.builtins.InlineCode`,
@@ -258,7 +258,6 @@ function traverse(
       result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
-    case 'html':
     case 'inlineCode': {
       const result = createSourceNode(ctx, node);
       const tag = MARKUP[node.type];
