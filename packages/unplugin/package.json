@@ -42,8 +42,7 @@
     "clean": "pridepack clean",
     "watch": "pridepack watch",
     "start": "pridepack start",
-    "dev": "pridepack dev",
-    "test": "vitest"
+    "dev": "pridepack dev"
   },
   "private": false,
   "description": "Vite plugin for solid-marked",

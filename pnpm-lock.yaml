@@ -168,6 +168,10 @@ importers:
         version: 4.2.1(@types/node@18.15.11)
 
   packages/vite:
+    dependencies:
+      unplugin-solid-marked:
+        specifier: 0.4.1
+        version: link:../unplugin
     devDependencies:
       '@types/node':
         specifier: ^18.15.11
@@ -184,9 +188,6 @@ importers:
       solid-js:
         specifier: ^1.7.3
         version: 1.7.3
-      solid-marked:
-        specifier: 0.4.0
-        version: link:../solid-marked
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
