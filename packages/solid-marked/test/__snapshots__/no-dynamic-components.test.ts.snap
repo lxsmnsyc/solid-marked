@@ -235,7 +235,7 @@ exports[`should support ImageReference 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.ImageReference> referenceType={\\"shortcut\\"} alt={\\"alpha\\"} /></_ctx$.builtins.Paragraph><_ctx$.builtins.Definition url={\\"bravo\\"} identifier={\\"alpha\\"} label={\\"alpha\\"} /></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.ImageReference referenceType={\\"shortcut\\"} alt={\\"alpha\\"} /></_ctx$.builtins.Paragraph><_ctx$.builtins.Definition url={\\"bravo\\"} identifier={\\"alpha\\"} label={\\"alpha\\"} /></_ctx$.builtins.Root>
   );
 }
 "

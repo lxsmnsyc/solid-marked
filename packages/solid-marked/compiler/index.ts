@@ -276,7 +276,7 @@ function traverse(
     }
     case 'imageReference': {
       const result = createSourceNode(ctx, node);
-      result.add(`<${createTag(ctx, MARKUP.imageReference)}>`);
+      result.add(`<${createTag(ctx, MARKUP.imageReference)}`);
       applyReference(result, node);
       applyAlternative(result, node);
       result.add(' />');
