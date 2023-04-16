@@ -52,6 +52,10 @@ export interface TableProps extends ParentProps {
   align?: Array<'left' | 'right' | 'center' | null>;
 }
 
+export interface TableRowProps extends ParentProps {
+  isHead: boolean;
+}
+
 export type MDXComponent<P> = (props: P) => JSX.Element;
 
 export interface MDXBuiltinComponents {

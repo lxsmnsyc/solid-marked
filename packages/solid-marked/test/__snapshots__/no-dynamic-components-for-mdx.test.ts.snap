@@ -18,8 +18,7 @@ exports[`should support Break 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>foo··
-bar</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>a<Dynamic component={_ctx$.builtins.Break} />b</Dynamic></Dynamic>
   );
 }
 "
@@ -483,7 +482,7 @@ exports[`should support Table 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow} isHead={true}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 "
@@ -495,7 +494,7 @@ exports[`should support Table, TableRow and TableCell 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow} isHead={true}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 "

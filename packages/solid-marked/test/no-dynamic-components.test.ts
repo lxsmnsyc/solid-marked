@@ -60,8 +60,7 @@ test('should support InlineCode', () => {
 });
 test('should support Break', () => {
   expect(testCompile(`
-foo··
-bar
+a  \nb
 `)).toMatchSnapshot();
 });
 test('should support Link', () => {

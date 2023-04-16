@@ -18,8 +18,7 @@ exports[`should support Break 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Paragraph>foo··
-bar</_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph>a<_ctx$.builtins.Break />b</_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
   );
 }
 "
@@ -483,7 +482,7 @@ exports[`should support Table 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Table align={[\\"left\\",\\"center\\"]}><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>foo</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>bar</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>baz</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>qux</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow></_ctx$.builtins.Table></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Table align={[\\"left\\",\\"center\\"]}><_ctx$.builtins.TableRow isHead={true}><_ctx$.builtins.TableCell>foo</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>bar</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>baz</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>qux</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow></_ctx$.builtins.Table></_ctx$.builtins.Root>
   );
 }
 "
@@ -495,7 +494,7 @@ exports[`should support Table, TableRow and TableCell 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Table align={[\\"left\\",\\"center\\"]}><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>foo</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>bar</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>baz</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>qux</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow></_ctx$.builtins.Table></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Table align={[\\"left\\",\\"center\\"]}><_ctx$.builtins.TableRow isHead={true}><_ctx$.builtins.TableCell>foo</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>bar</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>baz</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>qux</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow></_ctx$.builtins.Table></_ctx$.builtins.Root>
   );
 }
 "
