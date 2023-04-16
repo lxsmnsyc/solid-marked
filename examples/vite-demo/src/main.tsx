@@ -7,7 +7,7 @@ import {
 } from 'solid-js';
 import * as shiki from 'shiki';
 import { MDXProvider } from 'solid-marked';
-import Example from './Example.mdx';
+import Example from './Example.md';
 import './main.css';
 
 shiki.setCDN('https://unpkg.com/shiki/');
