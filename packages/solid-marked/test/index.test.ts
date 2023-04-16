@@ -69,10 +69,10 @@ test('should support Image', () => {
   expect(testCompile('![alpha](https://example.com/favicon.ico "bravo")')).toMatchSnapshot();
 });
 test('should support LinkReference', () => {
-  expect(testCompile('[alpha][Bravo]')).toMatchSnapshot();
+  expect(testCompile('[alpha]\n\n[alpha]: bravo')).toMatchSnapshot();
 });
 test('should support ImageReference', () => {
-  expect(testCompile('![alpha][bravo]')).toMatchSnapshot();
+  expect(testCompile('![alpha]\n\n[alpha]: bravo')).toMatchSnapshot();
 });
 test('should support FootnoteDefinition', () => {
   expect(testCompile('[^alpha]: bravo and charlie.')).toMatchSnapshot();

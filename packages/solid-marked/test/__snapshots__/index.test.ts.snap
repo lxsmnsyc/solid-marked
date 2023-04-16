@@ -235,7 +235,7 @@ exports[`should support ImageReference 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>![alpha][bravo]</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.ImageReference}> referenceType={\\"shortcut\\"} alt={\\"alpha\\"} /></Dynamic><Dynamic component={_ctx$.builtins.Definition} url={\\"bravo\\"} identifier={\\"alpha\\"} label={\\"alpha\\"} /></Dynamic>
   );
 }
 "
@@ -271,7 +271,7 @@ exports[`should support LinkReference 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>[alpha][Bravo]</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.LinkReference} referenceType={\\"shortcut\\"}>alpha</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.Definition} url={\\"bravo\\"} identifier={\\"alpha\\"} label={\\"alpha\\"} /></Dynamic>
   );
 }
 "
