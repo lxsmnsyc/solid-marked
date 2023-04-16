@@ -1,423 +1,532 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should support Blockquote 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Blockquote><__ctx.builtins.Paragraph>Lorem ipsum dolor.</__ctx.builtins.Paragraph></__ctx.builtins.Blockquote></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Blockquote><_ctx$.builtins.Paragraph>Lorem ipsum dolor.</_ctx$.builtins.Paragraph></_ctx$.builtins.Blockquote></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Break 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph>foo··
-bar</__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph>a<_ctx$.builtins.Break />b</_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Code 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Code lang={\`js\`} meta={\`highlight-line=\\"2\\"\`}>{\`foo()
-bar()
-baz()\`}</__ctx.builtins.Code></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Code lang={\\"js\\"} meta={\\"highlight-line=\\\\\\"2\\\\\\"\\"}>{\\"foo()\\\\nbar()\\\\nbaz()\\"}</_ctx$.builtins.Code></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Definition 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Definition url={\`https://example.com\`} identifier={\`alpha\`} label={\`Alpha\`} /></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Definition url={\\"https://example.com\\"} identifier={\\"alpha\\"} label={\\"Alpha\\"} /></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Delete 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph><__ctx.builtins.Delete>alpha</__ctx.builtins.Delete></__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.Delete>alpha</_ctx$.builtins.Delete></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Emphasis 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph><__ctx.builtins.Emphasis>Lorem</__ctx.builtins.Emphasis> <__ctx.builtins.Emphasis>Ipsum</__ctx.builtins.Emphasis> dolor.</__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.Emphasis>Lorem</_ctx$.builtins.Emphasis> <_ctx$.builtins.Emphasis>Ipsum</_ctx$.builtins.Emphasis> dolor.</_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support FootnoteDefinition 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.FootnoteDefinition identifier={\`alpha\`} label={\`alpha\`}><__ctx.builtins.Paragraph>bravo and charlie.</__ctx.builtins.Paragraph></__ctx.builtins.FootnoteDefinition></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.FootnoteDefinition identifier={\\"alpha\\"} label={\\"alpha\\"}><_ctx$.builtins.Paragraph>bravo and charlie.</_ctx$.builtins.Paragraph></_ctx$.builtins.FootnoteDefinition></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support FootnoteReference 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph>[^alpha]</__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph>[^alpha]</_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Heading 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+  );
+}
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Heading depth={1}>Lorem</__ctx.builtins.Heading></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Heading 2`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+  );
+}
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Heading depth={2}>Lorem</__ctx.builtins.Heading></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={2} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Heading 3`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+  );
+}
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Heading depth={3}>Lorem</__ctx.builtins.Heading></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={3} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Heading 4`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+  );
+}
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Heading depth={4}>Lorem</__ctx.builtins.Heading></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={4} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Heading 5`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+  );
+}
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Heading depth={5}>Lorem</__ctx.builtins.Heading></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={5} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Heading 6`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+  );
+}
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Heading depth={6}>Lorem</__ctx.builtins.Heading></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={6} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Html 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph><div>Hello World</div></__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><div>Hello World</div></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Image 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph><__ctx.builtins.Image url={\`https://example.com/favicon.ico\`} title={\`bravo\`} alt={\`alpha\`} /></__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.Image url={\\"https://example.com/favicon.ico\\"} title={\\"bravo\\"} alt={\\"alpha\\"} /></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support ImageReference 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph>![alpha][bravo]</__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.ImageReference referenceType={\\"shortcut\\"} alt={\\"alpha\\"} /></_ctx$.builtins.Paragraph><_ctx$.builtins.Definition url={\\"bravo\\"} identifier={\\"alpha\\"} label={\\"alpha\\"} /></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support InlineCode 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph><__ctx.builtins.InlineCode>{\`foo()\`}</__ctx.builtins.InlineCode></__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.InlineCode>{\\"foo()\\"}</_ctx$.builtins.InlineCode></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Link 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph><__ctx.builtins.Link url={\`https://example.com\`} title={\`bravo\`}>alpha</__ctx.builtins.Link></__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"https://example.com\\"} title={\\"bravo\\"}>alpha</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support LinkReference 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph>[alpha][Bravo]</__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.LinkReference referenceType={\\"shortcut\\"}>alpha</_ctx$.builtins.LinkReference></_ctx$.builtins.Paragraph><_ctx$.builtins.Definition url={\\"bravo\\"} identifier={\\"alpha\\"} label={\\"alpha\\"} /></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support List 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.List ordered={true} spread={false} start={1}><__ctx.builtins.ListItem spread={false}><__ctx.builtins.Paragraph>Lorem Ipsum dolor.</__ctx.builtins.Paragraph></__ctx.builtins.ListItem></__ctx.builtins.List></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.List ordered={true} spread={false} start={1}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph>Lorem Ipsum dolor.</_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support List 2`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.List ordered={false} spread={false}><__ctx.builtins.ListItem spread={false}><__ctx.builtins.Paragraph>Lorem Ipsum dolor.</__ctx.builtins.Paragraph></__ctx.builtins.ListItem></__ctx.builtins.List></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph>Lorem Ipsum dolor.</_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support List 3`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.List ordered={false} spread={false}><__ctx.builtins.ListItem spread={false} checked={true}><__ctx.builtins.Paragraph>Lorem Ipsum dolor.</__ctx.builtins.Paragraph></__ctx.builtins.ListItem></__ctx.builtins.List></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false} checked={true}><_ctx$.builtins.Paragraph>Lorem Ipsum dolor.</_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support List 4`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.List ordered={false} spread={false}><__ctx.builtins.ListItem spread={false} checked={false}><__ctx.builtins.Paragraph>Lorem Ipsum dolor.</__ctx.builtins.Paragraph></__ctx.builtins.ListItem></__ctx.builtins.List></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false} checked={false}><_ctx$.builtins.Paragraph>Lorem Ipsum dolor.</_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support ListItem 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.List ordered={false} spread={false}><__ctx.builtins.ListItem spread={false}><__ctx.builtins.Paragraph>Lorem Ipsum dolor.</__ctx.builtins.Paragraph></__ctx.builtins.ListItem></__ctx.builtins.List></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph>Lorem Ipsum dolor.</_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support MDX ESM 1`] = `
 "import Box from 'box';
-import { useMDX } from 'mdx-source';
+import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support MDX JS 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root>{1 + 1}</__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root>{1 + 1}</_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support MDX JSX 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph><Box>Hello World</Box></__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><Box>Hello World</Box></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support MDX JSX 2`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph><some-box>Hello World</some-box></__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><some-box>Hello World</some-box></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support MDX JSX 3`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph><some:box>Hello World</some:box></__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><some:box>Hello World</some:box></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support MDX JSX 4`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><Box><__ctx.builtins.Paragraph>Hello World</__ctx.builtins.Paragraph></Box></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><Box><_ctx$.builtins.Paragraph>Hello World</_ctx$.builtins.Paragraph></Box></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support MDX JSX 5`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><some-box><__ctx.builtins.Paragraph>Hello World</__ctx.builtins.Paragraph></some-box></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><some-box><_ctx$.builtins.Paragraph>Hello World</_ctx$.builtins.Paragraph></some-box></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support MDX JSX 6`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><some:box><__ctx.builtins.Paragraph>Hello World</__ctx.builtins.Paragraph></some:box></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><some:box><_ctx$.builtins.Paragraph>Hello World</_ctx$.builtins.Paragraph></some:box></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Paragraph 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph>Lorem ipsum dolor.</__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph>Lorem ipsum dolor.</_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Strong 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Paragraph><__ctx.builtins.Strong>Lorem</__ctx.builtins.Strong> <__ctx.builtins.Strong>Ipsum</__ctx.builtins.Strong> dolor.</__ctx.builtins.Paragraph></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.Strong>Lorem</_ctx$.builtins.Strong> <_ctx$.builtins.Strong>Ipsum</_ctx$.builtins.Strong> dolor.</_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+  );
+}
+"
+`;
+
+exports[`should support TOML 1`] = `
+"export const frontmatter = Object.assign(Object.create(null),{title:\\"Hi, World!\\"});
+import { useMDX as _useMDX$ } from 'solid-marked';
+
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#frontmattertitle\\"}>{frontmatter.title}</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+  );
+}
+export default function Component(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={\\"frontmattertitle\\"}>{frontmatter.title}</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Table 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Table align={[\\"left\\",\\"center\\"]}><__ctx.builtins.TableRow><__ctx.builtins.TableCell>foo</__ctx.builtins.TableCell><__ctx.builtins.TableCell>bar</__ctx.builtins.TableCell></__ctx.builtins.TableRow><__ctx.builtins.TableRow><__ctx.builtins.TableCell>baz</__ctx.builtins.TableCell><__ctx.builtins.TableCell>qux</__ctx.builtins.TableCell></__ctx.builtins.TableRow></__ctx.builtins.Table></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Table align={[\\"left\\",\\"center\\"]}><_ctx$.builtins.TableRow isHead={true}><_ctx$.builtins.TableCell>foo</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>bar</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>baz</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>qux</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow></_ctx$.builtins.Table></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support Table, TableRow and TableCell 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.Table align={[\\"left\\",\\"center\\"]}><__ctx.builtins.TableRow><__ctx.builtins.TableCell>foo</__ctx.builtins.TableCell><__ctx.builtins.TableCell>bar</__ctx.builtins.TableCell></__ctx.builtins.TableRow><__ctx.builtins.TableRow><__ctx.builtins.TableCell>baz</__ctx.builtins.TableCell><__ctx.builtins.TableCell>qux</__ctx.builtins.TableCell></__ctx.builtins.TableRow></__ctx.builtins.Table></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Table align={[\\"left\\",\\"center\\"]}><_ctx$.builtins.TableRow isHead={true}><_ctx$.builtins.TableCell>foo</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>bar</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>baz</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>qux</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow></_ctx$.builtins.Table></_ctx$.builtins.Root>
+  );
 }
 "
 `;
 
 exports[`should support ThematicBreak 1`] = `
-"import { useMDX } from 'mdx-source';
+"import { useMDX as _useMDX$ } from 'solid-marked';
 
 export default function Component(props) {
- const __ctx = useMDX();
- return (
-<__ctx.builtins.Root><__ctx.builtins.ThematicBreak /></__ctx.builtins.Root> );
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.ThematicBreak /></_ctx$.builtins.Root>
+  );
+}
+"
+`;
+
+exports[`should support YAML 1`] = `
+"export const frontmatter = ({title:\\"Hi, World!\\"});
+import { useMDX as _useMDX$ } from 'solid-marked';
+
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#frontmattertitle\\"}>{frontmatter.title}</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+  );
+}
+export default function Component(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={\\"frontmattertitle\\"}>{frontmatter.title}</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+  );
 }
 "
 `;
