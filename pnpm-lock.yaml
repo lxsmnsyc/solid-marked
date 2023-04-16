@@ -51,7 +51,7 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
       unplugin-solid-marked:
-        specifier: 0.5.0
+        specifier: 0.5.1
         version: link:../../packages/unplugin
       vite:
         specifier: ^4.2.1
@@ -170,7 +170,7 @@ importers:
   packages/vite:
     dependencies:
       unplugin-solid-marked:
-        specifier: 0.5.0
+        specifier: 0.5.1
         version: link:../unplugin
     devDependencies:
       '@types/node':
