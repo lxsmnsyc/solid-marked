@@ -66,7 +66,7 @@ function createSourceNode(ctx: StateContext, base: Node): SourceNode {
 }
 
 function addStringAttribute(result: SourceNode, name: string, value: string) {
-  result.add(` ${name}=${serializeString(value)}`);
+  result.add(` ${name}={${serializeString(value)}}`);
 }
 function addJSAttribute(result: SourceNode, name: string, expression: string) {
   result.add(` ${name}={${expression}}`);
