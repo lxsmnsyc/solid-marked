@@ -478,14 +478,14 @@ export function compile(
     compiled.add(` const ${CTX_VAR} = ${USE_MDX_VAR}();\n`);
     compiled.add(' return (\n');
     compiled.add(renderedTOC);
-    compiled.add(' );\n');
+    compiled.add('\n );\n');
     compiled.add('}\n');
   }
   compiled.add('export default function Component(props) {\n');
   compiled.add(` const ${CTX_VAR} = ${USE_MDX_VAR}();\n`);
   compiled.add(' return (\n');
   compiled.add(render);
-  compiled.add(' );\n');
+  compiled.add('\n );\n');
   compiled.add('}\n');
 
   compiled.setSourceContent(fileName, markdownCode);

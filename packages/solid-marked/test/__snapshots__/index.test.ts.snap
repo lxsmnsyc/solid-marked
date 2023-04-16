@@ -6,7 +6,8 @@ exports[`should support Blockquote 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Blockquote}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem ipsum dolor.</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Blockquote}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem ipsum dolor.</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -18,7 +19,8 @@ export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
 <Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>foo··
-bar</Dynamic></Dynamic> );
+bar</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -29,7 +31,8 @@ exports[`should support Code 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Code} lang={\\"js\\"} meta={\\"highlight-line=\\\\\\"2\\\\\\"\\"}>{\\"foo()\\\\nbar()\\\\nbaz()\\"}</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Code} lang={\\"js\\"} meta={\\"highlight-line=\\\\\\"2\\\\\\"\\"}>{\\"foo()\\\\nbar()\\\\nbaz()\\"}</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -40,7 +43,8 @@ exports[`should support Definition 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Definition} url={\\"https://example.com\\"} identifier={\\"alpha\\"} label={\\"Alpha\\"} /></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Definition} url={\\"https://example.com\\"} identifier={\\"alpha\\"} label={\\"Alpha\\"} /></Dynamic>
+ );
 }
 "
 `;
@@ -51,7 +55,8 @@ exports[`should support Delete 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Delete}>alpha</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Delete}>alpha</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -62,7 +67,8 @@ exports[`should support Emphasis 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Emphasis}>Lorem</Dynamic> <Dynamic component={_ctx$.builtins.Emphasis}>Ipsum</Dynamic> dolor.</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Emphasis}>Lorem</Dynamic> <Dynamic component={_ctx$.builtins.Emphasis}>Ipsum</Dynamic> dolor.</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -73,7 +79,8 @@ exports[`should support FootnoteDefinition 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.FootnoteDefinition} identifier={\\"alpha\\"} label={\\"alpha\\"}><Dynamic component={_ctx$.builtins.Paragraph}>bravo and charlie.</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.FootnoteDefinition} identifier={\\"alpha\\"} label={\\"alpha\\"}><Dynamic component={_ctx$.builtins.Paragraph}>bravo and charlie.</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -84,7 +91,8 @@ exports[`should support FootnoteReference 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>[^alpha]</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>[^alpha]</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -95,12 +103,14 @@ exports[`should support Heading 1`] = `
 export function TableOfContents(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -111,12 +121,14 @@ exports[`should support Heading 2`] = `
 export function TableOfContents(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={2} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={2} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -127,12 +139,14 @@ exports[`should support Heading 3`] = `
 export function TableOfContents(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={3} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={3} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -143,12 +157,14 @@ exports[`should support Heading 4`] = `
 export function TableOfContents(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={4} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={4} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -159,12 +175,14 @@ exports[`should support Heading 5`] = `
 export function TableOfContents(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={5} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={5} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -175,12 +193,14 @@ exports[`should support Heading 6`] = `
 export function TableOfContents(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={6} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={6} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -191,7 +211,8 @@ exports[`should support Html 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={typeof div === 'undefined' ? __ctx.components.div : div}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={typeof div === 'undefined' ? __ctx.components.div : div}>Hello World</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -202,7 +223,8 @@ exports[`should support Image 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Image} url={\\"https://example.com/favicon.ico\\"} title={\\"bravo\\"} alt={\\"alpha\\"} /></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Image} url={\\"https://example.com/favicon.ico\\"} title={\\"bravo\\"} alt={\\"alpha\\"} /></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -213,7 +235,8 @@ exports[`should support ImageReference 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>![alpha][bravo]</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>![alpha][bravo]</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -224,7 +247,8 @@ exports[`should support InlineCode 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.InlineCode}>{\\"foo()\\"}</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.InlineCode}>{\\"foo()\\"}</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -235,7 +259,8 @@ exports[`should support Link 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"https://example.com\\"} title={\\"bravo\\"}>alpha</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"https://example.com\\"} title={\\"bravo\\"}>alpha</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -246,7 +271,8 @@ exports[`should support LinkReference 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>[alpha][Bravo]</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>[alpha][Bravo]</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -257,7 +283,8 @@ exports[`should support List 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={true} spread={false} start={1}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={true} spread={false} start={1}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -268,7 +295,8 @@ exports[`should support List 2`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -279,7 +307,8 @@ exports[`should support List 3`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false} checked={true}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false} checked={true}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -290,7 +319,8 @@ exports[`should support List 4`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false} checked={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false} checked={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -301,7 +331,8 @@ exports[`should support ListItem 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem Ipsum dolor.</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -313,7 +344,8 @@ import { useMDX as _useMDX$ } from 'solid-marked';
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}></Dynamic>
+ );
 }
 "
 `;
@@ -324,7 +356,8 @@ exports[`should support MDX JS 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}>{1 + 1}</Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}>{1 + 1}</Dynamic>
+ );
 }
 "
 `;
@@ -335,7 +368,8 @@ exports[`should support MDX JSX 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={typeof Box === 'undefined' ? __ctx.components.Box : Box}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={typeof Box === 'undefined' ? __ctx.components.Box : Box}>Hello World</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -346,7 +380,8 @@ exports[`should support MDX JSX 2`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={__ctx.components['some-box']}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={__ctx.components['some-box']}>Hello World</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -357,7 +392,8 @@ exports[`should support MDX JSX 3`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={__ctx.components['some:box']}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={__ctx.components['some:box']}>Hello World</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -368,7 +404,8 @@ exports[`should support MDX JSX 4`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={typeof Box === 'undefined' ? __ctx.components.Box : Box}><Dynamic component={_ctx$.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={typeof Box === 'undefined' ? __ctx.components.Box : Box}><Dynamic component={_ctx$.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -379,7 +416,8 @@ exports[`should support MDX JSX 5`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={__ctx.components['some-box']}><Dynamic component={_ctx$.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={__ctx.components['some-box']}><Dynamic component={_ctx$.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -390,7 +428,8 @@ exports[`should support MDX JSX 6`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={__ctx.components['some:box']}><Dynamic component={_ctx$.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={__ctx.components['some:box']}><Dynamic component={_ctx$.builtins.Paragraph}>Hello World</Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -401,7 +440,8 @@ exports[`should support Paragraph 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem ipsum dolor.</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}>Lorem ipsum dolor.</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -412,7 +452,8 @@ exports[`should support Strong 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Strong}>Lorem</Dynamic> <Dynamic component={_ctx$.builtins.Strong}>Ipsum</Dynamic> dolor.</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Strong}>Lorem</Dynamic> <Dynamic component={_ctx$.builtins.Strong}>Ipsum</Dynamic> dolor.</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -424,12 +465,14 @@ import { useMDX as _useMDX$ } from 'solid-marked';
 export function TableOfContents(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\\"frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\\"frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -440,7 +483,8 @@ exports[`should support Table 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -451,7 +495,8 @@ exports[`should support Table, TableRow and TableCell 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 "
 `;
@@ -462,7 +507,8 @@ exports[`should support ThematicBreak 1`] = `
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.ThematicBreak} /></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.ThematicBreak} /></Dynamic>
+ );
 }
 "
 `;
@@ -474,12 +520,14 @@ import { useMDX as _useMDX$ } from 'solid-marked';
 export function TableOfContents(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic>
+ );
 }
 export default function Component(props) {
  const _ctx$ = _useMDX$();
  return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\\"frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic> );
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\\"frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic>
+ );
 }
 "
 `;
