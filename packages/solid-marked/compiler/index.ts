@@ -19,7 +19,7 @@ import { CTX_VAR, compileNode } from './compiler';
 import { Options, StateContext } from './types';
 
 export type { Options } from './types';
-export type * from './interfaces';
+export * from './interfaces';
 
 const USE_MDX_VAR = '_useMDX$';
 
