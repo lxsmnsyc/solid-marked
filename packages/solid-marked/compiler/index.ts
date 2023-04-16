@@ -30,6 +30,7 @@ import * as seroval from 'seroval';
 import * as yaml from 'yaml';
 import * as toml from 'toml';
 import GithubSlugger from 'github-slugger';
+import { serializeString } from './string';
 
 interface Toml extends Literal {
   type: 'toml'
@@ -64,13 +65,8 @@ function createSourceNode(ctx: StateContext, base: Node): SourceNode {
   );
 }
 
-function escapeString(value: string) {
-  return value.replace(/`/g, '\\`')
-    .replace(/\$/g, '\\$');
-}
-
 function addStringAttribute(result: SourceNode, name: string, value: string) {
-  result.add(` ${name}={\`${escapeString(value)}\`}`);
+  result.add(` ${name}=${serializeString(value)}`);
 }
 function addJSAttribute(result: SourceNode, name: string, expression: string) {
   result.add(` ${name}={${expression}}`);
@@ -221,7 +217,7 @@ function traverse(
         addStringAttribute(result, 'meta', node.meta);
       }
       result.add('>');
-      result.add(`{\`${escapeString(node.value)}\`}`);
+      result.add(`{${serializeString(node.value)}}`);
       result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
@@ -267,7 +263,7 @@ function traverse(
       const result = createSourceNode(ctx, node);
       const tag = MARKUP[node.type];
       result.add(`<${createTag(ctx, tag)}>`);
-      result.add(`{\`${escapeString(node.value)}\`}`);
+      result.add(`{${serializeString(node.value)}}`);
       result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
       return result;
     }
@@ -363,7 +359,7 @@ function traverse(
             attributeNode.add(` ${attribute.name}`);
             if (attribute.value) {
               if (typeof attribute.value === 'string') {
-                attributeNode.add(`={\`${escapeString(attribute.value)}\`}`);
+                attributeNode.add(`={${serializeString(attribute.value)}}`);
               } else {
                 const attributeValueNode = new SourceNode(
                   attribute.value.position?.start.line ?? null,
