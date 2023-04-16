@@ -1,17 +1,34 @@
 import { Dynamic, render } from 'solid-js/web';
+import {
+  Show,
+  createEffect,
+  createResource,
+  createSignal,
+} from 'solid-js';
+import * as shiki from 'shiki';
 import { MDXProvider } from 'solid-marked';
-import Example from './Example.md';
+import Example from './Example.mdx';
 import './main.css';
 
+shiki.setCDN('https://unpkg.com/shiki/');
+
 function App() {
+  const [highlighter] = createResource(() => (
+    shiki.getHighlighter({
+      langs: ['tsx', 'jsx', 'md', 'mdx', 'markdown', 'bash', 'js', 'ts'],
+      themes: ['github-dark'],
+    })
+  ));
   return (
     <MDXProvider
       builtins={{
         Heading(props) {
           return (
-            <Dynamic component={`h${props.depth}`}>
-              {props.children}
-            </Dynamic>
+            <a href={`#${props.id}`}>
+              <Dynamic component={`h${props.depth}`} id={props.id}>
+                {props.children}
+              </Dynamic>
+            </a>
           );
         },
         Paragraph(props) {
@@ -41,10 +58,19 @@ function App() {
           );
         },
         Code(props) {
+          const [ref, setRef] = createSignal<HTMLPreElement | undefined>();
+          createEffect(() => {
+            const current = ref();
+            const instance = highlighter();
+            if (current && instance) {
+              current.innerHTML = instance.codeToHtml(props.children, {
+                lang: props.lang,
+                theme: 'github-dark',
+              });
+            }
+          });
           return (
-            <pre lang={props.lang}>
-              {props.children}
-            </pre>
+            <div ref={setRef} lang={props.lang} />
           );
         },
         InlineCode(props) {
