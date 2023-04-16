@@ -13,7 +13,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "jsx": "preserve",
-    "jsxImportSource": "solid-js",,
+    "jsxImportSource": "solid-js",
     "types": [
       "solid-marked"
     ]
