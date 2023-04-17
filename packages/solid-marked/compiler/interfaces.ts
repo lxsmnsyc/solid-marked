@@ -25,7 +25,7 @@ export interface AlternativeProps {
   alt?: string;
 }
 
-export interface ReferenceProps {
+export interface ReferenceProps extends AssociationProps {
   referenceType: 'shortcut' | 'collapsed' | 'full';
 }
 

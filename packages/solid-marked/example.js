@@ -4,9 +4,8 @@ async function testCompile(code) {
   return (await compile('test.md', code)).code;
 }
 
-console.log(await testCompile(`---
-title: Hi, World!
----
+console.log(await testCompile(`
+![This is an example][alpha]
 
-# {frontmatter.title}
+[alpha]: bravo
 `));

@@ -58,6 +58,7 @@ function applyAlternative(result: SourceNode, node: mdast.Alternative) {
 }
 
 function applyReference(result: SourceNode, node: mdast.Reference) {
+  applyAssociation(result, node);
   addStringAttribute(result, 'referenceType', node.referenceType);
 }
 

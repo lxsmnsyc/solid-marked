@@ -457,7 +457,7 @@ export default function Component(props) {
 Must be have an associated `<Definition>`.
 
 ```md
-[alpha]
+[This is an example][alpha]
 
 [alpha]: bravo
 ```
@@ -470,11 +470,13 @@ export default function Component(props) {
   return (
     <Dynamic component={_ctx$.builtins.Root}>
       <Dynamic component={_ctx$.builtins.Paragraph}>
-        <Dynamic
+        <Dynamic 
           component={_ctx$.builtins.LinkReference}
-          referenceType={"shortcut"}
+          identifier={"alpha"}
+          label={"alpha"}
+          referenceType={"full"}
         >
-          alpha
+          This is an example
         </Dynamic>
       </Dynamic>
       <Dynamic
@@ -493,7 +495,7 @@ export default function Component(props) {
 Must be have an associated `<Definition>`.
 
 ```md
-![alpha]
+![This is an example][alpha]
 
 [alpha]: bravo
 ```
@@ -508,14 +510,16 @@ export default function Component(props) {
       <Dynamic component={_ctx$.builtins.Paragraph}>
         <Dynamic
           component={_ctx$.builtins.ImageReference}
-          referenceType={"shortcut"}
-          alt={"alpha"}
+          identifier={"alpha"}
+          label={"alpha"}
+          referenceType={"full"} 
+          alt={"This is an example"}
         />
       </Dynamic>
       <Dynamic
         component={_ctx$.builtins.Definition}
         url={"bravo"}
-        identifier={"alpha"} 
+        identifier={"alpha"}
         label={"alpha"}
       />
     </Dynamic>
