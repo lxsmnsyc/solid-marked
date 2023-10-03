@@ -1,27 +1,29 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import * as mdast from 'mdast';
-import type * as mdastMarkdown from 'mdast-util-from-markdown/lib';
+import type * as mdast from 'mdast';
 import * as mdastString from 'mdast-util-to-string';
 import { SourceNode } from 'source-map';
-import * as mdastMDX from 'mdast-util-mdx';
+import type * as mdastMDX from 'mdast-util-mdx';
 import * as seroval from 'seroval';
 import * as yaml from 'yaml';
 import * as toml from 'toml';
-import { StateContext } from './types';
+import type { StateContext } from './types';
 import { serializeString } from './string';
 
 interface TOML extends mdast.Literal {
-  type: 'toml'
+  type: 'toml';
 }
 
 declare module 'mdast' {
+  // Allow using TOML nodes defined by `mdast-util-frontmatter`.
   interface FrontmatterContentMap {
-    // Allow using TOML nodes defined by `mdast-util-frontmatter`.
-    toml: TOML
+    toml: TOML;
+  }
+  interface RootContentMap {
+    toml: TOML;
   }
 }
 
-function createSourceNode(ctx: StateContext, base: mdastMarkdown.Node): SourceNode {
+function createSourceNode(ctx: StateContext, base: mdast.Nodes): SourceNode {
   const col = base.position?.start.column;
   return new SourceNode(
     base.position?.start.line ?? null,
@@ -30,34 +32,34 @@ function createSourceNode(ctx: StateContext, base: mdastMarkdown.Node): SourceNo
   );
 }
 
-function addStringAttribute(result: SourceNode, name: string, value: string) {
+function addStringAttribute(result: SourceNode, name: string, value: string): void {
   result.add(` ${name}={${serializeString(value)}}`);
 }
-function addJSAttribute(result: SourceNode, name: string, expression: string) {
+function addJSAttribute(result: SourceNode, name: string, expression: string): void {
   result.add(` ${name}={${expression}}`);
 }
 
-function applyAssociation(result: SourceNode, node: mdast.Association) {
+function applyAssociation(result: SourceNode, node: mdast.Association): void {
   addStringAttribute(result, 'identifier', node.identifier);
   if (node.label) {
     addStringAttribute(result, 'label', node.label);
   }
 }
 
-function applyResource(result: SourceNode, node: mdast.Resource) {
+function applyResource(result: SourceNode, node: mdast.Resource): void {
   addStringAttribute(result, 'url', node.url);
   if (node.title) {
     addStringAttribute(result, 'title', node.title);
   }
 }
 
-function applyAlternative(result: SourceNode, node: mdast.Alternative) {
+function applyAlternative(result: SourceNode, node: mdast.Alternative): void {
   if (node.alt) {
     addStringAttribute(result, 'alt', node.alt);
   }
 }
 
-function applyReference(result: SourceNode, node: mdast.Reference) {
+function applyReference(result: SourceNode, node: mdast.Reference): void {
   applyAssociation(result, node);
   addStringAttribute(result, 'referenceType', node.referenceType);
 }
@@ -67,7 +69,7 @@ interface TagOptions {
   isMDX?: boolean;
 }
 
-function createTag(ctx: StateContext, target: string, tagOpts: TagOptions = {}) {
+function createTag(ctx: StateContext, target: string, tagOpts: TagOptions = {}): string {
   if (ctx.options.noDynamicComponents === 'only-mdx' && tagOpts.isMDX) {
     return target;
   }
@@ -84,7 +86,7 @@ function createTag(ctx: StateContext, target: string, tagOpts: TagOptions = {}) 
 function createJSXTag(
   ctx: StateContext,
   nodeName: string,
-) {
+): string {
   if (ctx.options.noDynamicComponents) {
     return nodeName;
   }
@@ -107,7 +109,7 @@ type ExcludedTags =
   | 'text'
   | 'yaml'
   | 'toml';
-type WithTags = Exclude<mdastMarkdown.Node['type'], ExcludedTags>
+type WithTags = Exclude<mdast.Nodes['type'], ExcludedTags>
 
 export const CTX_VAR = '_ctx$';
 
@@ -118,7 +120,6 @@ const MARKUP: Record<WithTags, string> = {
   definition: `${CTX_VAR}.builtins.Definition`,
   delete: `${CTX_VAR}.builtins.Delete`,
   emphasis: `${CTX_VAR}.builtins.Emphasis`,
-  footnote: `${CTX_VAR}.builtins.Footnote`,
   footnoteDefinition: `${CTX_VAR}.builtins.FootnoteDefinition`,
   footnoteReference: `${CTX_VAR}.builtins.FootnoteReference`,
   heading: `${CTX_VAR}.builtins.Heading`,
@@ -139,7 +140,7 @@ const MARKUP: Record<WithTags, string> = {
   thematicBreak: `${CTX_VAR}.builtins.ThematicBreak`,
 };
 
-function compileRoot(ctx: StateContext, node: mdast.Root) {
+function compileRoot(ctx: StateContext, node: mdast.Root): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.root;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -148,7 +149,7 @@ function compileRoot(ctx: StateContext, node: mdast.Root) {
   return result;
 }
 
-function compileParagraph(ctx: StateContext, node: mdast.Paragraph) {
+function compileParagraph(ctx: StateContext, node: mdast.Paragraph): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.paragraph;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -157,7 +158,7 @@ function compileParagraph(ctx: StateContext, node: mdast.Paragraph) {
   return result;
 }
 
-function compileHeading(ctx: StateContext, node: mdast.Heading) {
+function compileHeading(ctx: StateContext, node: mdast.Heading): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.heading;
   const content = mdastString.toString(node, { includeImageAlt: false });
@@ -170,13 +171,13 @@ function compileHeading(ctx: StateContext, node: mdast.Heading) {
   return result;
 }
 
-function compileThematicBreak(ctx: StateContext, node: mdast.ThematicBreak) {
+function compileThematicBreak(ctx: StateContext, node: mdast.ThematicBreak): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`<${createTag(ctx, MARKUP.thematicBreak)} />`);
   return result;
 }
 
-function compileBlockquote(ctx: StateContext, node: mdast.Blockquote) {
+function compileBlockquote(ctx: StateContext, node: mdast.Blockquote): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.blockquote;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -185,7 +186,7 @@ function compileBlockquote(ctx: StateContext, node: mdast.Blockquote) {
   return result;
 }
 
-function compileList(ctx: StateContext, node: mdast.List) {
+function compileList(ctx: StateContext, node: mdast.List): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.list;
   result.add(`<${createTag(ctx, tag)}`);
@@ -206,7 +207,7 @@ function compileList(ctx: StateContext, node: mdast.List) {
   return result;
 }
 
-function compileListItem(ctx: StateContext, node: mdast.ListItem) {
+function compileListItem(ctx: StateContext, node: mdast.ListItem): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.listItem;
   result.add(`<${createTag(ctx, tag)}`);
@@ -222,7 +223,7 @@ function compileListItem(ctx: StateContext, node: mdast.ListItem) {
   return result;
 }
 
-function compileHTML(ctx: StateContext, node: mdast.HTML) {
+function compileHTML(ctx: StateContext, node: mdast.Html): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.html;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -231,7 +232,7 @@ function compileHTML(ctx: StateContext, node: mdast.HTML) {
   return result;
 }
 
-function compileCode(ctx: StateContext, node: mdast.Code) {
+function compileCode(ctx: StateContext, node: mdast.Code): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.code;
   result.add(`<${createTag(ctx, tag)}`);
@@ -247,7 +248,7 @@ function compileCode(ctx: StateContext, node: mdast.Code) {
   return result;
 }
 
-function compileDefinition(ctx: StateContext, node: mdast.Definition) {
+function compileDefinition(ctx: StateContext, node: mdast.Definition): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`<${createTag(ctx, MARKUP.definition)}`);
   applyResource(result, node);
@@ -256,13 +257,13 @@ function compileDefinition(ctx: StateContext, node: mdast.Definition) {
   return result;
 }
 
-function compileText(ctx: StateContext, node: mdast.Text) {
+function compileText(ctx: StateContext, node: mdast.Text): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(node.value);
   return result;
 }
 
-function compileEmphasis(ctx: StateContext, node: mdast.Emphasis) {
+function compileEmphasis(ctx: StateContext, node: mdast.Emphasis): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.emphasis;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -271,7 +272,7 @@ function compileEmphasis(ctx: StateContext, node: mdast.Emphasis) {
   return result;
 }
 
-function compileStrong(ctx: StateContext, node: mdast.Strong) {
+function compileStrong(ctx: StateContext, node: mdast.Strong): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.strong;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -280,7 +281,7 @@ function compileStrong(ctx: StateContext, node: mdast.Strong) {
   return result;
 }
 
-function compileInlineCode(ctx: StateContext, node: mdast.InlineCode) {
+function compileInlineCode(ctx: StateContext, node: mdast.InlineCode): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.inlineCode;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -289,24 +290,24 @@ function compileInlineCode(ctx: StateContext, node: mdast.InlineCode) {
   return result;
 }
 
-function compileBreak(ctx: StateContext, node: mdast.Break) {
+function compileBreak(ctx: StateContext, node: mdast.Break): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`<${createTag(ctx, MARKUP.break)} />`);
   return result;
 }
 
-function compileLink(ctx: StateContext, node: mdast.Link) {
+function compileLink(ctx: StateContext, node: mdast.Link): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.link;
   result.add(`<${createTag(ctx, tag)}`);
   applyResource(result, node);
   result.add('>');
-  addStaticPhrasingContent(ctx, result, node.children);
+  addPhrasingContent(ctx, result, node.children);
   result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
   return result;
 }
 
-function compileImage(ctx: StateContext, node: mdast.Image) {
+function compileImage(ctx: StateContext, node: mdast.Image): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`<${createTag(ctx, MARKUP.image)}`);
   applyResource(result, node);
@@ -315,18 +316,18 @@ function compileImage(ctx: StateContext, node: mdast.Image) {
   return result;
 }
 
-function compileLinkReference(ctx: StateContext, node: mdast.LinkReference) {
+function compileLinkReference(ctx: StateContext, node: mdast.LinkReference): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.linkReference;
   result.add(`<${createTag(ctx, tag)}`);
   applyReference(result, node);
   result.add('>');
-  addStaticPhrasingContent(ctx, result, node.children);
+  addPhrasingContent(ctx, result, node.children);
   result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
   return result;
 }
 
-function compileImageReference(ctx: StateContext, node: mdast.ImageReference) {
+function compileImageReference(ctx: StateContext, node: mdast.ImageReference): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`<${createTag(ctx, MARKUP.imageReference)}`);
   applyReference(result, node);
@@ -335,7 +336,7 @@ function compileImageReference(ctx: StateContext, node: mdast.ImageReference) {
   return result;
 }
 
-function compileFootnoteDefinition(ctx: StateContext, node: mdast.FootnoteDefinition) {
+function compileFootnoteDefinition(ctx: StateContext, node: mdast.FootnoteDefinition): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.footnoteDefinition;
   result.add(`<${createTag(ctx, tag)}`);
@@ -346,7 +347,7 @@ function compileFootnoteDefinition(ctx: StateContext, node: mdast.FootnoteDefini
   return result;
 }
 
-function compileFootnoteReference(ctx: StateContext, node: mdast.FootnoteReference) {
+function compileFootnoteReference(ctx: StateContext, node: mdast.FootnoteReference): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`<${createTag(ctx, MARKUP.footnoteReference)}`);
   applyAssociation(result, node);
@@ -354,7 +355,7 @@ function compileFootnoteReference(ctx: StateContext, node: mdast.FootnoteReferen
   return result;
 }
 
-function compileTable(ctx: StateContext, node: mdast.Table) {
+function compileTable(ctx: StateContext, node: mdast.Table): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.table;
   result.add(`<${createTag(ctx, tag)}`);
@@ -369,7 +370,7 @@ function compileTable(ctx: StateContext, node: mdast.Table) {
   return result;
 }
 
-function compileTableRow(ctx: StateContext, node: mdast.TableRow, isHead: boolean) {
+function compileTableRow(ctx: StateContext, node: mdast.TableRow, isHead: boolean): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.tableRow;
   result.add(`<${createTag(ctx, tag)}`);
@@ -384,7 +385,7 @@ function compileTableRow(ctx: StateContext, node: mdast.TableRow, isHead: boolea
   return result;
 }
 
-function compileTableCell(ctx: StateContext, node: mdast.TableCell) {
+function compileTableCell(ctx: StateContext, node: mdast.TableCell): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.tableCell;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -393,18 +394,9 @@ function compileTableCell(ctx: StateContext, node: mdast.TableCell) {
   return result;
 }
 
-function compileDelete(ctx: StateContext, node: mdast.Delete) {
+function compileDelete(ctx: StateContext, node: mdast.Delete): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.delete;
-  result.add(`<${createTag(ctx, tag)}>`);
-  addPhrasingContent(ctx, result, node.children);
-  result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
-  return result;
-}
-
-function compileFootnote(ctx: StateContext, node: mdast.Footnote) {
-  const result = createSourceNode(ctx, node);
-  const tag = MARKUP.footnote;
   result.add(`<${createTag(ctx, tag)}>`);
   addPhrasingContent(ctx, result, node.children);
   result.add(`</${createTag(ctx, tag, { isClosing: true })}>`);
@@ -414,7 +406,7 @@ function compileFootnote(ctx: StateContext, node: mdast.Footnote) {
 function compileMDXExpression(
   ctx: StateContext,
   node: mdastMDX.MdxTextExpression | mdastMDX.MdxFlowExpression,
-) {
+): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`{${node.value}}`);
   return result;
@@ -423,7 +415,7 @@ function compileMDXExpression(
 function compileMDXElement(
   ctx: StateContext,
   node: mdastMDX.MdxJsxTextElement | mdastMDX.MdxJsxFlowElement,
-) {
+): SourceNode {
   const result = createSourceNode(ctx, node);
   if (node.name) {
     const name = createJSXTag(ctx, node.name);
@@ -466,14 +458,14 @@ function compileMDXElement(
   return result;
 }
 
-function compileMDXESM(ctx: StateContext, node: mdastMDX.MdxjsEsm) {
+function compileMDXESM(ctx: StateContext, node: mdastMDX.MdxjsEsm): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`${node.value}\n`);
   ctx.imports.push(result);
   return new SourceNode();
 }
 
-function compileYAML(ctx: StateContext, node: mdast.YAML) {
+function compileYAML(ctx: StateContext, node: mdast.Yaml): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(seroval.serialize(
     yaml.parse(node.value),
@@ -482,7 +474,7 @@ function compileYAML(ctx: StateContext, node: mdast.YAML) {
   return new SourceNode();
 }
 
-function compileTOML(ctx: StateContext, node: TOML) {
+function compileTOML(ctx: StateContext, node: TOML): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(seroval.serialize(
     toml.parse(node.value),
@@ -494,7 +486,7 @@ function compileTOML(ctx: StateContext, node: TOML) {
 function compileBlockOrDefinitionContent(
   ctx: StateContext,
   node: mdast.BlockContent | mdast.DefinitionContent,
-) {
+): SourceNode {
   switch (node.type) {
     case 'blockquote':
       return compileBlockquote(ctx, node);
@@ -525,10 +517,10 @@ function compileBlockOrDefinitionContent(
   }
 }
 
-function compileStaticPhrasingContent(
+function compilePhrasingContent(
   ctx: StateContext,
-  node: mdast.StaticPhrasingContent,
-) {
+  node: mdast.PhrasingContent,
+): SourceNode {
   switch (node.type) {
     case 'break':
       return compileBreak(ctx, node);
@@ -536,8 +528,6 @@ function compileStaticPhrasingContent(
       return compileDelete(ctx, node);
     case 'emphasis':
       return compileEmphasis(ctx, node);
-    case 'footnote':
-      return compileFootnote(ctx, node);
     case 'footnoteReference':
       return compileFootnoteReference(ctx, node);
     case 'html':
@@ -556,39 +546,12 @@ function compileStaticPhrasingContent(
       return compileStrong(ctx, node);
     case 'text':
       return compileText(ctx, node);
-    default:
-      throw new Error('invariant');
-  }
-}
-
-function compilePhrasingContent(ctx: StateContext, node: mdast.PhrasingContent) {
-  switch (node.type) {
     case 'link':
       return compileLink(ctx, node);
     case 'linkReference':
       return compileLinkReference(ctx, node);
     default:
-      return compileStaticPhrasingContent(ctx, node);
-  }
-}
-
-function addBlockOrDefinitionContent(
-  ctx: StateContext,
-  source: SourceNode,
-  nodes: (mdast.BlockContent | mdast.DefinitionContent)[],
-) {
-  for (let i = 0, len = nodes.length; i < len; i += 1) {
-    source.add(compileBlockOrDefinitionContent(ctx, nodes[i]));
-  }
-}
-
-function addStaticPhrasingContent(
-  ctx: StateContext,
-  source: SourceNode,
-  nodes: mdast.StaticPhrasingContent[],
-) {
-  for (let i = 0, len = nodes.length; i < len; i += 1) {
-    source.add(compileStaticPhrasingContent(ctx, nodes[i]));
+      throw new Error('invariant');
   }
 }
 
@@ -596,15 +559,25 @@ function addPhrasingContent(
   ctx: StateContext,
   source: SourceNode,
   nodes: mdast.PhrasingContent[],
-) {
+): void {
   for (let i = 0, len = nodes.length; i < len; i += 1) {
     source.add(compilePhrasingContent(ctx, nodes[i]));
   }
 }
 
+function addBlockOrDefinitionContent(
+  ctx: StateContext,
+  source: SourceNode,
+  nodes: (mdast.BlockContent | mdast.DefinitionContent)[],
+): void {
+  for (let i = 0, len = nodes.length; i < len; i += 1) {
+    source.add(compileBlockOrDefinitionContent(ctx, nodes[i]));
+  }
+}
+
 export function compileNode(
   ctx: StateContext,
-  node: mdastMarkdown.Node,
+  node: mdast.Nodes,
 ): SourceNode {
   switch (node.type) {
     case 'root':
@@ -655,8 +628,6 @@ export function compileNode(
       return compileTableRow(ctx, node, false);
     case 'delete':
       return compileDelete(ctx, node);
-    case 'footnote':
-      return compileFootnote(ctx, node);
     case 'mdxTextExpression':
     case 'mdxFlowExpression':
       return compileMDXExpression(ctx, node);
@@ -678,7 +649,7 @@ function addContent(
   ctx: StateContext,
   source: SourceNode,
   nodes: mdast.Content[],
-) {
+): void {
   for (let i = 0, len = nodes.length; i < len; i += 1) {
     source.add(compileNode(ctx, nodes[i]));
   }

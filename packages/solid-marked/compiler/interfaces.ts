@@ -1,4 +1,4 @@
-import {
+import type {
   Component,
   JSX,
 } from 'solid-js';
@@ -62,23 +62,22 @@ export interface MDXBuiltinComponents {
   Blockquote?: MDXComponent<ParentProps>;
   Break?: () => JSX.Element;
   Code?: MDXComponent<CodeProps>;
-  Definition?: MDXComponent<ResourceProps & AssociationProps>
-  Delete?: MDXComponent<ParentProps>
-  Emphasis?: MDXComponent<ParentProps>
-  Footnote?: MDXComponent<ParentProps>
-  FootnoteDefinition?: MDXComponent<ParentProps & AssociationProps>
-  FootnoteReference?: MDXComponent<AssociationProps>
-  Heading?: MDXComponent<HeadingProps>
-  Image?: MDXComponent<ResourceProps & AlternativeProps>
-  ImageReference?: MDXComponent<ReferenceProps & AlternativeProps>
-  InlineCode?: MDXComponent<LiteralProps>
-  Link?: MDXComponent<ResourceProps & ParentProps>
-  LinkReference?: MDXComponent<ReferenceProps & ParentProps>
-  List?: MDXComponent<ListProps>
-  ListItem?: MDXComponent<ListItemProps>
-  Paragraph?: MDXComponent<ParentProps>
-  Root?: MDXComponent<ParentProps>
-  Strong?: MDXComponent<ParentProps>
+  Definition?: MDXComponent<ResourceProps & AssociationProps>;
+  Delete?: MDXComponent<ParentProps>;
+  Emphasis?: MDXComponent<ParentProps>;
+  FootnoteDefinition?: MDXComponent<ParentProps & AssociationProps>;
+  FootnoteReference?: MDXComponent<AssociationProps>;
+  Heading?: MDXComponent<HeadingProps>;
+  Image?: MDXComponent<ResourceProps & AlternativeProps>;
+  ImageReference?: MDXComponent<ReferenceProps & AlternativeProps>;
+  InlineCode?: MDXComponent<LiteralProps>;
+  Link?: MDXComponent<ResourceProps & ParentProps>;
+  LinkReference?: MDXComponent<ReferenceProps & ParentProps>;
+  List?: MDXComponent<ListProps>;
+  ListItem?: MDXComponent<ListItemProps>;
+  Paragraph?: MDXComponent<ParentProps>;
+  Root?: MDXComponent<ParentProps>;
+  Strong?: MDXComponent<ParentProps>;
   Table?: MDXComponent<TableProps>;
   TableCell?: MDXComponent<ParentProps>;
   TableRow?: MDXComponent<ParentProps>;

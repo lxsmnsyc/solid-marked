@@ -1,5 +1,5 @@
+import type { RawSourceMap } from 'source-map';
 import {
-  RawSourceMap,
   SourceNode,
 } from 'source-map';
 import {
@@ -14,7 +14,7 @@ import { gfm } from 'micromark-extension-gfm';
 import { frontmatter } from 'micromark-extension-frontmatter';
 import GithubSlugger from 'github-slugger';
 import { CTX_VAR, compileNode } from './compiler';
-import { Options, StateContext } from './types';
+import type { Options, StateContext } from './types';
 
 export type { Options } from './types';
 export * from './interfaces';
