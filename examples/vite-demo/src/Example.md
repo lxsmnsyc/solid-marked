@@ -861,6 +861,40 @@ export default function Component(props) {
 /// <reference types="solid-marked/env">
 ```
 
+## Component
+
+The features above are compile-time Markdown rendering. For runtime rendering, `solid-marked` provides the `Markdown` component:
+
+```js
+import Markdown from 'solid-marked/component';
+
+const content = (
+  <Markdown
+    builtins={{
+      Root(props) {
+        return (
+          <div>
+            {props.children}
+          </div>
+        );
+      },
+      Blockquote(props) {
+        return (
+          <blockquote>
+            {props.children}
+          </blockquote>
+        );
+      },
+    }}
+  >
+    {'> This is a blockquote.'}
+  </Markdown>
+);
+```
+
+> **Note**
+> Markdown component only supports CommonMark and GFM. MDX and Frontmatter are considered "invalid".
+
 ## Sponsors
 
 ![Sponsors](https://github.com/lxsmnsyc/sponsors/blob/main/sponsors.svg?raw=true)
