@@ -648,7 +648,7 @@ export function compileNode(
 function addContent(
   ctx: StateContext,
   source: SourceNode,
-  nodes: mdast.Content[],
+  nodes: mdast.RootContent[],
 ): void {
   for (let i = 0, len = nodes.length; i < len; i += 1) {
     source.add(compileNode(ctx, nodes[i]));

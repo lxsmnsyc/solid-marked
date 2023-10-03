@@ -8,21 +8,21 @@ export interface ParentProps {
 }
 
 export interface LiteralProps {
-  children: string;
+  children?: string | null | undefined;
 }
 
 export interface AssociationProps {
   identifier: string;
-  label?: string;
+  label?: string | null | undefined;
 }
 
 export interface ResourceProps {
   url: string;
-  title?: string;
+  title?: string | null | undefined ;
 }
 
 export interface AlternativeProps {
-  alt?: string;
+  alt?: string | null | undefined;
 }
 
 export interface ReferenceProps extends AssociationProps {
@@ -30,8 +30,8 @@ export interface ReferenceProps extends AssociationProps {
 }
 
 export interface CodeProps extends LiteralProps {
-  lang?: string;
-  meta?: string;
+  lang?: string | null | undefined;
+  meta?: string | null | undefined;
 }
 
 export interface HeadingProps extends ParentProps {
@@ -40,16 +40,16 @@ export interface HeadingProps extends ParentProps {
 }
 
 export interface ListProps extends ParentProps {
-  ordered?: boolean;
-  spread?: boolean;
-  start?: number;
+  ordered?: boolean | null | undefined;
+  spread?: boolean | null | undefined;
+  start?: number | null | undefined;
 }
 export interface ListItemProps extends ParentProps {
-  checked?: boolean;
-  spread?: boolean;
+  checked?: boolean | null | undefined;
+  spread?: boolean | null | undefined;
 }
 export interface TableProps extends ParentProps {
-  align?: Array<'left' | 'right' | 'center' | null>;
+  align?: Array<'left' | 'right' | 'center' | null> | null | undefined;
 }
 
 export interface TableRowProps extends ParentProps {
