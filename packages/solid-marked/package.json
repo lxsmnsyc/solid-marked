@@ -23,6 +23,15 @@
       "require": "./dist/cjs/production/compiler.cjs",
       "import": "./dist/esm/production/compiler.mjs",
       "types": "./dist/types/compiler/index.d.ts"
+    },
+    "./component": {
+      "development": {
+        "require": "./dist/cjs/development/component.cjs",
+        "import": "./dist/esm/development/component.mjs"
+      },
+      "require": "./dist/cjs/production/component.cjs",
+      "import": "./dist/esm/production/component.mjs",
+      "types": "./dist/types/component/index.d.ts"
     }
   },
   "files": [
@@ -96,6 +105,9 @@
     "*": {
       "compiler": [
         "./dist/types/compiler/index.d.ts"
+      ],
+      "component": [
+        "./dist/types/component/index.d.ts"
       ]
     }
   }

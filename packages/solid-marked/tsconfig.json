@@ -1,6 +1,6 @@
 {
   "exclude": ["node_modules"],
-  "include": ["src", "types", "env.d.ts", "compiler"],
+  "include": ["src", "types", "env.d.ts", "compiler", "component"],
   "compilerOptions": {
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
