@@ -15,7 +15,8 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "types": [
-      "solid-marked"
+      "vite/client",
+      "solid-marked/env"
     ]
   },
   "include": ["./src"]

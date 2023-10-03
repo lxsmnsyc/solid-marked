@@ -1,4 +1,5 @@
 import { Dynamic, render } from 'solid-js/web';
+import type { JSX } from 'solid-js';
 import {
   Show,
   createEffect,
@@ -12,8 +13,8 @@ import './main.css';
 
 shiki.setCDN('https://unpkg.com/shiki/');
 
-function App() {
-  const [highlighter] = createResource(() => (
+function App(): JSX.Element {
+  const [highlighter] = createResource(async () => (
     shiki.getHighlighter({
       langs: ['tsx', 'jsx', 'md', 'mdx', 'markdown', 'bash', 'js', 'ts'],
       themes: ['github-dark'],
@@ -22,7 +23,7 @@ function App() {
   return (
     <MDXProvider
       builtins={{
-        Heading(props) {
+        Heading(props): JSX.Element {
           return (
             <a href={`#${props.id}`}>
               <Dynamic component={`h${props.depth}`} id={props.id}>
@@ -31,73 +32,74 @@ function App() {
             </a>
           );
         },
-        Paragraph(props) {
+        Paragraph(props): JSX.Element {
           return (
             <p>
               {props.children}
             </p>
           );
         },
-        Root(props) {
+        Root(props): JSX.Element {
           return (
             <div class="bg-white m-4 p-4 rounded-lg prose">
               {props.children}
             </div>
           );
         },
-        Blockquote(props) {
+        Blockquote(props): JSX.Element {
           return (
             <blockquote>
               {props.children}
             </blockquote>
           );
         },
-        Image(props) {
+        Image(props): JSX.Element {
           return (
-            <img src={props.url} alt={props.alt ?? props.title} />
+            <img src={props.url} alt={props.alt ?? props.title ?? undefined} />
           );
         },
-        Code(props) {
+        Code(props): JSX.Element {
           const [ref, setRef] = createSignal<HTMLPreElement | undefined>();
           createEffect(() => {
             const current = ref();
             const instance = highlighter();
-            if (current && instance) {
-              current.innerHTML = instance.codeToHtml(props.children, {
-                lang: props.lang,
+            const content = props.children;
+            if (current && instance && content) {
+              current.innerHTML = instance.codeToHtml(content, {
+                lang: props.lang ?? undefined,
                 theme: 'github-dark',
               });
             }
           });
           return (
-            <div ref={setRef} lang={props.lang} />
+            <div ref={setRef} lang={props.lang ?? undefined} />
           );
         },
-        InlineCode(props) {
+        InlineCode(props): JSX.Element {
           return (
             <code>{props.children}</code>
           );
         },
-        List(props) {
+        List(props): JSX.Element {
           return (
-            <Dynamic component={props.ordered ? 'ol' : 'ul'} start={props.start}>
+            <Dynamic component={props.ordered ? 'ol' : 'ul'} start={props.start ?? undefined}>
               {props.children}
             </Dynamic>
           );
         },
-        ListItem(props) {
+        ListItem(props): JSX.Element {
           return (
             <li>
               <Show when={'checked' in props} fallback={props.children}>
-                <input type="checkbox" checked={props.checked} />
+                <input type="checkbox" checked={props.checked ?? undefined} />
                 {props.children}
               </Show>
             </li>
           );
         },
-        Link(props) {
+        Link(props): JSX.Element {
           return (
-            <a href={props.url} title={props.title}>{props.children}</a>
+            <a href={props.url} title={props.title ?? undefined}>{props.children}</a>
           );
         },
       }}
