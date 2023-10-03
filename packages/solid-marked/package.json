@@ -1,7 +1,7 @@
 {
   "name": "solid-marked",
   "type": "module",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "types": "./dist/types/src/index.d.ts",
   "main": "./dist/cjs/production/index.cjs",
   "module": "./dist/esm/production/index.mjs",
