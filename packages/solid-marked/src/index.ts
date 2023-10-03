@@ -1,13 +1,13 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="global-types.d.ts" />
+import type { JSX } from 'solid-js';
 import {
   createComponent,
   createContext,
-  JSX,
   splitProps,
   useContext,
 } from 'solid-js';
-import { MDXProps } from '../compiler/interfaces';
+import type { MDXProps } from '../compiler/interfaces';
 
 const MDXContext = /* @__PURE__ */ createContext<MDXProps>();
 

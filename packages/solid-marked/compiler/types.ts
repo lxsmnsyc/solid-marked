@@ -1,5 +1,5 @@
-import GithubSlugger from 'github-slugger';
-import { SourceNode } from 'source-map';
+import type GithubSlugger from 'github-slugger';
+import type { SourceNode } from 'source-map';
 
 export interface Options {
   mdxImportSource?: string;

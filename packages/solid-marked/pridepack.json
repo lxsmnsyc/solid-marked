@@ -2,6 +2,7 @@
   "target": "es2017",
   "entrypoints": {
     ".": "src/index.ts",
-    "./compiler": "compiler/index.ts"
+    "./compiler": "compiler/index.ts",
+    "./component": "component/index.ts"
   }
 }
