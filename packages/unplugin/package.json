@@ -1,6 +1,6 @@
 {
   "name": "unplugin-solid-marked",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "type": "module",
   "files": [
     "dist",
@@ -19,7 +19,7 @@
     "eslint-config-lxsmnsyc": "^0.6.5",
     "pridepack": "2.4.4",
     "solid-js": "^1.7.12",
-    "solid-marked": "0.6.0",
+    "solid-marked": "0.6.1",
     "tslib": "^2.5.0",
     "typescript": "^4.9.5",
     "vite": "^4.4.9"
