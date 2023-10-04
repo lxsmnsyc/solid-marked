@@ -80,7 +80,7 @@ export interface MDXBuiltinComponents {
   Strong?: MDXComponent<ParentProps>;
   Table?: MDXComponent<TableProps>;
   TableCell?: MDXComponent<ParentProps>;
-  TableRow?: MDXComponent<ParentProps>;
+  TableRow?: MDXComponent<TableRowProps>;
   ThematicBreak?: () => JSX.Element;
 }
 

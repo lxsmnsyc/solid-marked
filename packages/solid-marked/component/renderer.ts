@@ -290,7 +290,7 @@ function compileTable(ctx: StateContext, node: mdast.Table): JSX.Element {
         return ctx.props.builtins.Table;
       },
       get children() {
-        return renderContent(ctx, node.children);
+        return node.children.map((value, i) => compileTableRow(ctx, value, i === 0));
       },
       align: node.align,
     },
@@ -311,7 +311,7 @@ function compileTableCell(ctx: StateContext, node: mdast.TableCell): JSX.Element
   );
 }
 
-function compileTableRow(ctx: StateContext, node: mdast.TableRow): JSX.Element {
+function compileTableRow(ctx: StateContext, node: mdast.TableRow, isHead: boolean): JSX.Element {
   return createComponent(
     Dynamic,
     {
@@ -319,8 +319,9 @@ function compileTableRow(ctx: StateContext, node: mdast.TableRow): JSX.Element {
         return ctx.props.builtins.TableRow;
       },
       get children() {
-        return renderContent(ctx, node.children);
+        return node.children.map((value) => compileTableCell(ctx, value));
       },
+      isHead,
     },
   );
 }
@@ -381,7 +382,7 @@ export function compileNode(ctx: StateContext, node: mdast.Nodes): JSX.Element {
     case 'tableCell':
       return compileTableCell(ctx, node);
     case 'tableRow':
-      return compileTableRow(ctx, node);
+      return compileTableRow(ctx, node, false);
     case 'text':
       return node.value;
     case 'thematicBreak':
