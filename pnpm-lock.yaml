@@ -30,7 +30,7 @@ importers:
         specifier: ^1.7.12
         version: 1.7.12
       solid-marked:
-        specifier: 0.5.2
+        specifier: 0.6.1
         version: link:../../packages/solid-marked
       tailwindcss:
         specifier: ^3.3.3
@@ -55,7 +55,7 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
       unplugin-solid-marked:
-        specifier: 0.5.2
+        specifier: 0.6.1
         version: link:../../packages/unplugin
       vite:
         specifier: ^4.4.9
@@ -73,7 +73,7 @@ importers:
         specifier: ^1.7.12
         version: 1.7.12
       solid-marked:
-        specifier: 0.5.2
+        specifier: 0.6.1
         version: link:../../packages/solid-marked
       tailwindcss:
         specifier: ^3.3.3
@@ -98,7 +98,7 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
       unplugin-solid-marked:
-        specifier: 0.5.2
+        specifier: 0.6.1
         version: link:../../packages/unplugin
       vite:
         specifier: ^4.4.9
@@ -202,7 +202,7 @@ importers:
         specifier: ^1.7.12
         version: 1.7.12
       solid-marked:
-        specifier: 0.5.2
+        specifier: 0.6.1
         version: link:../solid-marked
       tslib:
         specifier: ^2.5.0
@@ -217,7 +217,7 @@ importers:
   packages/vite:
     dependencies:
       unplugin-solid-marked:
-        specifier: 0.5.2
+        specifier: 0.6.1
         version: link:../unplugin
     devDependencies:
       '@types/node':
