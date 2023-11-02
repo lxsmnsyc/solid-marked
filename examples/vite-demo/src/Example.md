@@ -673,7 +673,7 @@ Let's take this example code:
     return (
       <Dynamic component={_ctx$.builtins.Root}>
         <Dynamic component={_ctx$.builtins.Paragraph}>
-          <Dynamic component={typeof Example === 'undefined' ? __ctx.components.Example : Example}>
+          <Dynamic component={typeof Example === 'undefined' ? _ctx$.components.Example : Example}>
             Hello World
           </Dynamic>
         </Dynamic>

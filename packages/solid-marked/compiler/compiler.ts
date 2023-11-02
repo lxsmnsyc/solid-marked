@@ -92,12 +92,12 @@ function createJSXTag(
   }
   // Test for dashed elements
   if (/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)+$/.test(nodeName)) {
-    return `__ctx.components['${nodeName}']`;
+    return `${CTX_VAR}.components['${nodeName}']`;
   }
   if (/^[a-zA-Z0-9]+:[a-zA-Z0-9]+$/.test(nodeName)) {
-    return `__ctx.components['${nodeName}']`;
+    return `${CTX_VAR}.components['${nodeName}']`;
   }
-  return `typeof ${nodeName} === 'undefined' ? __ctx.components.${nodeName} : ${nodeName}`;
+  return `typeof ${nodeName} === 'undefined' ? ${CTX_VAR}.components.${nodeName} : ${nodeName}`;
 }
 
 type ExcludedTags =
