@@ -1,13 +1,13 @@
 {
   "name": "component-demo",
   "type": "module",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.33",
     "typescript": "^5.3.3",
-    "unplugin-solid-marked": "0.6.2",
+    "unplugin-solid-marked": "0.6.3",
     "vite": "^5.0.12",
     "vite-plugin-solid": "2.9.1"
   },
@@ -15,7 +15,7 @@
   "dependencies": {
     "shikiji": "^0.10.2",
     "solid-js": "^1.8.12",
-    "solid-marked": "0.6.2",
+    "solid-marked": "0.6.3",
     "tailwindcss": "^3.4.1"
   },
   "scripts": {
