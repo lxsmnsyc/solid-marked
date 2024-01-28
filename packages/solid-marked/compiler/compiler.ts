@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import type * as mdast from 'mdast';
-import * as mdastString from 'mdast-util-to-string';
-import { SourceNode } from 'source-map';
 import type * as mdastMDX from 'mdast-util-mdx';
+import * as mdastString from 'mdast-util-to-string';
 import * as seroval from 'seroval';
-import * as yaml from 'yaml';
+import { SourceNode } from 'source-map';
 import * as toml from 'toml';
-import type { StateContext } from './types';
+import * as yaml from 'yaml';
 import { serializeString } from './string';
+import type { StateContext } from './types';
 
 interface TOML extends mdast.Literal {
   type: 'toml';
@@ -32,10 +31,18 @@ function createSourceNode(ctx: StateContext, base: mdast.Nodes): SourceNode {
   );
 }
 
-function addStringAttribute(result: SourceNode, name: string, value: string): void {
+function addStringAttribute(
+  result: SourceNode,
+  name: string,
+  value: string,
+): void {
   result.add(` ${name}={${serializeString(value)}}`);
 }
-function addJSAttribute(result: SourceNode, name: string, expression: string): void {
+function addJSAttribute(
+  result: SourceNode,
+  name: string,
+  expression: string,
+): void {
   result.add(` ${name}={${expression}}`);
 }
 
@@ -69,7 +76,11 @@ interface TagOptions {
   isMDX?: boolean;
 }
 
-function createTag(ctx: StateContext, target: string, tagOpts: TagOptions = {}): string {
+function createTag(
+  ctx: StateContext,
+  target: string,
+  tagOpts: TagOptions = {},
+): string {
   if (ctx.options.noDynamicComponents === 'only-mdx' && tagOpts.isMDX) {
     return target;
   }
@@ -83,10 +94,7 @@ function createTag(ctx: StateContext, target: string, tagOpts: TagOptions = {}):
   return `Dynamic component={${target}}`;
 }
 
-function createJSXTag(
-  ctx: StateContext,
-  nodeName: string,
-): string {
+function createJSXTag(ctx: StateContext, nodeName: string): string {
   if (ctx.options.noDynamicComponents) {
     return nodeName;
   }
@@ -109,7 +117,7 @@ type ExcludedTags =
   | 'text'
   | 'yaml'
   | 'toml';
-type WithTags = Exclude<mdast.Nodes['type'], ExcludedTags>
+type WithTags = Exclude<mdast.Nodes['type'], ExcludedTags>;
 
 export const CTX_VAR = '_ctx$';
 
@@ -149,7 +157,10 @@ function compileRoot(ctx: StateContext, node: mdast.Root): SourceNode {
   return result;
 }
 
-function compileParagraph(ctx: StateContext, node: mdast.Paragraph): SourceNode {
+function compileParagraph(
+  ctx: StateContext,
+  node: mdast.Paragraph,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.paragraph;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -171,13 +182,19 @@ function compileHeading(ctx: StateContext, node: mdast.Heading): SourceNode {
   return result;
 }
 
-function compileThematicBreak(ctx: StateContext, node: mdast.ThematicBreak): SourceNode {
+function compileThematicBreak(
+  ctx: StateContext,
+  node: mdast.ThematicBreak,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`<${createTag(ctx, MARKUP.thematicBreak)} />`);
   return result;
 }
 
-function compileBlockquote(ctx: StateContext, node: mdast.Blockquote): SourceNode {
+function compileBlockquote(
+  ctx: StateContext,
+  node: mdast.Blockquote,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.blockquote;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -248,7 +265,10 @@ function compileCode(ctx: StateContext, node: mdast.Code): SourceNode {
   return result;
 }
 
-function compileDefinition(ctx: StateContext, node: mdast.Definition): SourceNode {
+function compileDefinition(
+  ctx: StateContext,
+  node: mdast.Definition,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`<${createTag(ctx, MARKUP.definition)}`);
   applyResource(result, node);
@@ -281,7 +301,10 @@ function compileStrong(ctx: StateContext, node: mdast.Strong): SourceNode {
   return result;
 }
 
-function compileInlineCode(ctx: StateContext, node: mdast.InlineCode): SourceNode {
+function compileInlineCode(
+  ctx: StateContext,
+  node: mdast.InlineCode,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.inlineCode;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -316,7 +339,10 @@ function compileImage(ctx: StateContext, node: mdast.Image): SourceNode {
   return result;
 }
 
-function compileLinkReference(ctx: StateContext, node: mdast.LinkReference): SourceNode {
+function compileLinkReference(
+  ctx: StateContext,
+  node: mdast.LinkReference,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.linkReference;
   result.add(`<${createTag(ctx, tag)}`);
@@ -327,7 +353,10 @@ function compileLinkReference(ctx: StateContext, node: mdast.LinkReference): Sou
   return result;
 }
 
-function compileImageReference(ctx: StateContext, node: mdast.ImageReference): SourceNode {
+function compileImageReference(
+  ctx: StateContext,
+  node: mdast.ImageReference,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`<${createTag(ctx, MARKUP.imageReference)}`);
   applyReference(result, node);
@@ -336,7 +365,10 @@ function compileImageReference(ctx: StateContext, node: mdast.ImageReference): S
   return result;
 }
 
-function compileFootnoteDefinition(ctx: StateContext, node: mdast.FootnoteDefinition): SourceNode {
+function compileFootnoteDefinition(
+  ctx: StateContext,
+  node: mdast.FootnoteDefinition,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.footnoteDefinition;
   result.add(`<${createTag(ctx, tag)}`);
@@ -347,7 +379,10 @@ function compileFootnoteDefinition(ctx: StateContext, node: mdast.FootnoteDefini
   return result;
 }
 
-function compileFootnoteReference(ctx: StateContext, node: mdast.FootnoteReference): SourceNode {
+function compileFootnoteReference(
+  ctx: StateContext,
+  node: mdast.FootnoteReference,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   result.add(`<${createTag(ctx, MARKUP.footnoteReference)}`);
   applyAssociation(result, node);
@@ -370,7 +405,11 @@ function compileTable(ctx: StateContext, node: mdast.Table): SourceNode {
   return result;
 }
 
-function compileTableRow(ctx: StateContext, node: mdast.TableRow, isHead: boolean): SourceNode {
+function compileTableRow(
+  ctx: StateContext,
+  node: mdast.TableRow,
+  isHead: boolean,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.tableRow;
   result.add(`<${createTag(ctx, tag)}`);
@@ -385,7 +424,10 @@ function compileTableRow(ctx: StateContext, node: mdast.TableRow, isHead: boolea
   return result;
 }
 
-function compileTableCell(ctx: StateContext, node: mdast.TableCell): SourceNode {
+function compileTableCell(
+  ctx: StateContext,
+  node: mdast.TableCell,
+): SourceNode {
   const result = createSourceNode(ctx, node);
   const tag = MARKUP.tableCell;
   result.add(`<${createTag(ctx, tag)}>`);
@@ -412,49 +454,55 @@ function compileMDXExpression(
   return result;
 }
 
+function compileMDXElementAttribute(
+  ctx: StateContext,
+  attribute: mdastMDX.MdxJsxAttribute | mdastMDX.MdxJsxExpressionAttribute,
+): SourceNode {
+  const attributeNode = new SourceNode(
+    attribute.position?.start.line ?? null,
+    attribute.position?.start.column ?? null,
+    ctx.source,
+  );
+  if (attribute.type === 'mdxJsxAttribute') {
+    attributeNode.add(` ${attribute.name}`);
+    if (attribute.value) {
+      if (typeof attribute.value === 'string') {
+        attributeNode.add(`={${serializeString(attribute.value)}}`);
+      } else {
+        const attributeValueNode = new SourceNode(
+          attribute.value.position?.start.line ?? null,
+          attribute.value.position?.start.column ?? null,
+          ctx.source,
+        );
+        attributeValueNode.add(attribute.value.value);
+        attributeNode.add(['={', attributeValueNode, '}']);
+      }
+    }
+  } else {
+    attributeNode.add(` {...${attribute.value}}`);
+  }
+  return attributeNode;
+}
+
 function compileMDXElement(
   ctx: StateContext,
   node: mdastMDX.MdxJsxTextElement | mdastMDX.MdxJsxFlowElement,
 ): SourceNode {
   const result = createSourceNode(ctx, node);
-  if (node.name) {
-    const name = createJSXTag(ctx, node.name);
-    result.add(`<${createTag(ctx, name, { isMDX: true })}`);
-    for (let i = 0, len = node.attributes.length; i < len; i += 1) {
-      const attribute = node.attributes[i];
-      const attributeNode = new SourceNode(
-        attribute.position?.start.line ?? null,
-        attribute.position?.start.column ?? null,
-        ctx.source,
-      );
-      if (attribute.type === 'mdxJsxAttribute') {
-        attributeNode.add(` ${attribute.name}`);
-        if (attribute.value) {
-          if (typeof attribute.value === 'string') {
-            attributeNode.add(`={${serializeString(attribute.value)}}`);
-          } else {
-            const attributeValueNode = new SourceNode(
-              attribute.value.position?.start.line ?? null,
-              attribute.value.position?.start.column ?? null,
-              ctx.source,
-            );
-            attributeValueNode.add(attribute.value.value);
-            attributeNode.add(['={', attributeValueNode, '}']);
-          }
-        }
-      } else {
-        attributeNode.add(` {...${attribute.value}}`);
-      }
-      result.add(attributeNode);
-    }
-    result.add('>');
-    addContent(ctx, result, node.children);
-    result.add(`</${createTag(ctx, name, { isClosing: true, isMDX: true })}>`);
-  } else {
+  if (!node.name) {
     result.add('<>');
     addContent(ctx, result, node.children);
     result.add('</>');
+    return result;
   }
+  const name = createJSXTag(ctx, node.name);
+  result.add(`<${createTag(ctx, name, { isMDX: true })}`);
+  for (let i = 0, len = node.attributes.length; i < len; i += 1) {
+    result.add(compileMDXElementAttribute(ctx, node.attributes[i]));
+  }
+  result.add('>');
+  addContent(ctx, result, node.children);
+  result.add(`</${createTag(ctx, name, { isClosing: true, isMDX: true })}>`);
   return result;
 }
 
@@ -467,18 +515,14 @@ function compileMDXESM(ctx: StateContext, node: mdastMDX.MdxjsEsm): SourceNode {
 
 function compileYAML(ctx: StateContext, node: mdast.Yaml): SourceNode {
   const result = createSourceNode(ctx, node);
-  result.add(seroval.serialize(
-    yaml.parse(node.value),
-  ));
+  result.add(seroval.serialize(yaml.parse(node.value)));
   ctx.frontmatter = result;
   return new SourceNode();
 }
 
 function compileTOML(ctx: StateContext, node: TOML): SourceNode {
   const result = createSourceNode(ctx, node);
-  result.add(seroval.serialize(
-    toml.parse(node.value),
-  ));
+  result.add(seroval.serialize(toml.parse(node.value)));
   ctx.frontmatter = result;
   return new SourceNode();
 }
@@ -575,10 +619,7 @@ function addBlockOrDefinitionContent(
   }
 }
 
-export function compileNode(
-  ctx: StateContext,
-  node: mdast.Nodes,
-): SourceNode {
+export function compileNode(ctx: StateContext, node: mdast.Nodes): SourceNode {
   switch (node.type) {
     case 'root':
       return compileRoot(ctx, node);

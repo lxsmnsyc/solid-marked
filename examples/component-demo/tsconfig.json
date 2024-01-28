@@ -2,8 +2,11 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "lib": ["ESNext", "DOM"],
-    "moduleResolution": "Node",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "moduleResolution": "Bundler",
     "strict": true,
     "sourceMap": true,
     "resolveJsonModule": true,
@@ -19,5 +22,7 @@
       "solid-marked/env"
     ]
   },
-  "include": ["./src"]
+  "include": [
+    "./src"
+  ]
 }

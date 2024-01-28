@@ -11,16 +11,16 @@ import type { MDXProps } from '../compiler/interfaces';
 
 const MDXContext = /* @__PURE__ */ createContext<MDXProps>();
 
-export function MDXProvider(props: MDXProps & { children: JSX.Element }): JSX.Element {
+export function MDXProvider(
+  props: MDXProps & { children: JSX.Element },
+): JSX.Element {
   const [local, other] = splitProps(props, ['children']);
-  return (
-    createComponent(MDXContext.Provider, {
-      value: other,
-      get children() {
-        return local.children;
-      },
-    })
-  );
+  return createComponent(MDXContext.Provider, {
+    value: other,
+    get children() {
+      return local.children;
+    },
+  });
 }
 
 export function useMDX(): MDXProps {

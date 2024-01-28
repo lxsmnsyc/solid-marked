@@ -14,17 +14,15 @@
     "pridepack"
   ],
   "devDependencies": {
-    "@types/node": "^20.8.2",
-    "eslint": "^8.50.0",
-    "eslint-config-lxsmnsyc": "^0.6.5",
-    "pridepack": "2.4.4",
-    "solid-js": "^1.7.12",
-    "tslib": "^2.5.0",
-    "typescript": "^4.9.5",
-    "vite": "^4.4.9"
+    "@types/node": "^20.11.5",
+    "pridepack": "2.6.0",
+    "solid-js": "^1.8.12",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
   },
   "peerDependencies": {
-    "vite": "^4.0"
+    "vite": "^4.0 || ^5.0"
   },
   "dependencies": {
     "unplugin-solid-marked": "0.6.2"
@@ -33,11 +31,7 @@
     "prepublishOnly": "pridepack clean && pridepack build",
     "build": "pridepack build",
     "type-check": "pridepack check",
-    "lint": "pridepack lint",
-    "clean": "pridepack clean",
-    "watch": "pridepack watch",
-    "start": "pridepack start",
-    "dev": "pridepack dev"
+    "clean": "pridepack clean"
   },
   "private": false,
   "description": "Vite plugin for solid-marked",
@@ -56,19 +50,18 @@
   "exports": {
     ".": {
       "development": {
-        "require": "./dist/cjs/development/index.js",
-        "import": "./dist/esm/development/index.js"
+        "require": "./dist/cjs/development/index.cjs",
+        "import": "./dist/esm/development/index.mjs"
       },
-      "require": "./dist/cjs/production/index.js",
-      "import": "./dist/esm/production/index.js",
+      "require": "./dist/cjs/production/index.cjs",
+      "import": "./dist/esm/production/index.mjs",
       "types": "./dist/types/index.d.ts"
     }
   },
   "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/types/index.d.ts"
-      ]
-    }
-  }
+    "*": {}
+  },
+  "types": "./dist/types/index.d.ts",
+  "main": "./dist/cjs/production/index.cjs",
+  "module": "./dist/esm/production/index.mjs"
 }

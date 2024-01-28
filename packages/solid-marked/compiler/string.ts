@@ -1,16 +1,27 @@
 export function serializeChar(str: string): string | undefined {
   switch (str) {
-    case '"': return '\\"';
-    case '\\': return '\\\\';
-    case '\n': return '\\n';
-    case '\r': return '\\r';
-    case '\b': return '\\b';
-    case '\t': return '\\t';
-    case '\f': return '\\f';
-    case '<': return '\\x3C';
-    case '\u2028': return '\\u2028';
-    case '\u2029': return '\\u2029';
-    default: return undefined;
+    case '"':
+      return '\\"';
+    case '\\':
+      return '\\\\';
+    case '\n':
+      return '\\n';
+    case '\r':
+      return '\\r';
+    case '\b':
+      return '\\b';
+    case '\t':
+      return '\\t';
+    case '\f':
+      return '\\f';
+    case '<':
+      return '\\x3C';
+    case '\u2028':
+      return '\\u2028';
+    case '\u2029':
+      return '\\u2029';
+    default:
+      return undefined;
   }
 }
 

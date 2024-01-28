@@ -1,23 +1,19 @@
-import type { RawSourceMap } from 'source-map';
-import {
-  SourceNode,
-} from 'source-map';
-import {
-  fromMarkdown,
-} from 'mdast-util-from-markdown';
-import { mdxFromMarkdown } from 'mdast-util-mdx';
-import { gfmFromMarkdown } from 'mdast-util-gfm';
-import { frontmatterFromMarkdown } from 'mdast-util-frontmatter';
-import { toc } from 'mdast-util-toc';
-import { mdxjs } from 'micromark-extension-mdxjs';
-import { gfm } from 'micromark-extension-gfm';
-import { frontmatter } from 'micromark-extension-frontmatter';
 import GithubSlugger from 'github-slugger';
+import { fromMarkdown } from 'mdast-util-from-markdown';
+import { frontmatterFromMarkdown } from 'mdast-util-frontmatter';
+import { gfmFromMarkdown } from 'mdast-util-gfm';
+import { mdxFromMarkdown } from 'mdast-util-mdx';
+import { toc } from 'mdast-util-toc';
+import { frontmatter } from 'micromark-extension-frontmatter';
+import { gfm } from 'micromark-extension-gfm';
+import { mdxjs } from 'micromark-extension-mdxjs';
+import type { RawSourceMap } from 'source-map';
+import { SourceNode } from 'source-map';
 import { CTX_VAR, compileNode } from './compiler';
 import type { Options, StateContext } from './types';
 
-export type { Options } from './types';
 export * from './interfaces';
+export type { Options } from './types';
 
 const USE_MDX_VAR = '_useMDX$';
 
@@ -32,11 +28,7 @@ export function compile(
   options: Options = {},
 ): Result {
   const ast = fromMarkdown(markdownCode, {
-    extensions: [
-      mdxjs(),
-      gfm(),
-      frontmatter(['yaml', 'toml']),
-    ],
+    extensions: [mdxjs(), gfm(), frontmatter(['yaml', 'toml'])],
     mdastExtensions: [
       mdxFromMarkdown(),
       gfmFromMarkdown(),
@@ -63,7 +55,11 @@ export function compile(
     compiled.add(ctx.frontmatter);
     compiled.add(';\n');
   }
-  compiled.add(`import { useMDX as ${USE_MDX_VAR} } from '${options.mdxImportSource || 'solid-marked'}';\n\n`);
+  compiled.add(
+    `import { useMDX as ${USE_MDX_VAR} } from '${
+      options.mdxImportSource || 'solid-marked'
+    }';\n\n`,
+  );
   if (tocAST.map) {
     const renderedTOC = compileNode(ctx, tocAST.map);
     compiled.add('export function TableOfContents(props) {\n');

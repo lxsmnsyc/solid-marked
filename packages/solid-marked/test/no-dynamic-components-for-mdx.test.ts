@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { expect, test } from 'vitest';
 import { compile } from '../compiler';
 
@@ -38,13 +37,15 @@ test('should support Html', () => {
   expect(testCompile('<div>Hello World</div>')).toMatchSnapshot();
 });
 test('should support Code', () => {
-  expect(testCompile(`
+  expect(
+    testCompile(`
 \`\`\`js highlight-line="2"
 foo()
 bar()
 baz()
 \`\`\`
-`)).toMatchSnapshot();
+`),
+  ).toMatchSnapshot();
 });
 test('should support Definition', () => {
   expect(testCompile('[Alpha]: https://example.com')).toMatchSnapshot();
@@ -59,15 +60,19 @@ test('should support InlineCode', () => {
   expect(testCompile('`foo()`')).toMatchSnapshot();
 });
 test('should support Break', () => {
-  expect(testCompile(`
+  expect(
+    testCompile(`
 a  \nb
-`)).toMatchSnapshot();
+`),
+  ).toMatchSnapshot();
 });
 test('should support Link', () => {
   expect(testCompile('[alpha](https://example.com "bravo")')).toMatchSnapshot();
 });
 test('should support Image', () => {
-  expect(testCompile('![alpha](https://example.com/favicon.ico "bravo")')).toMatchSnapshot();
+  expect(
+    testCompile('![alpha](https://example.com/favicon.ico "bravo")'),
+  ).toMatchSnapshot();
 });
 test('should support LinkReference', () => {
   expect(testCompile('[alpha]\n\n[alpha]: bravo')).toMatchSnapshot();
@@ -82,62 +87,76 @@ test('should support FootnoteReference', () => {
   expect(testCompile('[^alpha]')).toMatchSnapshot();
 });
 test('should support Table', () => {
-  expect(testCompile(`
+  expect(
+    testCompile(`
 | foo | bar |
 | :-- | :-: |
 | baz | qux |
-`)).toMatchSnapshot();
+`),
+  ).toMatchSnapshot();
 });
 test('should support Table, TableRow and TableCell', () => {
-  expect(testCompile(`
+  expect(
+    testCompile(`
 | foo | bar |
 | :-- | :-: |
 | baz | qux |
-`)).toMatchSnapshot();
+`),
+  ).toMatchSnapshot();
 });
 test('should support Delete', () => {
   expect(testCompile('~~alpha~~')).toMatchSnapshot();
 });
 test('should support MDX ESM', () => {
-  expect(testCompile('import Box from \'box\';')).toMatchSnapshot();
+  expect(testCompile("import Box from 'box';")).toMatchSnapshot();
 });
 test('should support MDX JSX', () => {
   expect(testCompile('<Box>Hello World</Box>')).toMatchSnapshot();
   expect(testCompile('<some-box>Hello World</some-box>')).toMatchSnapshot();
   expect(testCompile('<some:box>Hello World</some:box>')).toMatchSnapshot();
-  expect(testCompile(`
+  expect(
+    testCompile(`
 <Box>
   Hello World
 </Box>
-`)).toMatchSnapshot();
-  expect(testCompile(`
+`),
+  ).toMatchSnapshot();
+  expect(
+    testCompile(`
 <some-box>
 Hello World
 </some-box>
-`)).toMatchSnapshot();
-  expect(testCompile(`
+`),
+  ).toMatchSnapshot();
+  expect(
+    testCompile(`
 <some:box>
 Hello World
 </some:box>
-`)).toMatchSnapshot();
+`),
+  ).toMatchSnapshot();
 });
 test('should support MDX JS', () => {
   expect(testCompile('{1 + 1}')).toMatchSnapshot();
 });
 
 test('should support YAML', () => {
-  expect(testCompile(`---
+  expect(
+    testCompile(`---
 title: Hi, World!
 ---
 
 # {frontmatter.title}
-`)).toMatchSnapshot();
+`),
+  ).toMatchSnapshot();
 });
 test('should support TOML', () => {
-  expect(testCompile(`+++
+  expect(
+    testCompile(`+++
 title = "Hi, World!"
 +++
 
 # {frontmatter.title}
-`)).toMatchSnapshot();
+`),
+  ).toMatchSnapshot();
 });

@@ -1,7 +1,4 @@
-import type {
-  Component,
-  JSX,
-} from 'solid-js';
+import type { Component, JSX } from 'solid-js';
 
 export interface ParentProps {
   children?: JSX.Element;
@@ -18,7 +15,7 @@ export interface AssociationProps {
 
 export interface ResourceProps {
   url: string;
-  title?: string | null | undefined ;
+  title?: string | null | undefined;
 }
 
 export interface AlternativeProps {

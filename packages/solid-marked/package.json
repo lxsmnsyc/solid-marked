@@ -47,15 +47,13 @@
     "pridepack"
   ],
   "devDependencies": {
-    "@types/mdast": "^4.0.1",
-    "@types/node": "^20.8.2",
-    "eslint": "^8.50.0",
-    "eslint-config-lxsmnsyc": "^0.6.5",
-    "pridepack": "2.4.4",
-    "solid-js": "^1.7.12",
-    "tslib": "^2.5.0",
-    "typescript": "^4.9.5",
-    "vitest": "^0.34.6"
+    "@types/mdast": "^4.0.3",
+    "@types/node": "^20.11.5",
+    "pridepack": "2.6.0",
+    "solid-js": "^1.8.12",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
   },
   "peerDependencies": {
     "solid-js": "^1.7"
@@ -70,11 +68,11 @@
     "mdast-util-toc": "^7.0.0",
     "micromark-extension-frontmatter": "^2.0.0",
     "micromark-extension-gfm": "^3.0.0",
-    "micromark-extension-mdxjs": "^2.0.0",
-    "seroval": "^0.10.4",
+    "micromark-extension-mdxjs": "^3.0.0",
+    "seroval": "^1.0.4",
     "source-map": "^0.7.4",
     "toml": "^3.0.0",
-    "yaml": "^2.3.2"
+    "yaml": "^2.3.4"
   },
   "description": "Markdown Compiler for SolidJS",
   "repository": {
@@ -94,12 +92,8 @@
     "prepublishOnly": "pridepack clean && pridepack build",
     "build": "pridepack build",
     "type-check": "pridepack check",
-    "lint": "pridepack lint",
     "test": "vitest",
-    "clean": "pridepack clean",
-    "watch": "pridepack watch",
-    "start": "pridepack start",
-    "dev": "pridepack dev"
+    "clean": "pridepack clean"
   },
   "typesVersions": {
     "*": {
