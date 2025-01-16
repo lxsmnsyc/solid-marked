@@ -4,6 +4,9 @@
 
 [![NPM](https://img.shields.io/npm/v/solid-marked.svg)](https://www.npmjs.com/package/solid-marked) [![JavaScript Style Guide](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)[![Open in StackBlitz](https://img.shields.io/badge/Open%20in-StackBlitz-blue?style=flat-square&logo=stackblitz)](https://stackblitz.com/github/LXSMNSYC/solid-marked/tree/main/examples/vite-demo)
 
+[![Open in Codeanywhere](https://img.shields.io/badge/Open_in-Codeanywhere-blue?logo=codeanywhere&style=for-the-badge)](https://app.codeanywhere.com/#https://github.com/LXSMNSYC/solid-marked/tree/main/examples/vite-demo)
+
+
 ## Install
 
 ```bash
