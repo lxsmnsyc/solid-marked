@@ -7,7 +7,12 @@
   ],
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
-    "lerna": "^8.0.2",
-    "typescript": "^5.3.3"
+    "@changesets/cli": "^2.29.8",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "cs:ver": "changeset version",
+    "cs:pub": "changeset publish",
+    "cs:add": "changeset add"
   }
 }

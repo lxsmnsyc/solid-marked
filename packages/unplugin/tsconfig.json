@@ -24,7 +24,7 @@
     "moduleResolution": "Bundler",
     "jsx": "react",
     "esModuleInterop": true,
-    "target": "ES2017",
+    "target": "es2018",
     "useDefineForClassFields": false,
     "declarationMap": true
   }
