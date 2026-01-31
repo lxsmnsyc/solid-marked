@@ -1,4 +1,4 @@
-import * as shikiji from 'shikiji';
+import * as shiki from 'shiki';
 import type { JSX } from 'solid-js';
 import { Show, createEffect, createResource, createSignal } from 'solid-js';
 import { Dynamic, render } from 'solid-js/web';
@@ -8,7 +8,7 @@ import './main.css';
 
 function App(): JSX.Element {
   const [highlighter] = createResource(async () =>
-    shikiji.getHighlighter({
+    shiki.createHighlighter({
       langs: ['tsx', 'jsx', 'md', 'mdx', 'markdown', 'bash', 'js', 'ts'],
       themes: ['github-dark'],
     }),
