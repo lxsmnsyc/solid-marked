@@ -1,12 +1,12 @@
 {
   "name": "component-demo",
   "type": "module",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
     "typescript": "^5.9.3",
-    "unplugin-solid-marked": "0.6.3",
+    "unplugin-solid-marked": "0.7.0",
     "vite": "^7.3.1",
     "vite-plugin-solid": "2.11.10"
   },
@@ -14,7 +14,7 @@
   "dependencies": {
     "shiki": "^3.22.0",
     "solid-js": "^1.9.11",
-    "solid-marked": "0.6.3",
+    "solid-marked": "0.7.0",
     "tailwindcss": "^4.1.18"
   },
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-solid-marked",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "type": "module",
   "files": [
     "dist",
@@ -25,7 +25,7 @@
     "vite": "^7"
   },
   "dependencies": {
-    "unplugin-solid-marked": "0.6.3"
+    "unplugin-solid-marked": "0.7.0"
   },
   "scripts": {
     "prepublishOnly": "pridepack clean && pridepack build",
