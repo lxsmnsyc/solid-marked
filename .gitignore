@@ -104,7 +104,6 @@ dist
 # TernJS port file
 .tern-port
 
-.npmrc
 .poneglyph
 
 .rigidity
