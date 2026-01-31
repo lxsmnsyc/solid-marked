@@ -122,7 +122,7 @@ export default function Component(props) {
 
 #### `<Heading>`
 
-> [!INFO]
+> [!NOTE]
 > Presence of a `<Heading>` allows the Markdown component to generate a `<TableOfContents>`.
 
 ```md
@@ -890,7 +890,7 @@ const content = (
 );
 ```
 
-> [!INFO]
+> [!NOTE]
 > Markdown component only supports CommonMark and GFM. MDX and Frontmatter are considered "invalid".
 
 ## Sponsors
