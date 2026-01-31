@@ -83,5 +83,5 @@ export interface MDXBuiltinComponents {
 
 export interface MDXProps {
   builtins: MDXBuiltinComponents;
-  components?: Record<string, Component<unknown>>;
+  components?: Record<string, Component<any>>;
 }

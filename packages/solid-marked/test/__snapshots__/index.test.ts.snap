@@ -30,7 +30,7 @@ exports[`should support Code 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Code} lang={\\"js\\"} meta={\\"highlight-line=\\\\\\"2\\\\\\"\\"}>{\\"foo()\\\\nbar()\\\\nbaz()\\"}</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Code} lang={"js"} meta={"highlight-line=\\"2\\""}>{"foo()\\nbar()\\nbaz()"}</Dynamic></Dynamic>
   );
 }
 "
@@ -42,7 +42,7 @@ exports[`should support Definition 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Definition} url={\\"https://example.com\\"} identifier={\\"alpha\\"} label={\\"Alpha\\"} /></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Definition} url={"https://example.com"} identifier={"alpha"} label={"Alpha"} /></Dynamic>
   );
 }
 "
@@ -78,7 +78,7 @@ exports[`should support FootnoteDefinition 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.FootnoteDefinition} identifier={\\"alpha\\"} label={\\"alpha\\"}><Dynamic component={_ctx$.builtins.Paragraph}>bravo and charlie.</Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.FootnoteDefinition} identifier={"alpha"} label={"alpha"}><Dynamic component={_ctx$.builtins.Paragraph}>bravo and charlie.</Dynamic></Dynamic></Dynamic>
   );
 }
 "
@@ -102,13 +102,13 @@ exports[`should support Heading 1`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#lorem"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={"lorem"}>Lorem</Dynamic></Dynamic>
   );
 }
 "
@@ -120,13 +120,13 @@ exports[`should support Heading 2`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#lorem"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={2} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={2} id={"lorem"}>Lorem</Dynamic></Dynamic>
   );
 }
 "
@@ -138,13 +138,13 @@ exports[`should support Heading 3`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#lorem"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={3} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={3} id={"lorem"}>Lorem</Dynamic></Dynamic>
   );
 }
 "
@@ -156,13 +156,13 @@ exports[`should support Heading 4`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#lorem"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={4} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={4} id={"lorem"}>Lorem</Dynamic></Dynamic>
   );
 }
 "
@@ -174,13 +174,13 @@ exports[`should support Heading 5`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#lorem"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={5} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={5} id={"lorem"}>Lorem</Dynamic></Dynamic>
   );
 }
 "
@@ -192,13 +192,13 @@ exports[`should support Heading 6`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#lorem\\"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#lorem"}>Lorem</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={6} id={\\"lorem\\"}>Lorem</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={6} id={"lorem"}>Lorem</Dynamic></Dynamic>
   );
 }
 "
@@ -222,7 +222,7 @@ exports[`should support Image 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Image} url={\\"https://example.com/favicon.ico\\"} title={\\"bravo\\"} alt={\\"alpha\\"} /></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Image} url={"https://example.com/favicon.ico"} title={"bravo"} alt={"alpha"} /></Dynamic></Dynamic>
   );
 }
 "
@@ -234,7 +234,7 @@ exports[`should support ImageReference 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.ImageReference} identifier={\\"alpha\\"} label={\\"alpha\\"} referenceType={\\"shortcut\\"} alt={\\"alpha\\"} /></Dynamic><Dynamic component={_ctx$.builtins.Definition} url={\\"bravo\\"} identifier={\\"alpha\\"} label={\\"alpha\\"} /></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.ImageReference} identifier={"alpha"} label={"alpha"} referenceType={"shortcut"} alt={"alpha"} /></Dynamic><Dynamic component={_ctx$.builtins.Definition} url={"bravo"} identifier={"alpha"} label={"alpha"} /></Dynamic>
   );
 }
 "
@@ -246,7 +246,7 @@ exports[`should support InlineCode 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.InlineCode}>{\\"foo()\\"}</Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.InlineCode}>{"foo()"}</Dynamic></Dynamic></Dynamic>
   );
 }
 "
@@ -258,7 +258,7 @@ exports[`should support Link 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"https://example.com\\"} title={\\"bravo\\"}>alpha</Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"https://example.com"} title={"bravo"}>alpha</Dynamic></Dynamic></Dynamic>
   );
 }
 "
@@ -270,7 +270,7 @@ exports[`should support LinkReference 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.LinkReference} identifier={\\"alpha\\"} label={\\"alpha\\"} referenceType={\\"shortcut\\"}>alpha</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.Definition} url={\\"bravo\\"} identifier={\\"alpha\\"} label={\\"alpha\\"} /></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.LinkReference} identifier={"alpha"} label={"alpha"} referenceType={"shortcut"}>alpha</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.Definition} url={"bravo"} identifier={"alpha"} label={"alpha"} /></Dynamic>
   );
 }
 "
@@ -458,19 +458,19 @@ export default function Component(props) {
 `;
 
 exports[`should support TOML 1`] = `
-"export const frontmatter = Object.assign(Object.create(null),{title:\\"Hi, World!\\"});
+"export const frontmatter = Object.assign(Object.create(null),{title:"Hi, World!"});
 import { useMDX as _useMDX$ } from 'solid-marked';
 
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#frontmattertitle"}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\\"frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={"frontmattertitle"}>{frontmatter.title}</Dynamic></Dynamic>
   );
 }
 "
@@ -482,7 +482,7 @@ exports[`should support Table 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow} isHead={true}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={["left","center"]}><Dynamic component={_ctx$.builtins.TableRow} isHead={true}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 "
@@ -494,7 +494,7 @@ exports[`should support Table, TableRow and TableCell 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={[\\"left\\",\\"center\\"]}><Dynamic component={_ctx$.builtins.TableRow} isHead={true}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Table} align={["left","center"]}><Dynamic component={_ctx$.builtins.TableRow} isHead={true}><Dynamic component={_ctx$.builtins.TableCell}>foo</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>bar</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.TableRow}><Dynamic component={_ctx$.builtins.TableCell}>baz</Dynamic><Dynamic component={_ctx$.builtins.TableCell}>qux</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 "
@@ -513,19 +513,19 @@ export default function Component(props) {
 `;
 
 exports[`should support YAML 1`] = `
-"export const frontmatter = ({title:\\"Hi, World!\\"});
+"export const frontmatter = ({title:"Hi, World!"});
 import { useMDX as _useMDX$ } from 'solid-marked';
 
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={\\"#frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#frontmattertitle"}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={\\"frontmattertitle\\"}>{frontmatter.title}</Dynamic></Dynamic>
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={"frontmattertitle"}>{frontmatter.title}</Dynamic></Dynamic>
   );
 }
 "

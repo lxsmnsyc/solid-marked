@@ -30,7 +30,7 @@ exports[`should support Code 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Code lang={\\"js\\"} meta={\\"highlight-line=\\\\\\"2\\\\\\"\\"}>{\\"foo()\\\\nbar()\\\\nbaz()\\"}</_ctx$.builtins.Code></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Code lang={"js"} meta={"highlight-line=\\"2\\""}>{"foo()\\nbar()\\nbaz()"}</_ctx$.builtins.Code></_ctx$.builtins.Root>
   );
 }
 "
@@ -42,7 +42,7 @@ exports[`should support Definition 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Definition url={\\"https://example.com\\"} identifier={\\"alpha\\"} label={\\"Alpha\\"} /></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Definition url={"https://example.com"} identifier={"alpha"} label={"Alpha"} /></_ctx$.builtins.Root>
   );
 }
 "
@@ -78,7 +78,7 @@ exports[`should support FootnoteDefinition 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.FootnoteDefinition identifier={\\"alpha\\"} label={\\"alpha\\"}><_ctx$.builtins.Paragraph>bravo and charlie.</_ctx$.builtins.Paragraph></_ctx$.builtins.FootnoteDefinition></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.FootnoteDefinition identifier={"alpha"} label={"alpha"}><_ctx$.builtins.Paragraph>bravo and charlie.</_ctx$.builtins.Paragraph></_ctx$.builtins.FootnoteDefinition></_ctx$.builtins.Root>
   );
 }
 "
@@ -102,13 +102,13 @@ exports[`should support Heading 1`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={"#lorem"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={"lorem"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
   );
 }
 "
@@ -120,13 +120,13 @@ exports[`should support Heading 2`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={"#lorem"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={2} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={2} id={"lorem"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
   );
 }
 "
@@ -138,13 +138,13 @@ exports[`should support Heading 3`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={"#lorem"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={3} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={3} id={"lorem"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
   );
 }
 "
@@ -156,13 +156,13 @@ exports[`should support Heading 4`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={"#lorem"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={4} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={4} id={"lorem"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
   );
 }
 "
@@ -174,13 +174,13 @@ exports[`should support Heading 5`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={"#lorem"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={5} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={5} id={"lorem"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
   );
 }
 "
@@ -192,13 +192,13 @@ exports[`should support Heading 6`] = `
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#lorem\\"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={"#lorem"}>Lorem</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={6} id={\\"lorem\\"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={6} id={"lorem"}>Lorem</_ctx$.builtins.Heading></_ctx$.builtins.Root>
   );
 }
 "
@@ -222,7 +222,7 @@ exports[`should support Image 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.Image url={\\"https://example.com/favicon.ico\\"} title={\\"bravo\\"} alt={\\"alpha\\"} /></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.Image url={"https://example.com/favicon.ico"} title={"bravo"} alt={"alpha"} /></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
   );
 }
 "
@@ -234,7 +234,7 @@ exports[`should support ImageReference 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.ImageReference identifier={\\"alpha\\"} label={\\"alpha\\"} referenceType={\\"shortcut\\"} alt={\\"alpha\\"} /></_ctx$.builtins.Paragraph><_ctx$.builtins.Definition url={\\"bravo\\"} identifier={\\"alpha\\"} label={\\"alpha\\"} /></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.ImageReference identifier={"alpha"} label={"alpha"} referenceType={"shortcut"} alt={"alpha"} /></_ctx$.builtins.Paragraph><_ctx$.builtins.Definition url={"bravo"} identifier={"alpha"} label={"alpha"} /></_ctx$.builtins.Root>
   );
 }
 "
@@ -246,7 +246,7 @@ exports[`should support InlineCode 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.InlineCode>{\\"foo()\\"}</_ctx$.builtins.InlineCode></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.InlineCode>{"foo()"}</_ctx$.builtins.InlineCode></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
   );
 }
 "
@@ -258,7 +258,7 @@ exports[`should support Link 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"https://example.com\\"} title={\\"bravo\\"}>alpha</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={"https://example.com"} title={"bravo"}>alpha</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.Root>
   );
 }
 "
@@ -270,7 +270,7 @@ exports[`should support LinkReference 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.LinkReference identifier={\\"alpha\\"} label={\\"alpha\\"} referenceType={\\"shortcut\\"}>alpha</_ctx$.builtins.LinkReference></_ctx$.builtins.Paragraph><_ctx$.builtins.Definition url={\\"bravo\\"} identifier={\\"alpha\\"} label={\\"alpha\\"} /></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Paragraph><_ctx$.builtins.LinkReference identifier={"alpha"} label={"alpha"} referenceType={"shortcut"}>alpha</_ctx$.builtins.LinkReference></_ctx$.builtins.Paragraph><_ctx$.builtins.Definition url={"bravo"} identifier={"alpha"} label={"alpha"} /></_ctx$.builtins.Root>
   );
 }
 "
@@ -458,19 +458,19 @@ export default function Component(props) {
 `;
 
 exports[`should support TOML 1`] = `
-"export const frontmatter = Object.assign(Object.create(null),{title:\\"Hi, World!\\"});
+"export const frontmatter = Object.assign(Object.create(null),{title:"Hi, World!"});
 import { useMDX as _useMDX$ } from 'solid-marked';
 
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#frontmattertitle\\"}>{frontmatter.title}</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={"#frontmattertitle"}>{frontmatter.title}</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={\\"frontmattertitle\\"}>{frontmatter.title}</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={"frontmattertitle"}>{frontmatter.title}</_ctx$.builtins.Heading></_ctx$.builtins.Root>
   );
 }
 "
@@ -482,7 +482,7 @@ exports[`should support Table 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Table align={[\\"left\\",\\"center\\"]}><_ctx$.builtins.TableRow isHead={true}><_ctx$.builtins.TableCell>foo</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>bar</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>baz</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>qux</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow></_ctx$.builtins.Table></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Table align={["left","center"]}><_ctx$.builtins.TableRow isHead={true}><_ctx$.builtins.TableCell>foo</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>bar</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>baz</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>qux</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow></_ctx$.builtins.Table></_ctx$.builtins.Root>
   );
 }
 "
@@ -494,7 +494,7 @@ exports[`should support Table, TableRow and TableCell 1`] = `
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Table align={[\\"left\\",\\"center\\"]}><_ctx$.builtins.TableRow isHead={true}><_ctx$.builtins.TableCell>foo</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>bar</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>baz</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>qux</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow></_ctx$.builtins.Table></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Table align={["left","center"]}><_ctx$.builtins.TableRow isHead={true}><_ctx$.builtins.TableCell>foo</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>bar</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow><_ctx$.builtins.TableRow><_ctx$.builtins.TableCell>baz</_ctx$.builtins.TableCell><_ctx$.builtins.TableCell>qux</_ctx$.builtins.TableCell></_ctx$.builtins.TableRow></_ctx$.builtins.Table></_ctx$.builtins.Root>
   );
 }
 "
@@ -513,19 +513,19 @@ export default function Component(props) {
 `;
 
 exports[`should support YAML 1`] = `
-"export const frontmatter = ({title:\\"Hi, World!\\"});
+"export const frontmatter = ({title:"Hi, World!"});
 import { useMDX as _useMDX$ } from 'solid-marked';
 
 export function TableOfContents(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={\\"#frontmattertitle\\"}>{frontmatter.title}</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
+<_ctx$.builtins.List ordered={false} spread={false}><_ctx$.builtins.ListItem spread={false}><_ctx$.builtins.Paragraph><_ctx$.builtins.Link url={"#frontmattertitle"}>{frontmatter.title}</_ctx$.builtins.Link></_ctx$.builtins.Paragraph></_ctx$.builtins.ListItem></_ctx$.builtins.List>
   );
 }
 export default function Component(props) {
   const _ctx$ = _useMDX$();
   return (
-<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={\\"frontmattertitle\\"}>{frontmatter.title}</_ctx$.builtins.Heading></_ctx$.builtins.Root>
+<_ctx$.builtins.Root><_ctx$.builtins.Heading depth={1} id={"frontmattertitle"}>{frontmatter.title}</_ctx$.builtins.Heading></_ctx$.builtins.Root>
   );
 }
 "
