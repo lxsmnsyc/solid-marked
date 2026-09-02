@@ -1,66 +1,83 @@
 {
   "name": "solid-marked",
-  "type": "module",
   "version": "0.7.0",
-  "types": "./dist/types/src/index.d.ts",
-  "main": "./dist/cjs/production/index.cjs",
-  "module": "./dist/esm/production/index.mjs",
-  "exports": {
-    ".": {
-      "development": {
-        "require": "./dist/cjs/development/index.cjs",
-        "import": "./dist/esm/development/index.mjs"
-      },
-      "require": "./dist/cjs/production/index.cjs",
-      "import": "./dist/esm/production/index.mjs",
-      "types": "./dist/types/src/index.d.ts"
-    },
-    "./compiler": {
-      "development": {
-        "require": "./dist/cjs/development/compiler.cjs",
-        "import": "./dist/esm/development/compiler.mjs"
-      },
-      "require": "./dist/cjs/production/compiler.cjs",
-      "import": "./dist/esm/production/compiler.mjs",
-      "types": "./dist/types/compiler/index.d.ts"
-    },
-    "./component": {
-      "development": {
-        "require": "./dist/cjs/development/component.cjs",
-        "import": "./dist/esm/development/component.mjs"
-      },
-      "require": "./dist/cjs/production/component.cjs",
-      "import": "./dist/esm/production/component.mjs",
-      "types": "./dist/types/component/index.d.ts"
-    }
+  "private": false,
+  "description": "Markdown Compiler for SolidJS",
+  "keywords": [
+    "compiler",
+    "markdown",
+    "mdast",
+    "mdx",
+    "solid",
+    "solid-js"
+  ],
+  "homepage": "https://github.com/lxsmnsyc/solid-marked/tree/main/packages/solid-marked",
+  "bugs": {
+    "url": "https://github.com/lxsmnsyc/solid-marked/issues"
+  },
+  "license": "MIT",
+  "author": "Alexis Munsayac",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lxsmnsyc/solid-marked.git"
   },
   "files": [
     "dist",
     "src",
+    "compiler",
+    "component",
     "env.d.ts"
   ],
-  "engines": {
-    "node": ">=10"
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "compiler": [
+        "./dist/compiler.d.ts"
+      ],
+      "component": [
+        "./dist/component.d.ts"
+      ]
+    }
   },
-  "license": "MIT",
-  "keywords": [
-    "pridepack"
-  ],
-  "devDependencies": {
-    "@types/mdast": "^4.0.4",
-    "@types/node": "^25.1.0",
-    "pridepack": "2.6.0",
-    "solid-js": "^1.9.11",
-    "tslib": "^2.8.1",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.18"
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./compiler": {
+      "types": "./dist/compiler.d.ts",
+      "default": "./dist/compiler.js"
+    },
+    "./component": {
+      "types": "./dist/component.d.ts",
+      "default": "./dist/component.js"
+    },
+    "./env": {
+      "types": "./env.d.ts"
+    },
+    "./env.d.ts": {
+      "types": "./env.d.ts"
+    },
+    "./package.json": "./package.json"
   },
-  "peerDependencies": {
-    "solid-js": "^1.7"
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "github-slugger": "^2.0.0",
-    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-from-markdown": "^2.0.3",
     "mdast-util-frontmatter": "^2.0.1",
     "mdast-util-gfm": "^3.1.0",
     "mdast-util-mdx": "^3.0.0",
@@ -69,40 +86,23 @@
     "micromark-extension-frontmatter": "^2.0.0",
     "micromark-extension-gfm": "^3.0.0",
     "micromark-extension-mdxjs": "^3.0.0",
-    "seroval": "^1.5.0",
-    "source-map": "^0.7.6",
-    "toml": "^3.0.0",
-    "yaml": "^2.8.2"
+    "seroval": "^1.6.4",
+    "source-map": "^0.8.0",
+    "toml": "^5.0.0",
+    "yaml": "^2.9.0"
   },
-  "description": "Markdown Compiler for SolidJS",
-  "repository": {
-    "url": "https://github.com/lxsmnsyc/solid-marked.git",
-    "type": "git"
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^26.4.1",
+    "solid-js": "^1.9.15",
+    "tsdown": "^0.22.14",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11"
   },
-  "homepage": "https://github.com/lxsmnsyc/solid-marked/tree/main/packages/solid-marked",
-  "bugs": {
-    "url": "https://github.com/lxsmnsyc/solid-marked/issues"
+  "peerDependencies": {
+    "solid-js": "^1.7"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": "Alexis Munsayac",
-  "private": false,
-  "scripts": {
-    "prepublishOnly": "pridepack clean && pridepack build",
-    "build": "pridepack build",
-    "type-check": "pridepack check",
-    "test": "vitest",
-    "clean": "pridepack clean"
-  },
-  "typesVersions": {
-    "*": {
-      "compiler": [
-        "./dist/types/compiler/index.d.ts"
-      ],
-      "component": [
-        "./dist/types/component/index.d.ts"
-      ]
-    }
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
   }
 }

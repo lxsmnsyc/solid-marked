@@ -1,9 +1,8 @@
 import tailwindcss from '@tailwindcss/vite';
-import solidMarkedPlugin from 'unplugin-solid-marked';
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-
+import solidMarkedPlugin from 'vite-plugin-solid-marked';
 
 export default defineConfig({
-  plugins: [solidMarkedPlugin.vite({}), solidPlugin(), tailwindcss()],
+  plugins: [solidMarkedPlugin({}), solidPlugin(), tailwindcss()],
 });

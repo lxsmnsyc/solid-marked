@@ -1,7 +1,8 @@
 packages:
-  - packages/**/*
-  - examples/**/*
+  - packages/*
+  - examples/*
 
 onlyBuiltDependencies:
-  - '@biomejs/biome'
   - esbuild
+  - oxfmt
+  - oxlint
