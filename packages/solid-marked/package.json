@@ -1,6 +1,6 @@
 {
   "name": "solid-marked",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": false,
   "description": "Markdown Compiler for SolidJS",
   "keywords": [
