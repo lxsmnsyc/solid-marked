@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import type * as mdast from 'mdast';
 import * as mdastString from 'mdast-util-to-string';
 import type { JSX } from 'solid-js';
 import { createComponent } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+
 import type { StateContext } from './types';
 
 function compileBlockquote(
@@ -158,6 +158,15 @@ function compileInlineCode(
   });
 }
 
+function compileHTML(ctx: StateContext, node: mdast.Html): JSX.Element {
+  return createComponent(Dynamic, {
+    get component() {
+      return ctx.props.builtins.HTML;
+    },
+    children: node.value,
+  });
+}
+
 function compileLink(ctx: StateContext, node: mdast.Link): JSX.Element {
   return createComponent(Dynamic, {
     get component() {
@@ -303,7 +312,11 @@ function compileThematicBreak(ctx: StateContext): JSX.Element {
   });
 }
 
-export function compileNode(ctx: StateContext, node: mdast.Nodes): JSX.Element {
+export default function compileNode(
+  ctx: StateContext,
+  node: mdast.Nodes,
+): JSX.Element {
+  const { type } = node;
   switch (node.type) {
     case 'blockquote':
       return compileBlockquote(ctx, node);
@@ -323,6 +336,8 @@ export function compileNode(ctx: StateContext, node: mdast.Nodes): JSX.Element {
       return compileFootnoteReference(ctx, node);
     case 'heading':
       return compileHeading(ctx, node);
+    case 'html':
+      return compileHTML(ctx, node);
     case 'image':
       return compileImage(ctx, node);
     case 'imageReference':
@@ -353,8 +368,18 @@ export function compileNode(ctx: StateContext, node: mdast.Nodes): JSX.Element {
       return node.value;
     case 'thematicBreak':
       return compileThematicBreak(ctx);
+    case 'mdxFlowExpression':
+    case 'mdxJsxFlowElement':
+    case 'mdxJsxTextElement':
+    case 'mdxTextExpression':
+    case 'mdxjsEsm':
+    case 'toml':
+    case 'yaml':
+      throw new Error(
+        `<Markdown> does not support "${type}" nodes. Only CommonMark and GFM are supported at runtime; use the compiler for MDX and frontmatter.`,
+      );
     default:
-      throw new Error('invalid node');
+      throw new Error(`Unknown mdast node type "${type}".`);
   }
 }
 

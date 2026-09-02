@@ -1,4 +1,5 @@
 import { expect, test } from 'vitest';
+
 import { compile } from '../compiler';
 
 function testCompile(code: string): string {

@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CommonMark > renders blockquotes 1`] = `"(root (blockquote (paragraph Lorem ipsum dolor.)))"`;
+
+exports[`CommonMark > renders emphasis, strong and inline code 1`] = `"(root (paragraph (emphasis Lorem) (strong Ipsum) <!--!$-->(inlineCode dolor())))"`;
+
+exports[`CommonMark > renders every heading depth 1`] = `"(root (heading depth=1 id=lorem Lorem))"`;
+
+exports[`CommonMark > renders every heading depth 2`] = `"(root (heading depth=2 id=lorem Lorem))"`;
+
+exports[`CommonMark > renders every heading depth 3`] = `"(root (heading depth=3 id=lorem Lorem))"`;
+
+exports[`CommonMark > renders every heading depth 4`] = `"(root (heading depth=4 id=lorem Lorem))"`;
+
+exports[`CommonMark > renders every heading depth 5`] = `"(root (heading depth=5 id=lorem Lorem))"`;
+
+exports[`CommonMark > renders every heading depth 6`] = `"(root (heading depth=6 id=lorem Lorem))"`;
+
+exports[`CommonMark > renders fenced code with a language 1`] = `"(root (code lang=js foo()))"`;
+
+exports[`CommonMark > renders hard breaks 1`] = `"(root (paragraph a<!--!$-->(break)<!--!$-->b))"`;
+
+exports[`CommonMark > renders links and images 1`] = `"(root (paragraph (link https://example.com alpha)))"`;
+
+exports[`CommonMark > renders links and images 2`] = `"(root (paragraph (image https://example.com/a.png alt=alpha)))"`;
+
+exports[`CommonMark > renders ordered and unordered lists 1`] = `"(root (list ordered=true start=1 (listItem checked=null (paragraph Lorem))(listItem checked=null (paragraph Ipsum))))"`;
+
+exports[`CommonMark > renders ordered and unordered lists 2`] = `"(root (list ordered=true start=7 (listItem checked=null (paragraph Lorem))(listItem checked=null (paragraph Ipsum))))"`;
+
+exports[`CommonMark > renders ordered and unordered lists 3`] = `"(root (list ordered=false start=null (listItem checked=null (paragraph Lorem))(listItem checked=null (paragraph Ipsum))))"`;
+
+exports[`CommonMark > renders paragraphs 1`] = `"(root (paragraph Lorem ipsum dolor.))"`;
+
+exports[`CommonMark > renders raw HTML blocks 1`] = `"(root (html &lt;div>Hello World&lt;/div>))"`;
+
+exports[`CommonMark > renders references and definitions 1`] = `"(root (paragraph (linkReference alpha alpha))(definition alpha bravo))"`;
+
+exports[`CommonMark > renders references and definitions 2`] = `"(root (paragraph (imageReference alpha))(definition alpha bravo))"`;
+
+exports[`CommonMark > renders thematic breaks 1`] = `"(root (thematicBreak))"`;
+
+exports[`CommonMark > slugs duplicate heading ids 1`] = `"(root (heading depth=1 id=lorem Lorem)(heading depth=1 id=lorem-1 Lorem)(heading depth=1 id=lorem-2 Lorem))"`;
+
+exports[`GFM > renders footnotes 1`] = `"(root (paragraph alpha<!--!$-->(footnoteReference 1))(footnoteDefinition 1 (paragraph bravo and charlie.)))"`;
+
+exports[`GFM > renders strikethrough 1`] = `"(root (paragraph (delete alpha)))"`;
+
+exports[`GFM > renders tables with alignment 1`] = `"(root (table align=left,center (row isHead=true (cell foo)(cell bar))(row isHead=false (cell baz)(cell qux))))"`;
+
+exports[`GFM > renders task list items 1`] = `"(root (list ordered=false start=null (listItem checked=true (paragraph alpha))(listItem checked=false (paragraph bravo))))"`;
+
+exports[`unsupported syntax > rejects frontmatter 1`] = `"(root (thematicBreak)(heading depth=2 id=title-alpha title: alpha))"`;

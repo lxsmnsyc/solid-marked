@@ -1,0 +1,70 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TableOfContents > is emitted when the document has headings 1`] = `
+"import { useMDX as _useMDX$ } from 'solid-marked';
+
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={true}><Dynamic component={_ctx$.builtins.ListItem} spread={true}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#alpha"}>alpha</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.List} ordered={false} spread={true}><Dynamic component={_ctx$.builtins.ListItem} spread={true}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#bravo"}>bravo</Dynamic></Dynamic><Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#charlie"}>charlie</Dynamic></Dynamic></Dynamic></Dynamic></Dynamic></Dynamic></Dynamic></Dynamic>
+  );
+}
+export default function Component(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={"alpha"}>alpha</Dynamic><Dynamic component={_ctx$.builtins.Heading} depth={2} id={"bravo"}>bravo</Dynamic><Dynamic component={_ctx$.builtins.Heading} depth={3} id={"charlie"}>charlie</Dynamic></Dynamic>
+  );
+}
+"
+`;
+
+exports[`frontmatter > exports parsed TOML frontmatter 1`] = `
+"export const frontmatter = Object.assign(Object.create(null),{title:"Hi, World!",count:2});
+import { useMDX as _useMDX$ } from 'solid-marked';
+
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#frontmattertitle"}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic>
+  );
+}
+export default function Component(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={"frontmattertitle"}>{frontmatter.title}</Dynamic></Dynamic>
+  );
+}
+"
+`;
+
+exports[`frontmatter > exports parsed YAML frontmatter 1`] = `
+"export const frontmatter = ({title:"Hi, World!",count:2});
+import { useMDX as _useMDX$ } from 'solid-marked';
+
+export function TableOfContents(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<Dynamic component={_ctx$.builtins.List} ordered={false} spread={false}><Dynamic component={_ctx$.builtins.ListItem} spread={false}><Dynamic component={_ctx$.builtins.Paragraph}><Dynamic component={_ctx$.builtins.Link} url={"#frontmattertitle"}>{frontmatter.title}</Dynamic></Dynamic></Dynamic></Dynamic>
+  );
+}
+export default function Component(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={_ctx$.builtins.Heading} depth={1} id={"frontmattertitle"}>{frontmatter.title}</Dynamic></Dynamic>
+  );
+}
+"
+`;
+
+exports[`imports > hoists MDX ESM statements above the runtime import 1`] = `
+"import Box from 'box';
+import { useMDX as _useMDX$ } from 'solid-marked';
+
+export default function Component(props) {
+  const _ctx$ = _useMDX$();
+  return (
+<Dynamic component={_ctx$.builtins.Root}><Dynamic component={typeof Box === 'undefined' ? _ctx$.components.Box : Box}></Dynamic></Dynamic>
+  );
+}
+"
+`;

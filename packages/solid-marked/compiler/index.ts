@@ -9,19 +9,41 @@ import { gfm } from 'micromark-extension-gfm';
 import { mdxjs } from 'micromark-extension-mdxjs';
 import type { RawSourceMap } from 'source-map';
 import { SourceNode } from 'source-map';
+
 import { CTX_VAR, compileNode } from './compiler';
 import type { Options, StateContext } from './types';
 
-export * from './interfaces';
+export type * from './interfaces';
 export type { Options } from './types';
 
 const USE_MDX_VAR = '_useMDX$';
 
 export interface Result {
+  /** The generated module, as JSX that still needs a Solid transform. */
   code: string;
+  /** Source map pointing back at the original document. */
   map: RawSourceMap;
 }
 
+/**
+ * Compiles a Markdown or MDX document into a SolidJS component module.
+ *
+ * The generated module exports the document as its default export, a
+ * `TableOfContents` component when the document has headings, and a
+ * `frontmatter` value when the document has YAML or TOML frontmatter. Its JSX
+ * still has to be processed by a Solid JSX transform, such as
+ * `vite-plugin-solid`.
+ *
+ * @param fileName Name recorded in the source map, and the key of its
+ * `sourcesContent` entry.
+ * @param markdownCode The document source.
+ * @param options See {@link Options}.
+ *
+ * @example
+ * ```js
+ * const { code, map } = compile('doc.md', '# Hello World');
+ * ```
+ */
 export function compile(
   fileName: string,
   markdownCode: string,
@@ -57,7 +79,7 @@ export function compile(
   }
   compiled.add(
     `import { useMDX as ${USE_MDX_VAR} } from '${
-      options.mdxImportSource || 'solid-marked'
+      options.mdxImportSource ?? 'solid-marked'
     }';\n\n`,
   );
   if (tocAST.map) {

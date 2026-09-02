@@ -5,6 +5,7 @@ import * as seroval from 'seroval';
 import { SourceNode } from 'source-map';
 import * as toml from 'toml';
 import * as yaml from 'yaml';
+
 import { serializeString } from './string';
 import type { StateContext } from './types';
 
@@ -26,7 +27,7 @@ function createSourceNode(ctx: StateContext, base: mdast.Nodes): SourceNode {
   const col = base.position?.start.column;
   return new SourceNode(
     base.position?.start.line ?? null,
-    col != null ? col - 1 : null,
+    col == null ? null : col - 1,
     ctx.source,
   );
 }
@@ -94,6 +95,8 @@ function createTag(
   return `Dynamic component={${target}}`;
 }
 
+export const CTX_VAR = '_ctx$';
+
 function createJSXTag(ctx: StateContext, nodeName: string): string {
   if (ctx.options.noDynamicComponents) {
     return nodeName;
@@ -118,8 +121,6 @@ type ExcludedTags =
   | 'yaml'
   | 'toml';
 type WithTags = Exclude<mdast.Nodes['type'], ExcludedTags>;
-
-export const CTX_VAR = '_ctx$';
 
 const MARKUP: Record<WithTags, string> = {
   blockquote: `${CTX_VAR}.builtins.Blockquote`,
@@ -647,6 +648,8 @@ export function compileNode(ctx: StateContext, node: mdast.Nodes): SourceNode {
       return compileStrong(ctx, node);
     case 'inlineCode':
       return compileInlineCode(ctx, node);
+    case 'html':
+      return compileHTML(ctx, node);
     case 'break':
       return compileBreak(ctx, node);
     case 'link':

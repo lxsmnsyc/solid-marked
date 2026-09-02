@@ -1,31 +1,6 @@
 {
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "src",
-    "types"
-  ],
-  "compilerOptions": {
-    "module": "ESNext",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "importHelpers": true,
-    "declaration": true,
-    "sourceMap": true,
-    "rootDir": "./src",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "Bundler",
-    "jsx": "react",
-    "esModuleInterop": true,
-    "target": "es2018",
-    "useDefineForClassFields": false,
-    "declarationMap": true
-  }
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {},
+  "include": ["src", "test", "tsdown.config.ts"],
+  "exclude": ["node_modules", "dist"]
 }

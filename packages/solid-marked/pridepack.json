@@ -1,8 +1,0 @@
-{
-  "target": "es2018",
-  "entrypoints": {
-    ".": "src/index.ts",
-    "./compiler": "compiler/index.ts",
-    "./component": "component/index.ts"
-  }
-}
