@@ -1,6 +1,6 @@
 {
   "name": "vite-demo",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,17 +10,18 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@solidjs/web": "^2.0.0-rc.0",
     "shiki": "^4.4.3",
-    "solid-js": "^1.9.15",
+    "solid-js": "^2.0.0-rc.0",
     "solid-marked": "workspace:*",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@solidjs/vite-plugin": "^3.0.0-next.39",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
     "typescript": "^5.9.3",
-    "vite": "^8.2.2",
-    "vite-plugin-solid": "^2.11.14",
-    "vite-plugin-solid-marked": "workspace:*"
+    "unplugin-solid-marked": "workspace:*",
+    "vite": "^8.2.2"
   }
 }

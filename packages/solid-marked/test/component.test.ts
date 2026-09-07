@@ -1,5 +1,4 @@
-import { createComponent } from 'solid-js';
-import { renderToString } from 'solid-js/web';
+import { createComponent, renderToString } from '@solidjs/web';
 import { describe, expect, it } from 'vitest';
 
 import type { MDXBuiltinComponents } from '../compiler';
@@ -62,10 +61,28 @@ const builtins: MDXBuiltinComponents = {
 };
 
 function renderMarkdown(source: string): string {
-  return renderToString(() =>
+  const html = renderToString(() =>
     createComponent(Markdown, { builtins, children: source }),
   );
+  // Solid's SSR output carries hydration markers between sibling nodes. They
+  // are bookkeeping, not structure, so they are stripped to keep the snapshots
+  // about what the renderer emits.
+  return html.replace(/<!--!\$-->/g, '');
 }
+
+describe('server rendering', () => {
+  // Tripwire for https://github.com/solidjs/solid (@solidjs/web 2.0.0-rc.0):
+  // `renderToString` does not escape a string returned from a component that
+  // is rendered through `Dynamic`, which is every node this renderer emits.
+  // Solid 1.9 escaped it. When Solid fixes this, the test starts passing and
+  // vitest reports the `fails` annotation as the failure, which is the signal
+  // to drop the annotation.
+  it.fails('escapes text so markdown cannot inject markup', () => {
+    expect(renderMarkdown('x `<script>alert(1)</script>` y')).not.toContain(
+      '<script>',
+    );
+  });
+});
 
 describe('CommonMark', () => {
   it('renders paragraphs', () => {

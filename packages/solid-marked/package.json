@@ -92,15 +92,17 @@
     "yaml": "^2.9.0"
   },
   "devDependencies": {
+    "@solidjs/web": "^2.0.0-rc.0",
     "@types/mdast": "^4.0.4",
     "@types/node": "^26.4.1",
-    "solid-js": "^1.9.15",
+    "solid-js": "^2.0.0-rc.0",
     "tsdown": "^0.22.14",
     "typescript": "^5.9.3",
     "vitest": "^4.1.11"
   },
   "peerDependencies": {
-    "solid-js": "^1.7"
+    "@solidjs/web": "^2.0.0-rc.0",
+    "solid-js": "^2.0.0-rc.0"
   },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"

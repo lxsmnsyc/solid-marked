@@ -4,7 +4,7 @@
     "declaration": false,
     "declarationMap": false,
     "jsx": "preserve",
-    "jsxImportSource": "solid-js",
+    "jsxImportSource": "@solidjs/web",
     "noEmit": true,
     "types": ["vite/client", "solid-marked/env"]
   },

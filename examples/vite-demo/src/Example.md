@@ -22,44 +22,46 @@
 
 ## Install
 
-`solid-marked` is the compiler and runtime. To `import` Markdown files directly you also need a bundler plugin, and `vite-plugin-solid` (or another Solid JSX transform) to compile the JSX that `solid-marked` emits.
+`solid-marked` is the compiler and runtime. To `import` Markdown files directly you also need `unplugin-solid-marked` and a Solid JSX transform to compile the JSX that `solid-marked` emits.
 
 ```bash
-npm i solid-js solid-marked
-npm i -D vite-plugin-solid-marked vite-plugin-solid
+npm i solid-js @solidjs/web solid-marked
+npm i -D unplugin-solid-marked @solidjs/vite-plugin
 ```
 
 ```bash
-yarn add solid-js solid-marked
-yarn add -D vite-plugin-solid-marked vite-plugin-solid
+yarn add solid-js @solidjs/web solid-marked
+yarn add -D unplugin-solid-marked @solidjs/vite-plugin
 ```
 
 ```bash
-pnpm add solid-js solid-marked
-pnpm add -D vite-plugin-solid-marked vite-plugin-solid
+pnpm add solid-js @solidjs/web solid-marked
+pnpm add -D unplugin-solid-marked @solidjs/vite-plugin
 ```
+
+> [!IMPORTANT]
+> Version 1.x requires Solid 2. Stay on `solid-marked@0.8.x` for Solid 1.
 
 ### Integrations
 
 | Package                                                                                         | Use it for                                                                      |
 | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [`vite-plugin-solid-marked`](https://github.com/LXSMNSYC/solid-marked/tree/main/packages/vite)  | Vite only. Thin wrapper around the unplugin.                                    |
 | [`unplugin-solid-marked`](https://github.com/LXSMNSYC/solid-marked/tree/main/packages/unplugin) | Vite, Rollup, Rolldown, webpack, Rspack, esbuild, Farm.                         |
 | `solid-marked/compiler`                                                                         | Calling the compiler yourself, e.g. from a custom loader or a static generator. |
 
-Both plugins pick up `.md`, `.mdx`, `.markdown`, `.mdown`, `.mkdn`, `.mkd`, `.mkdown` and `.ron`.
+The plugin picks up `.md`, `.mdx`, `.markdown`, `.mdown`, `.mkdn`, `.mkd`, `.mkdown` and `.ron`.
 
 ## Quick start
 
 `vite.config.js` — the Markdown plugin must come **before** the Solid plugin, since it emits JSX for the Solid plugin to transform.
 
 ```js
+import solid from '@solidjs/vite-plugin';
+import solidMarked from 'unplugin-solid-marked';
 import { defineConfig } from 'vite';
-import solid from 'vite-plugin-solid';
-import solidMarked from 'vite-plugin-solid-marked';
 
 export default defineConfig({
-  plugins: [solidMarked({}), solid()],
+  plugins: [solidMarked.vite({}), solid()],
 });
 ```
 
@@ -74,8 +76,7 @@ Lorem ipsum dolor.
 `src/main.tsx` — a compiled document renders nothing on its own: it looks its components up from the nearest `<MDXProvider>`.
 
 ```jsx
-import { render } from 'solid-js/web';
-import { Dynamic } from 'solid-js/web';
+import { Dynamic, render } from '@solidjs/web';
 import { MDXProvider } from 'solid-marked';
 import Hello from './hello.md';
 

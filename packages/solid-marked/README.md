@@ -11,40 +11,43 @@
 ## Install
 
 ```bash
-npm i solid-js solid-marked
-npm i -D vite-plugin-solid-marked vite-plugin-solid
+npm i solid-js @solidjs/web solid-marked
+npm i -D unplugin-solid-marked @solidjs/vite-plugin
 ```
 
 ```bash
-yarn add solid-js solid-marked
-yarn add -D vite-plugin-solid-marked vite-plugin-solid
+yarn add solid-js @solidjs/web solid-marked
+yarn add -D unplugin-solid-marked @solidjs/vite-plugin
 ```
 
 ```bash
-pnpm add solid-js solid-marked
-pnpm add -D vite-plugin-solid-marked vite-plugin-solid
+pnpm add solid-js @solidjs/web solid-marked
+pnpm add -D unplugin-solid-marked @solidjs/vite-plugin
 ```
 
-To `import` Markdown files you also need a bundler plugin — [`vite-plugin-solid-marked`](https://github.com/lxsmnsyc/solid-marked/tree/main/packages/vite) for Vite, or [`unplugin-solid-marked`](https://github.com/lxsmnsyc/solid-marked/tree/main/packages/unplugin) for Rollup, Rolldown, webpack, Rspack, esbuild and Farm.
+> [!IMPORTANT]
+> Version 1.x requires Solid 2. Stay on `solid-marked@0.8.x` for Solid 1.
+
+To `import` Markdown files you also need [`unplugin-solid-marked`](https://github.com/lxsmnsyc/solid-marked/tree/main/packages/unplugin). It covers Vite, Rollup, Rolldown, webpack, Rspack, esbuild and Farm.
 
 ## Usage
 
 `vite.config.js` — the Markdown plugin emits JSX, so it has to come **before** the Solid plugin.
 
 ```js
+import solid from '@solidjs/vite-plugin';
+import solidMarked from 'unplugin-solid-marked';
 import { defineConfig } from 'vite';
-import solid from 'vite-plugin-solid';
-import solidMarked from 'vite-plugin-solid-marked';
 
 export default defineConfig({
-  plugins: [solidMarked({}), solid()],
+  plugins: [solidMarked.vite({}), solid()],
 });
 ```
 
 A compiled document renders nothing on its own: it resolves its components from the nearest `<MDXProvider>` at render time.
 
 ```jsx
-import { Dynamic, render } from 'solid-js/web';
+import { Dynamic, render } from '@solidjs/web';
 import { MDXProvider } from 'solid-marked';
 import Hello from './hello.md';
 

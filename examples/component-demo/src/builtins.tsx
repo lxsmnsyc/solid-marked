@@ -1,13 +1,13 @@
-import type { JSX } from 'solid-js';
-import { Show, createMemo } from 'solid-js';
-import { Dynamic } from 'solid-js/web';
+import type { JSX } from '@solidjs/web';
+import { Dynamic } from '@solidjs/web';
+import { Loading, Show } from 'solid-js';
 import type { MDXBuiltinComponents } from 'solid-marked';
 
 import type { Highlighter } from './highlighter';
 import { THEME, resolveLanguage } from './highlighter';
 
 export function createBuiltins(
-  highlighter: () => Highlighter | undefined,
+  highlighter: () => Highlighter,
 ): MDXBuiltinComponents {
   return {
     Blockquote(props): JSX.Element {
@@ -17,39 +17,36 @@ export function createBuiltins(
       return <br />;
     },
     Code(props): JSX.Element {
-      const html = createMemo(() => {
-        const instance = highlighter();
-        if (!instance || !props.children) {
-          return undefined;
-        }
-        return instance.codeToHtml(props.children, {
-          lang: resolveLanguage(props.lang),
-          theme: THEME,
-        });
-      });
       return (
         // `not-prose` keeps the typography plugin away from shiki's own
         // colours, so the vertical rhythm and the rounding have to be set
         // here. `overflow-hidden` is what clips shiki's `<pre>` background to
         // the rounded corners.
         <div class="not-prose my-6 overflow-hidden rounded-lg bg-[#24292e]">
-          <Show
-            when={html()}
+          {/*
+            `highlighter()` is an async computation. Reading it before shiki
+            resolves throws `NotReadyError`, which this boundary catches, so
+            each block shows its plain text until the highlighter is ready.
+          */}
+          <Loading
             fallback={
               <pre class="overflow-x-auto p-4 text-sm text-[#e1e4e8]">
                 <code>{props.children}</code>
               </pre>
             }
           >
-            {highlighted => (
-              // `innerHTML` sits on the element carrying the `[&>pre]`
-              // variant, so shiki's `<pre>` is a direct child of it.
-              <div
-                class="overflow-x-auto text-sm [&>pre]:p-4"
-                innerHTML={highlighted()}
-              />
-            )}
-          </Show>
+            {/*
+              `innerHTML` sits on the element carrying the `[&>pre]` variant,
+              so shiki's `<pre>` is a direct child of it.
+            */}
+            <div
+              class="overflow-x-auto text-sm [&>pre]:p-4"
+              innerHTML={highlighter().codeToHtml(props.children ?? '', {
+                lang: resolveLanguage(props.lang),
+                theme: THEME,
+              })}
+            />
+          </Loading>
         </div>
       );
     },

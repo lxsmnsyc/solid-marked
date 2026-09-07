@@ -2,8 +2,8 @@ import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
+import solidPlugin from '@solidjs/vite-plugin';
 import { build } from 'vite';
-import solidPlugin from 'vite-plugin-solid';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import type { SolidMarkedPluginOptions } from '../src';
@@ -33,7 +33,7 @@ afterEach(async () => {
 async function bundle(
   entry: string,
   options: SolidMarkedPluginOptions = {},
-  external: string[] = ['solid-js', 'solid-js/web', 'solid-marked'],
+  external: string[] = ['solid-js', '@solidjs/web', 'solid-marked'],
 ): Promise<string> {
   const result = await build({
     root,
@@ -126,7 +126,7 @@ describe('options', () => {
 
     const code = await bundle('src/entry.js', { source: 'mdx-provider' }, [
       'solid-js',
-      'solid-js/web',
+      '@solidjs/web',
       'mdx-provider',
     ]);
 

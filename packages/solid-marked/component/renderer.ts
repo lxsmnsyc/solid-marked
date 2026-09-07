@@ -1,8 +1,7 @@
+import type { JSX } from '@solidjs/web';
+import { Dynamic, createComponent } from '@solidjs/web';
 import type * as mdast from 'mdast';
 import * as mdastString from 'mdast-util-to-string';
-import type { JSX } from 'solid-js';
-import { createComponent } from 'solid-js';
-import { Dynamic } from 'solid-js/web';
 
 import type { StateContext } from './types';
 
