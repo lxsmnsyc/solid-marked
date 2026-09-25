@@ -2,7 +2,5 @@ packages:
   - packages/*
   - examples/*
 
-onlyBuiltDependencies:
-  - esbuild
-  - oxfmt
-  - oxlint
+allowBuilds:
+  esbuild: true
