@@ -11,17 +11,19 @@
     "clean": "pnpm recursive run clean",
     "cs:add": "changeset add",
     "cs:pub": "changeset publish",
-    "cs:ver": "changeset version",
+    "cs:ver": "changeset version && pnpm install --lockfile-only",
     "fmt": "oxfmt .",
     "fmt:check": "oxfmt --check .",
     "lint": "oxlint --type-aware",
     "lint:fix": "oxlint --type-aware --fix",
+    "release": "node scripts/publish.ts",
     "test": "pnpm recursive run test",
-    "type-check": "pnpm recursive run type-check"
+    "type-check": "tsc --noEmit && pnpm recursive run type-check"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.1",
     "@lxsmnsyc/oxlint-config": "^0.1.2",
+    "@types/node": "^26.4.1",
     "oxfmt": "^0.66.0",
     "oxlint": "^1.81.0",
     "oxlint-tsgolint": "^7.0.2001",
