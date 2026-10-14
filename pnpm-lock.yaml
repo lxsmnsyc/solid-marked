@@ -172,6 +172,9 @@ importers:
       '@lxsmnsyc/oxlint-config':
         specifier: ^0.1.2
         version: 0.1.2(oxlint@1.81.0(oxlint-tsgolint@7.0.2001))
+      '@types/node':
+        specifier: ^26.4.1
+        version: 26.4.1
       oxfmt:
         specifier: ^0.66.0
         version: 0.66.0
