@@ -49,6 +49,7 @@ A compiled document renders nothing on its own: it resolves its components from 
 ```jsx
 import { Dynamic, render } from '@solidjs/web';
 import { MDXProvider } from 'solid-marked';
+
 import Hello from './hello.md';
 
 function App() {

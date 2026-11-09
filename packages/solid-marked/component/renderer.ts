@@ -1,5 +1,5 @@
 import type { JSX } from '@solidjs/web';
-import { Dynamic, createComponent } from '@solidjs/web';
+import { createComponent, dynamic } from '@solidjs/web';
 import type * as mdast from 'mdast';
 import * as mdastString from 'mdast-util-to-string';
 
@@ -9,282 +9,281 @@ function compileBlockquote(
   ctx: StateContext,
   node: mdast.Blockquote,
 ): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Blockquote;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Blockquote),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-  });
+  );
 }
 
 function compileBreak(ctx: StateContext): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Break;
-    },
-  });
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Break),
+    {},
+  );
 }
 
 function compileCode(ctx: StateContext, node: mdast.Code): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Code;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Code),
+    {
+      lang: node.lang,
+      meta: node.meta,
+      children: node.value,
     },
-    lang: node.lang,
-    meta: node.meta,
-    children: node.value,
-  });
+  );
 }
 
 function compileDefinition(
   ctx: StateContext,
   node: mdast.Definition,
 ): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Definition;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Definition),
+    {
+      url: node.url,
+      title: node.title,
+      identifier: node.identifier,
+      label: node.label,
     },
-    url: node.url,
-    title: node.title,
-    identifier: node.identifier,
-    label: node.label,
-  });
+  );
 }
 
 function compileDelete(ctx: StateContext, node: mdast.Delete): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Delete;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Delete),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-  });
+  );
 }
 
 function compileEmphasis(ctx: StateContext, node: mdast.Emphasis): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Emphasis;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Emphasis),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-  });
+  );
 }
 
 function compileFootnoteDefinition(
   ctx: StateContext,
   node: mdast.FootnoteDefinition,
 ): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.FootnoteDefinition;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.FootnoteDefinition),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
+      identifier: node.identifier,
+      label: node.label,
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-    identifier: node.identifier,
-    label: node.label,
-  });
+  );
 }
 
 function compileFootnoteReference(
   ctx: StateContext,
   node: mdast.FootnoteReference,
 ): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.FootnoteReference;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.FootnoteReference),
+    {
+      identifier: node.identifier,
+      label: node.label,
     },
-    identifier: node.identifier,
-    label: node.label,
-  });
+  );
 }
 
 function compileHeading(ctx: StateContext, node: mdast.Heading): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Heading;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Heading),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
+      id: ctx.slugger.slug(
+        mdastString.toString(node, { includeImageAlt: false }),
+      ),
+      depth: node.depth,
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-    id: ctx.slugger.slug(
-      mdastString.toString(node, { includeImageAlt: false }),
-    ),
-    depth: node.depth,
-  });
+  );
 }
 
 function compileImage(ctx: StateContext, node: mdast.Image): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Image;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Image),
+    {
+      url: node.url,
+      title: node.title,
+      alt: node.alt,
     },
-    url: node.url,
-    title: node.title,
-    alt: node.alt,
-  });
+  );
 }
 
 function compileImageReference(
   ctx: StateContext,
   node: mdast.ImageReference,
 ): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.ImageReference;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.ImageReference),
+    {
+      identifier: node.identifier,
+      label: node.label,
+      alt: node.alt,
+      referenceType: node.referenceType,
     },
-    identifier: node.identifier,
-    label: node.label,
-    alt: node.alt,
-    referenceType: node.referenceType,
-  });
+  );
 }
 
 function compileInlineCode(
   ctx: StateContext,
   node: mdast.InlineCode,
 ): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.InlineCode;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.InlineCode),
+    {
+      children: node.value,
     },
-    children: node.value,
-  });
+  );
 }
 
 function compileHTML(ctx: StateContext, node: mdast.Html): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.HTML;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.HTML),
+    {
+      children: node.value,
     },
-    children: node.value,
-  });
+  );
 }
 
 function compileLink(ctx: StateContext, node: mdast.Link): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Link;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Link),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
+      url: node.url,
+      title: node.title,
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-    url: node.url,
-    title: node.title,
-  });
+  );
 }
 
 function compileLinkReference(
   ctx: StateContext,
   node: mdast.LinkReference,
 ): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.LinkReference;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.LinkReference),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
+      referenceType: node.referenceType,
+      identifier: node.identifier,
+      label: node.label,
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-    referenceType: node.referenceType,
-    identifier: node.identifier,
-    label: node.label,
-  });
+  );
 }
 
 function compileList(ctx: StateContext, node: mdast.List): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.List;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.List),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
+      ordered: node.ordered,
+      spread: node.spread,
+      start: node.start,
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-    ordered: node.ordered,
-    spread: node.spread,
-    start: node.start,
-  });
+  );
 }
 
 function compileListItem(ctx: StateContext, node: mdast.ListItem): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.ListItem;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.ListItem),
+    {
+      checked: node.checked,
+      spread: node.spread,
+      get children() {
+        return renderContent(ctx, node.children);
+      },
     },
-    checked: node.checked,
-    spread: node.spread,
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-  });
+  );
 }
 
 function compileParagraph(
   ctx: StateContext,
   node: mdast.Paragraph,
 ): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Paragraph;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Paragraph),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-  });
+  );
 }
 
 function compileRoot(ctx: StateContext, node: mdast.Root): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Root;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Root),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-  });
+  );
 }
 
 function compileStrong(ctx: StateContext, node: mdast.Strong): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Strong;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Strong),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-  });
+  );
 }
 
 function compileTable(ctx: StateContext, node: mdast.Table): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.Table;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.Table),
+    {
+      get children() {
+        return node.children.map((value, i) =>
+          compileTableRow(ctx, value, i === 0),
+        );
+      },
+      align: node.align,
     },
-    get children() {
-      return node.children.map((value, i) =>
-        compileTableRow(ctx, value, i === 0),
-      );
-    },
-    align: node.align,
-  });
+  );
 }
 
 function compileTableCell(
   ctx: StateContext,
   node: mdast.TableCell,
 ): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.TableCell;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.TableCell),
+    {
+      get children() {
+        return renderContent(ctx, node.children);
+      },
     },
-    get children() {
-      return renderContent(ctx, node.children);
-    },
-  });
+  );
 }
 
 function compileTableRow(
@@ -292,23 +291,22 @@ function compileTableRow(
   node: mdast.TableRow,
   isHead: boolean,
 ): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.TableRow;
+  return createComponent(
+    dynamic(() => ctx.props.builtins.TableRow),
+    {
+      get children() {
+        return node.children.map(value => compileTableCell(ctx, value));
+      },
+      isHead,
     },
-    get children() {
-      return node.children.map(value => compileTableCell(ctx, value));
-    },
-    isHead,
-  });
+  );
 }
 
 function compileThematicBreak(ctx: StateContext): JSX.Element {
-  return createComponent(Dynamic, {
-    get component() {
-      return ctx.props.builtins.ThematicBreak;
-    },
-  });
+  return createComponent(
+    dynamic(() => ctx.props.builtins.ThematicBreak),
+    {},
+  );
 }
 
 export default function compileNode(

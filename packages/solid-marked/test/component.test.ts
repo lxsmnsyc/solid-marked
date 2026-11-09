@@ -71,13 +71,9 @@ function renderMarkdown(source: string): string {
 }
 
 describe('server rendering', () => {
-  // Tripwire for https://github.com/solidjs/solid (@solidjs/web 2.0.0-rc.0):
-  // `renderToString` does not escape a string returned from a component that
-  // is rendered through `Dynamic`, which is every node this renderer emits.
-  // Solid 1.9 escaped it. When Solid fixes this, the test starts passing and
-  // vitest reports the `fails` annotation as the failure, which is the signal
-  // to drop the annotation.
-  it.fails('escapes text so markdown cannot inject markup', () => {
+  // @solidjs/web 2.0.0-rc.0 did not escape a string returned from a component
+  // rendered dynamically, which is every node this renderer emits.
+  it('escapes text so markdown cannot inject markup', () => {
     expect(renderMarkdown('x `<script>alert(1)</script>` y')).not.toContain(
       '<script>',
     );

@@ -86,6 +86,7 @@ Lorem ipsum dolor.
 ```jsx
 import { Dynamic, render } from '@solidjs/web';
 import { MDXProvider } from 'solid-marked';
+
 import Hello from './hello.md';
 
 function App() {

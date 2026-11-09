@@ -32,7 +32,7 @@ exports[`CommonMark > renders ordered and unordered lists 3`] = `"(root (list or
 
 exports[`CommonMark > renders paragraphs 1`] = `"(root (paragraph Lorem ipsum dolor.))"`;
 
-exports[`CommonMark > renders raw HTML blocks 1`] = `"(root (html <div>Hello World</div>))"`;
+exports[`CommonMark > renders raw HTML blocks 1`] = `"(root (html &lt;div>Hello World&lt;/div>))"`;
 
 exports[`CommonMark > renders references and definitions 1`] = `"(root (paragraph (linkReference alpha alpha))(definition alpha bravo))"`;
 
