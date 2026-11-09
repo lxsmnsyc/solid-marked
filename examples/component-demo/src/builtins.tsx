@@ -1,5 +1,5 @@
 import type { JSX } from '@solidjs/web';
-import { Dynamic } from '@solidjs/web';
+import { dynamic } from '@solidjs/web';
 import { Loading, Show } from 'solid-js';
 import type { MDXBuiltinComponents } from 'solid-marked';
 
@@ -70,10 +70,11 @@ export function createBuiltins(
       return <div innerHTML={props.children ?? ''} />;
     },
     Heading(props): JSX.Element {
+      const Tag = dynamic(() => `h${props.depth}` as const);
       return (
-        <Dynamic component={`h${props.depth}`} id={props.id}>
+        <Tag id={props.id}>
           <a href={`#${props.id}`}>{props.children}</a>
-        </Dynamic>
+        </Tag>
       );
     },
     Image(props): JSX.Element {
@@ -90,14 +91,8 @@ export function createBuiltins(
       );
     },
     List(props): JSX.Element {
-      return (
-        <Dynamic
-          component={props.ordered ? 'ol' : 'ul'}
-          start={props.start ?? undefined}
-        >
-          {props.children}
-        </Dynamic>
-      );
+      const Tag = dynamic(() => (props.ordered ? 'ol' : 'ul'));
+      return <Tag start={props.start ?? undefined}>{props.children}</Tag>;
     },
     ListItem(props): JSX.Element {
       return (
