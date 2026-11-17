@@ -1,8 +1,9 @@
+import type { JSX } from '@solidjs/web';
 import GithubSlugger from 'github-slugger';
 import { fromMarkdown } from 'mdast-util-from-markdown';
 import { gfmFromMarkdown } from 'mdast-util-gfm';
 import { gfm } from 'micromark-extension-gfm';
-import { type JSX, createMemo } from 'solid-js';
+import { createMemo } from 'solid-js';
 
 import type { MDXProps } from '../compiler';
 import compileNode from './renderer';

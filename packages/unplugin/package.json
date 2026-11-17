@@ -1,6 +1,6 @@
 {
   "name": "unplugin-solid-marked",
-  "version": "0.8.0",
+  "version": "1.0.0-next.0",
   "private": false,
   "description": "Universal bundler plugin for solid-marked",
   "keywords": [
@@ -50,22 +50,23 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "unplugin": "^3.3.0"
+    "unplugin": "^3.7.0"
   },
   "devDependencies": {
-    "@types/node": "^26.4.1",
-    "solid-js": "^1.9.15",
+    "@solidjs/vite-plugin": "3.0.0",
+    "@solidjs/web": "2.0.0",
+    "@types/node": "^26.6.6",
+    "solid-js": "2.0.0",
     "solid-marked": "workspace:*",
-    "tsdown": "^0.22.14",
+    "tsdown": "^0.23.7",
     "typescript": "^5.9.3",
-    "vite": "^8.2.2",
-    "vite-plugin-solid": "^2.11.14",
+    "vite": "^8.3.6",
     "vitest": "^4.1.11"
   },
   "peerDependencies": {
-    "solid-js": "^1.7",
-    "solid-marked": ">=0.5.0",
-    "vite": "^7 || ^8"
+    "solid-js": "^2.0.0",
+    "solid-marked": "workspace:^",
+    "vite": "^8 || ^9"
   },
   "peerDependenciesMeta": {
     "vite": {

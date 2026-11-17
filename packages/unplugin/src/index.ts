@@ -27,7 +27,7 @@ const MARKDOWN_PROXY_RE = /\.(md|mdx|markdown|mdown|mkdn|mkd|mkdown|ron)\.jsx$/;
  * Compiles imported Markdown and MDX files into SolidJS components.
  *
  * The plugin emits JSX, so it has to run **before** the Solid JSX transform
- * (`vite-plugin-solid` and friends). Each markdown module exports the document
+ * (`@solidjs/vite-plugin`). Each markdown module exports the document
  * as its default export, plus `TableOfContents` and `frontmatter` where the
  * document provides them.
  *

@@ -1,7 +1,7 @@
 # vite-demo
 
 Compile-time rendering: `Example.md` is imported as a module and turned into a
-SolidJS component by [`vite-plugin-solid-marked`](../../packages/vite) at build
+SolidJS component by [`unplugin-solid-marked`](../../packages/unplugin) at build
 time. No Markdown parser ships to the browser.
 
 ```bash

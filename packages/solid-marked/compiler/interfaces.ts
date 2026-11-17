@@ -1,4 +1,5 @@
-import type { Component, JSX } from 'solid-js';
+import type { JSX } from '@solidjs/web';
+import type { Component } from 'solid-js';
 
 /** Props of a builtin that wraps other content. */
 export interface ParentProps {
