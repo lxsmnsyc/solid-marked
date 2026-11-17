@@ -53,10 +53,10 @@
     "unplugin": "^3.7.0"
   },
   "devDependencies": {
-    "@solidjs/vite-plugin": "^3.0.0-next.57",
-    "@solidjs/web": "^2.0.0-rc.21",
+    "@solidjs/vite-plugin": "3.0.0",
+    "@solidjs/web": "2.0.0",
     "@types/node": "^26.6.6",
-    "solid-js": "^2.0.0-rc.21",
+    "solid-js": "2.0.0",
     "solid-marked": "workspace:*",
     "tsdown": "^0.23.7",
     "typescript": "^5.9.3",
@@ -64,7 +64,7 @@
     "vitest": "^4.1.11"
   },
   "peerDependencies": {
-    "solid-js": "^2.0.0-rc.21",
+    "solid-js": "^2.0.0",
     "solid-marked": "workspace:^",
     "vite": "^8 || ^9"
   },

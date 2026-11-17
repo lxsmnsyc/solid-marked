@@ -48,7 +48,7 @@ pnpm add -D unplugin-solid-marked @solidjs/vite-plugin
 ```
 
 > [!IMPORTANT]
-> Version 1.x requires Solid 2. Stay on `solid-marked@0.8.x` for Solid 1.
+> Version 1.x requires Solid 2.0 or newer. For Solid 1, use `solid-marked@0.8.x`, maintained on the [`solid-1` branch](https://github.com/lxsmnsyc/solid-marked/tree/solid-1).
 
 ### Integrations
 
